@@ -17,10 +17,10 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/cat/desk" element={<Desk />} />
-        <Route path="/cat/chair" element={<Chair />} />
-        <Route path="/cat/drawer" element={<Drawer />} />
-        <Route path="/cat/shelf" element={<Shelf />} />
+        <Route path="/category/desk" element={<Desk />} />
+        <Route path="/category/chair" element={<Chair />} />
+        <Route path="/category/drawer" element={<Drawer />} />
+        <Route path="/category/shelf" element={<Shelf />} />
       </Routes>
     </BrowserRouter>
   );
