@@ -1,0 +1,12 @@
+@import "../styles/variables.scss";
+
+.logo {
+  @include flex(center, center, row);
+  width: 90px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  img {
+    width: 100%;
+  }
+}

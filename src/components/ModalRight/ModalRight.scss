@@ -1,0 +1,99 @@
+@import "../../styles/variables.scss";
+@import "../../styles/animation.scss";
+
+.modal-right-bg {
+  @include modal-background;
+  -webkit-animation: menuBarBgAnimation 0.3s;
+  animation: menuBarBgAnimation 0.3s;
+  .modal-right {
+    -webkit-animation: modalRightMountAnimation 0.3s;
+    animation: modalRightMountAnimation 0.3s;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 480px;
+    height: 100vh;
+    background-color: white;
+    z-index: 99;
+    header {
+      @include flex(center, center, row);
+      height: 92px;
+      background-color: #084392;
+      .close-btn {
+        @include flex(center, center, null);
+        width: 45px;
+        height: 45px;
+        border-radius: 50px;
+        background-color: white;
+        margin-left: 350px;
+        span {
+          @include flex(center, center, null);
+          width: 45px;
+          height: 45px;
+          cursor: pointer;
+          &:hover {
+            border-radius: 24px;
+            background-color: #f2f2f2;
+          }
+        }
+      }
+      .logo-wrapper {
+        width: 330px;
+      }
+    }
+    .modal-login {
+      @include flex(space-between, center, row);
+      padding-left: 50px;
+      padding-right: 50px;
+      height: 120px;
+      background-color: #084392;
+      border-bottom: 0.5px solid #0c67b4;
+      h1 {
+        font-size: 2.25rem;
+        font-weight: bolder;
+        color: white;
+      }
+      span {
+        @include flex(center, center, null);
+        width: 100px;
+        height: 30px;
+        background-color: white;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+      }
+    }
+    .modal-signup {
+      @include flex(space-between, center, null);
+      padding-left: 50px;
+      padding-right: 50px;
+      height: 100px;
+      background-color: #084392;
+      border-bottom: 0.5px solid #0c67b4;
+      color: white;
+      font-weight: bolder;
+      cursor: pointer;
+      &:hover {
+        span:first-child {
+          text-decoration: underline;
+        }
+      }
+    }
+    .modal-right-menu {
+      padding-left: 50px;
+      margin-top: 50px;
+      font-size: 15px;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+        color: darkgray;
+      }
+    }
+  }
+}
+
+.modal-right-unmount {
+  transform: translateX(100%);
+  transition: all 0.3s;
+}
