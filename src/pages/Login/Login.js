@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./Login.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [id, setId] = useState();
   const [pw, setPw] = useState();
   const [alert, setAlert] = useState(false);
+  const navigate = useNavigate();
+
+  // const isValid = id.includes("@") && pw.length > 6;
 
   const onClickId = e => {
     setId(e.target.value);
@@ -14,14 +17,36 @@ function Login() {
   const onClickPw = e => {
     setPw(e.target.value);
   };
-  console.log(alert);
+
+  // const signin = () => {
+  //   fetch("http://10.58.52.248:3000/user/signin", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ email: id, password: pw }),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       localStorage.setItem("token", data.accessToken);
+  //       console.log(localStorage.getItem("token"));
+  //     });
+  // };
+
   return (
-    <div className="main-container">
+    <div className="login-main-container">
       <div className="left-main-container">
         <div className="left-container">
           <div className="left-top-container">
             <div className="left-top-emoticon-arrow">
-              <span class="material-symbols-outlined">arrow_back</span>
+              <span
+                onClick={() => {
+                  return navigate(`/`);
+                }}
+                className="material-symbols-outlined"
+              >
+                arrow_back
+              </span>
             </div>
             <div className="left-brand">위케아</div>
           </div>
@@ -52,7 +77,7 @@ function Login() {
           <input
             className="right-login-input"
             type="text"
-            onClick={onClickId}
+            onChange={onClickId}
           />
           {/* <div className="right-login-text">
             이메일 또는 휴대폰 번호를 입력해주세요.
@@ -66,7 +91,7 @@ function Login() {
           <input
             className="right-login-input"
             type="password"
-            onClick={onClickPw}
+            onChange={onClickPw}
           />
           {/* <div>비밀번호를 입력해 주세요</div> */}
           <div>
@@ -95,7 +120,14 @@ function Login() {
           <div className="right-signup-text">
             weKEA 계정이 없으신가요? 지금 바로 만들어보세요.
           </div>
-          <button className="right-signup-button">개인 회원 가입하기</button>
+          <button
+            onClick={() => {
+              return navigate(`/SignUp`);
+            }}
+            className="right-signup-button"
+          >
+            개인 회원 가입하기
+          </button>
         </form>
       </div>
     </div>

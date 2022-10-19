@@ -1,6 +1,5 @@
-.main-container {
+.login-main-container {
   width: 100vw;
-
   display: flex;
   .left-main-container {
     width: 40%;
@@ -22,6 +21,9 @@
         .left-top-emoticon-arrow {
           position: absolute;
           left: -55px;
+          .material-symbols-outlined {
+            cursor: pointer;
+          }
         }
       }
       .left-center-container {
