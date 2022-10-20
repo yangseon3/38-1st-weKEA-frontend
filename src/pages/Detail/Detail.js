@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DetailModal from "./components/DetailModal";
+import ImageModal from "./components/ImageModal";
 import "./Detail.scss";
 
 function Detail() {
@@ -24,7 +24,7 @@ function Detail() {
   };
   const closeModal = e => {
     e.stopPropagation();
-    if (e.target.className === "detail-modal-bg") {
+    if (e.target.className === "image-modal-bg") {
       setUnmountModal(true);
       setTimeout(() => {
         setIsModalOpen(0);
@@ -36,7 +36,7 @@ function Detail() {
   return (
     <>
       {isModalOpen !== 0 && (
-        <DetailModal
+        <ImageModal
           images={images}
           isModalOpen={isModalOpen}
           closeModal={closeModal}

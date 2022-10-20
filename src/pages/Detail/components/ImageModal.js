@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./DetailModal.scss";
+import "./ImageModal.scss";
 
-function DetailModal({ images, isModalOpen, closeModal, unmountModal }) {
+function ImageModal({ images, isModalOpen, closeModal, unmountModal }) {
   const [sliderTranslateX, setSliderTranslateX] = useState(
     (isModalOpen - 1) * -80
   );
@@ -16,13 +16,13 @@ function DetailModal({ images, isModalOpen, closeModal, unmountModal }) {
   const sliderWidth = images.length * 80;
   return (
     <div
-      className={`detail-modal-bg${
-        unmountModal ? " detail-modal-bg-unmount" : ""
+      className={`image-modal-bg${
+        unmountModal ? " image-modal-bg-unmount" : ""
       }`}
       onClick={e => closeModal(e)}
     >
       <div
-        className={`detail-modal${unmountModal ? " detail-modal-unmount" : ""}`}
+        className={`image-modal${unmountModal ? " image-modal-unmount" : ""}`}
       >
         {canGoBack && (
           <button type="button" className="back-button">
@@ -43,9 +43,9 @@ function DetailModal({ images, isModalOpen, closeModal, unmountModal }) {
             <span className="material-symbols-outlined">arrow_forward</span>
           </button>
         )}
-        <div className="detail-modal-slider-wrapper">
+        <div className="image-modal-slider-wrapper">
           <div
-            className="detail-modal-slider"
+            className="image-modal-slider"
             style={{
               width: `${sliderWidth}vw`,
               transform: `translateX(${sliderTranslateX}vw)`,
@@ -53,7 +53,7 @@ function DetailModal({ images, isModalOpen, closeModal, unmountModal }) {
           >
             {images.map(img => {
               return (
-                <div className="detail-modal-img-wrapper" key={img.id}>
+                <div className="image-modal-img-wrapper" key={img.id}>
                   <img src={img.url} />
                 </div>
               );
@@ -65,4 +65,4 @@ function DetailModal({ images, isModalOpen, closeModal, unmountModal }) {
   );
 }
 
-export default DetailModal;
+export default ImageModal;

@@ -1,29 +1,29 @@
 @import "../../../styles/variables.scss";
 
-.detail-modal-bg {
+.image-modal-bg {
   @include flex(center, center, null);
   @include modal-background;
   -webkit-animation: modalbgAnimation 0.3s;
   animation: modalbgAnimation 0.3s;
   z-index: 99;
-  .detail-modal {
+  .image-modal {
     @include flex(center, center, null);
     position: relative;
     width: 95vw;
     height: 90vh;
     border-radius: 20px;
     background-color: white;
-    -webkit-animation: modalOpenAnimation 0.3s;
-    animation: modalOpenAnimation 0.3s;
-    .detail-modal-slider-wrapper {
+    -webkit-animation: imageModalOpenAnimation 0.3s;
+    animation: imageModalOpenAnimation 0.3s;
+    .image-modal-slider-wrapper {
       width: 80vw;
       height: 70vh;
       overflow: hidden;
-      .detail-modal-slider {
+      .image-modal-slider {
         @include flex(flex-start, null, row);
         transition: all 0.3s;
         transform: translateX(0vw);
-        .detail-modal-img-wrapper {
+        .image-modal-img-wrapper {
           @include flex(center, center, null);
           width: 80vw;
           height: 70vh;
@@ -53,7 +53,7 @@
     }
   }
 }
-@-webkit-keyframes modalOpenAnimation {
+@-webkit-keyframes imageModalOpenAnimation {
   from {
     scale: 0;
   }
@@ -61,7 +61,7 @@
     scale: 1;
   }
 }
-@keyframes modalOpenAnimation {
+@keyframes imageModalOpenAnimation {
   from {
     scale: 0;
   }
@@ -85,11 +85,11 @@
     opacity: 1;
   }
 }
-.detail-modal-unmount {
+.image-modal-unmount {
   scale: 0;
   transition: all 0.3s;
 }
-.detail-modal-bg-unmount {
+.image-modal-bg-unmount {
   opacity: 0;
   transition: all 0.3s;
 }
