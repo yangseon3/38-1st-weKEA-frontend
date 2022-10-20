@@ -1,10 +1,11 @@
 import React from "react";
-import Detail from "../Detail/Detail";
+import Listpage from "../Listpage/Listpage";
+
 function Main() {
   return (
     <div>
       <div>
-        <Detail />
+        <Listpage />
       </div>
       위코드 38기 3팀 weKEA입니다.
     </div>

@@ -1,0 +1,50 @@
+.listpage {
+  .filter-bar {
+    border: 2px solid red;
+    padding: 30px;
+    display: flex;
+    position: relative;
+
+    .cont {
+      // border: blue 1px solid;
+      margin-right: 10px;
+    }
+    .filter-container {
+      margin-right: 0px;
+    }
+    .filter1-container {
+      // border: 2px green solid;
+      position: relative;
+    }
+    .filter2-container {
+      // border: 2px green solid;
+      position: relative;
+    }
+
+    .drop-box {
+      // border: rgb(204, 204, 204) 1px solid;
+      position: absolute;
+      margin-top: 10px;
+      z-index: 1;
+      background-color: white;
+      width: 250px;
+      box-shadow: 1px 1px 30px 2px rgb(157, 157, 157);
+      border-radius: 20px;
+
+      .item {
+        margin: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .button {
+      border: none;
+      padding: 13px 24px;
+      border-radius: 20px;
+      outline: 0;
+    }
+    .button:hover {
+      background-color: rgb(214, 214, 214);
+    }
+  }
+}
