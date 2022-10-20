@@ -3,24 +3,28 @@ import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [id, setId] = useState();
-  const [pw, setPw] = useState();
+  // const [id, setId] = useState();
+  // const [pw, setPw] = useState();
+  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [alert, setAlert] = useState(false);
   const navigate = useNavigate();
 
   // const isValid = id.includes("@") && pw.length > 6;
 
-  const onClickId = e => {
-    setId(e.target.value);
+  const userInfoHander = e => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
   };
-
-  const onClickPw = e => {
-    setPw(e.target.value);
-  };
+  // const onClickPw = e => {
+  //   setUserInfo({ ...userInfo, password: e.target.value });
+  // };
+  const { email, password } = userInfo;
+  console.log(email, password);
+  // const isUserValid = email.includes("@") && password.length > 1 ;
 
   // const signin = () => {
   //   fetch("http://10.58.52.248:3000/user/signin", {
-  //     method: "POST",
+  //     method: "GET",
   //     headers: {
   //       "Content-Type": "application/json",
   //     },
@@ -70,14 +74,15 @@ function Login() {
         </div>
       </div>
       <div className="right-container">
-        <form className="right-form">
+        <form className="right-form" onChange={userInfoHander}>
           <div className="right-login-1rd-text">
             이메일 또는 확인된 휴대폰 번호
           </div>
           <input
+            name="email"
             className="right-login-input"
             type="text"
-            onChange={onClickId}
+            // onChange={onClickId}
           />
           {/* <div className="right-login-text">
             이메일 또는 휴대폰 번호를 입력해주세요.
@@ -89,9 +94,10 @@ function Login() {
           <div></div>
           <div className="right-pw-1rd-text">비밀번호</div>
           <input
+            name="password"
             className="right-login-input"
             type="password"
-            onChange={onClickPw}
+            // onChange={onClickPw}
           />
           {/* <div>비밀번호를 입력해 주세요</div> */}
           <div>
