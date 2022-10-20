@@ -8,6 +8,7 @@ import Desk from "./pages/Categories/Desk";
 import Chair from "./pages/Categories/Chair";
 import Drawer from "./pages/Categories/Drawer";
 import Shelf from "./pages/Categories/Shelf";
+import Detail from "./pages/Detail/Detail";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/category/chair" element={<Chair />} />
         <Route path="/category/drawer" element={<Drawer />} />
         <Route path="/category/shelf" element={<Shelf />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

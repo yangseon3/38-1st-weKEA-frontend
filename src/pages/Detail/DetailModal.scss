@@ -1,0 +1,95 @@
+@import "../../styles/variables.scss";
+
+.detail-modal-bg {
+  @include flex(center, center, null);
+  @include modal-background;
+  -webkit-animation: modalbgAnimation 0.3s;
+  animation: modalbgAnimation 0.3s;
+  z-index: 99;
+  .detail-modal {
+    @include flex(center, center, null);
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    border-radius: 20px;
+    background-color: white;
+    -webkit-animation: modalOpenAnimation 0.3s;
+    animation: modalOpenAnimation 0.3s;
+    .detail-modal-slider-wrapper {
+      width: 80vw;
+      height: 70vh;
+      overflow: hidden;
+      .detail-modal-slider {
+        @include flex(flex-start, null, row);
+        transition: all 0.3s;
+        transform: translateX(0vw);
+        .detail-modal-img-wrapper {
+          @include flex(center, center, null);
+          width: 80vw;
+          height: 70vh;
+          img {
+            height: 100%;
+          }
+        }
+      }
+    }
+    .back-button {
+      left: 50px;
+    }
+    .forward-button {
+      right: 50px;
+    }
+    .back-button,
+    .forward-button {
+      @include flex(center, center, null);
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      border: none;
+      background-color: black;
+      color: white;
+      z-index: 99999;
+    }
+  }
+}
+@-webkit-keyframes modalOpenAnimation {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+@keyframes modalOpenAnimation {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+@-webkit-keyframes modalbgAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modalbgAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.detail-modal-unmount {
+  scale: 0;
+  transition: all 0.3s;
+}
+.detail-modal-bg-unmount {
+  opacity: 0;
+  transition: all 0.3s;
+}
