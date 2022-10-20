@@ -19,7 +19,6 @@ function Login() {
   };
 
   const { email, password } = userInfo;
-  console.log(email, password);
   const emailRegex =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   const pwRegex =
@@ -28,21 +27,26 @@ function Login() {
   const isEmailValid = emailRegex.test(email);
   const isPasswordValid = pwRegex.test(password);
 
-  // const signin = () => {
-  //   fetch("http://10.58.52.248:3000/user/signin", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ email: id, password: pw }),
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       localStorage.setItem("token", data.accessToken);
-  //       console.log(localStorage.getItem("token"));
-  //     });
-  // };
-
+  const loginRequest = e => {
+    e.preventDefault();
+    fetch("http://10.58.52.58:3000/users/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem("token", data.userInfo.accessToken);
+        localStorage.setItem(
+          "userName",
+          JSON.stringify(data.userInfo.userName)
+        );
+        console.log(localStorage.getItem("token"));
+      });
+  };
+  console.log(JSON.parse(localStorage.getItem("userName")));
   return (
     <div className="login-main-container">
       <div className="left-main-container">
@@ -80,7 +84,13 @@ function Login() {
         </div>
       </div>
       <div className="right-container">
-        <form className="right-form" onChange={userInfoHander}>
+        <form
+          className="right-form"
+          onChange={userInfoHander}
+          onSubmit={e => {
+            loginRequest(e);
+          }}
+        >
           <div className="right-login-1st-text">
             이메일 또는 확인된 휴대폰 번호
           </div>
