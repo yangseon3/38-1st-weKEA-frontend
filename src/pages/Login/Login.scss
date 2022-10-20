@@ -71,10 +71,13 @@
           border: 2px solid;
         }
       }
-      .material-symbols-outlined {
+      .right-email-valid-text {
+        color: red;
+      }
+      .visiblility-icon {
         position: absolute;
         cursor: pointer;
-        top: 215px;
+        top: 70px;
         right: 15px;
       }
       .right-login-2nd-text {
@@ -86,8 +89,15 @@
         color: black;
         text-indent: 10px;
       }
+      .right-pw-wrapper {
+        position: relative;
+      }
       .right-pw-1st-text {
         padding-top: 30px;
+      }
+      .right-pw-valid-text {
+        color: red;
+        padding-bottom:10px ;
       }
       .right-checkbox {
         position: relative;

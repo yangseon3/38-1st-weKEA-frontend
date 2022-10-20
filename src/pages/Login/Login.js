@@ -93,30 +93,38 @@ function Login() {
             type="text"
           />
           {email.length === 0 || isEmailValid || (
-            <div className="right-login-text">이메일을 입력해주세요.</div>
+            <div className="right-email-valid-text">
+              이메일 형식이 아닙니다.
+            </div>
           )}
           {/* <div className="right-login-2nd-text">
             <div> 다른 로그인 옵션:</div>
             <Link className="rigth-link-text"> 일회용 코드로 로그인</Link>
           </div> */}
-          <div></div>
-          <div className="right-pw-1st-text">비밀번호</div>
-          <input
-            name="password"
-            className={`right-login-input ${
-              password.length === 0 ||
-              (isPasswordValid ? "valid-input" : "invalid-input")
-            }`}
-            type={showPassword ? "password" : "text"}
-          />
-          <span onClick={togglePass} className="material-symbols-outlined">
-            {showPassword ? "visibility_off" : "visibility"}
-          </span>
-          {password.length === 0 || isPasswordValid || (
-            <div>비밀번호는 8자 이상 입력해주세요</div>
-          )}
-          <div>
-            <Link className="rigth-link-text">비밀번호 찾기</Link>
+          <div className="right-pw-wrapper">
+            <div className="right-pw-1st-text">비밀번호</div>
+            <input
+              name="password"
+              className={`right-login-input ${
+                password.length === 0 ||
+                (isPasswordValid ? "valid-input" : "invalid-input")
+              }`}
+              type={showPassword ? "password" : "text"}
+            />
+            <span
+              onClick={togglePass}
+              className="material-symbols-outlined visiblility-icon"
+            >
+              {showPassword ? "visibility_off" : "visibility"}
+            </span>
+            {password.length === 0 || isPasswordValid || (
+              <div className="right-pw-valid-text">
+                비밀번호는 8자 이상 입력해주세요
+              </div>
+            )}
+            <div>
+              <Link className="rigth-link-text">비밀번호 찾기</Link>
+            </div>
           </div>
           <div className="right-checkbox">
             <div className="right-checkbox-wrapper">
