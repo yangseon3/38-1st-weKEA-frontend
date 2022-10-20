@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./SignUp.scss";
 import ASIDE_1ST from "./ASIDE_1ST";
@@ -43,6 +43,23 @@ function SignUp() {
 
   const togglePass = () => {
     setShowPassword(boolean => !boolean);
+  };
+
+  const signupRequest = () => {
+    fetch("http://10.58.52.58:3000/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
+        last_name,
+        first_name,
+        phone_number,
+        birthday,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log(result));
   };
 
   return (
@@ -224,7 +241,9 @@ function SignUp() {
               개인정보 수집 • 이용 동의
             </Link>
           </div>
-          <button className="right-botton-button">이메일 주소 확인 하기</button>
+          <button className="right-botton-button" onClick={signupRequest}>
+            회원가입
+          </button>
         </div>
       </div>
     </div>
