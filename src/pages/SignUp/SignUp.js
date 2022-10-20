@@ -115,7 +115,15 @@ function SignUp() {
           <form className="right-mid-container" onChange={userInfoHander}>
             <div className="right-1st-set">
               <div className="right-1st-text">성</div>
-              <input name="last_name" type="text" className="right-1st-input" />
+              <input
+                name="last_name"
+                type="text"
+                className={`right-1st-input ${
+                  last_name.length === 0 || isLastNameValid
+                    ? "valid-input"
+                    : "invalid-input"
+                } `}
+              />
               {isLastNameValid || (
                 <div className="right-valid-text">성을 입력해주세요.</div>
               )}
@@ -123,9 +131,13 @@ function SignUp() {
             <div className="right-2nd-set">
               <div className="right-2nd-text">이름</div>
               <input
-                className="right-2nd-input"
                 type="text"
                 name="first_name"
+                className={`right-2nd-input ${
+                  first_name.length === 0 || isFirstNameValid
+                    ? "valid-input"
+                    : "invalid-input"
+                } `}
               />
               {isFirstNameValid || (
                 <div className="right-valid-text">이름을 입력해주세요.</div>
@@ -147,7 +159,15 @@ function SignUp() {
                   <img src="https://img.icons8.com/ios/344/info--v3.png" />
                 </div>
               </div>
-              <input className="right-3rd-input" type="text" name="birthday" />
+              <input
+                type="text"
+                name="birthday"
+                className={`right-3rd-input ${
+                  birthday.length === 0 || isBirthdayValid
+                    ? "valid-input"
+                    : "invalid-input"
+                } `}
+              />
               {birthday.length === 0 || isBirthdayValid ? (
                 <div className="right-3rd-text2">YYYY-MM-DD</div>
               ) : (
@@ -159,9 +179,13 @@ function SignUp() {
             <div className="right-4th-set">
               <div className="right-4th-text">휴대폰</div>
               <input
-                className="right-4th-input"
                 type="text"
                 name="phone_number"
+                className={`right-4th-input ${
+                  phone_number.length === 0 || isPhonenumberValid
+                    ? "valid-input"
+                    : "invalid-input"
+                } `}
               />
               {phone_number.length === 0 || isPhonenumberValid ? (
                 <div>010-1234-5678</div>
@@ -173,7 +197,15 @@ function SignUp() {
             </div>
             <div className="right-5th-set">
               <div className="right-5th-text">이메일</div>
-              <input className="right-5th-input" type="text" name="email" />
+              <input
+                type="text"
+                name="email"
+                className={`right-5th-input  ${
+                  email.length === 0 || isEmailValid
+                    ? "valid-input"
+                    : "invalid-input"
+                } `}
+              />
               {email.length === 0 || isEmailValid || (
                 <div className="right-5th-text-valid">
                   이메일을 입력해주세요.
@@ -185,9 +217,10 @@ function SignUp() {
               <input
                 name="password"
                 className={`right-6th-input ${
-                  password.length === 0 ||
-                  (isPasswordValid ? "valid-input" : "invalid-input")
-                }`}
+                  password.length === 0 || isPasswordValid
+                    ? "valid-input"
+                    : "invalid-input"
+                } `}
                 type={showPassword ? "password" : "text"}
               />
               <span
@@ -197,7 +230,9 @@ function SignUp() {
                 {showPassword ? "visibility_off" : "visibility"}
               </span>
               {password.length === 0 || isPasswordValid || (
-                <div>비밀번호는 8자 이상 입력해주세요</div>
+                <div className="right-password-text">
+                  비밀번호는 8자 이상 입력해주세요
+                </div>
               )}
             </div>
           </form>

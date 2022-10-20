@@ -181,11 +181,26 @@
           height: 50px;
           margin-bottom: 10px;
         }
+        .right-password-text{
+          color: red;
+        }
         .visibility-icon {
           cursor: pointer;
           position: absolute; 
           top: 80px;
           right: 10px;
+        }
+      }
+      .valid-input {
+        border: 1px solid rgb(2, 88, 163);
+        &:focus {
+          border: 2px solid rgb(2, 88, 163);
+        }
+      }
+      .invalid-input {
+        border: 1px solid red;
+        &:focus {
+          border: 2px solid red;
         }
       }
     }
