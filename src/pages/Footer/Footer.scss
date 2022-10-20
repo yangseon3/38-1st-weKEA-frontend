@@ -74,6 +74,7 @@
     display: flex;
     justify-content: space-between;
     padding-right: 70px;
+    padding-bottom: 30px;
     .left {
       display: flex;
       justify-content: space-between;
@@ -122,6 +123,36 @@
   }
 
   .bottom {
-    border-top: ;
+    border-top: 1px solid rgb(217, 217, 217);
+    padding-top: 40px;
+    margin-right: 60px;
+    .bar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      .left {
+      }
+      .right {
+        display: flex;
+        .each-item {
+          margin-left: 20px;
+          cursor: pointer;
+        }
+        .each-item:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .last {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    .item-container {
+      .item {
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+    }
   }
 }

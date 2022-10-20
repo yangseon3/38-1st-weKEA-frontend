@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import FooterLeftComponent from "./FooterLeftComponent";
 import FooterRightComponent from "./FooterRightComponent";
+import FooterLast from "./FooterLast";
 
 function Footer() {
   return (
@@ -63,7 +64,30 @@ function Footer() {
           </select>
         </div>
       </div>
-      <div className="bottom">아래입니다</div>
+      <div className="bottom">
+        <div className="bar">
+          <div className="left ">© Inter IKEA Systems B.V 1999-2022</div>
+          <div className="right">
+            {FOOTER_CONST_3.map(item => {
+              return (
+                <div key={item.id} className="each-item">
+                  {" "}
+                  {item.item}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="last">
+          {FOOTER_CONST_4.map(item => {
+            return (
+              <div className="item-container">
+                <FooterLast id={item.id} item={item.item} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
@@ -131,5 +155,59 @@ const FOOTER_CONST_2 = [
     item4: "내가 아끼는 집, 나를 아끼는 집",
     item5: "뉴스룸",
     item6: "채용정보",
+  },
+];
+
+const FOOTER_CONST_3 = [
+  {
+    id: "1",
+    item: "개인정보처리방침",
+  },
+  {
+    id: "2",
+    item: "쿠키",
+  },
+
+  {
+    id: "3",
+    item: "정책",
+  },
+  {
+    id: "4",
+    item: "쿠키",
+  },
+  {
+    id: "5",
+    item: "설정",
+  },
+  {
+    id: "6",
+    item: "웹사이트",
+  },
+  { id: "7", item: "이용약관" },
+  { id: "8", item: "Responsible disclosure" },
+];
+
+const FOOTER_CONST_4 = [
+  { id: "1", item: "weKEA 코리아" },
+  {
+    id: "2",
+    item: "주소 : (우) 16435 서울특별시 강남구 선릉로 57 weKEA 선릉점",
+  },
+  {
+    id: "3",
+    item: "사업자 등록번호 : 143-16-83331 사업자정보확인",
+  },
+  {
+    id: "4",
+    item: "대표자 : 김코드",
+  },
+  {
+    id: "5",
+    item: "통신판매업 신고 : 2022-서울강남-1234",
+  },
+  {
+    id: "6",
+    item: "TEL : 1234-5678",
   },
 ];
