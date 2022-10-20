@@ -51,21 +51,17 @@
       background-color: rgb(214, 214, 214);
     }
   }
-
-  .component-area {
-    border: green 2px solid;
-    height: 400px;
-    width: 100%;
-    margin-top: 10px;
-    margin-right: 30px;
-    overflow-y: scroll;
-    overflow-x: scroll;
+  .container {
+    border: 1px solid red;
+    width: 1300px;
+    height: 500px;
+    position: relative;
     display: flex;
+    overflow: hidden;
 
     .item {
-      border: red 1px solid;
-      margin: 40px;
-      width: 300px;
+      border: blue solid 1px;
+      width: 400px;
       height: 400px;
     }
   }

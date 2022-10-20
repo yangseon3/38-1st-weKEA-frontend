@@ -107,10 +107,14 @@ function Listpage() {
           </div>
         </div>
       </div>
-      <div className="component-area">
-        {LIST_PAGE_CONST_DATA.map(item => {
-          return <div className="item">gdgd</div>;
-        })}
+      <div className="container">
+        컨테이너
+        <div className="item">d</div>
+        <div className="item">d</div>
+        <div className="item">d</div>
+        <div className="item">d</div>
+        <div className="item">d</div>
+        <div className="item">d</div>
       </div>
       <div className="show-more-button">더보기</div>
     </div>
