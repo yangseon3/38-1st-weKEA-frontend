@@ -5,24 +5,27 @@
     width: 40%;
     .left-main-container {
       padding: 30px 80px;
-      .left-top-1rd-container {
+      .left-top-1st-container {
         display: flex;
         align-items: center;
         position: relative;
-        .left-top-emoticon-arrow {
+        .left-top-icon-arrow {
           position: absolute;
           left: -55px;
         }
+        .material-symbols-outlined {
+          cursor: pointer;
+        }
       }
-      .left-top-2rd-container {
+      .left-top-2nd-container {
         display: flex;
         padding-top: 20px;
         font-size: 32px;
         font-weight: 800;
-        .left-2rd-text1 {
+        .left-2nd-text1 {
           color: #0058a3;
         }
-        .left-2rd-text2 {
+        .left-2nd-text2 {
           text-indent: 10px;
         }
       }
@@ -38,7 +41,7 @@
       .left-blank-set {
         display: flex;
         padding-top: 50px;
-        .left-image-1rd-container {
+        .left-image-1st-container {
           display: flex;
           flex-wrap: wrap;
           flex-direction: row;
@@ -48,7 +51,7 @@
             margin: 5px 5px 5px 0px;
           }
         }
-        .left-image-2rd-container {
+        .left-image-2nd-container {
           display: flex;
           flex-wrap: wrap;
           flex-direction: row;
@@ -73,66 +76,32 @@
   }
   .right-container {
     padding: 60px 80px;
-    width: 60%;
-    .right-top-container {
-      line-height: 50px;
-      .right-top-0rd-text {
-        font-weight: bold;
-      }
-      .right-top-1rd-text {
-        display: flex;
-        align-items: center;
-        .right-top-1rd-input {
-          width: 25px;
-          height: 25px;
-        }
-        .right-top-1rd-content {
-          text-indent: 10px;
-        }
-        .right-top-1rd-link {
-          text-decoration: underline;
-          color: black;
-          text-indent: 10px;
-        }
-      }
-      .right-top-2rd-text {
-        display: flex;
-        align-items: center;
-        .right-top-2rd-input {
-          width: 25px;
-          height: 25px;
-        }
-        .right-top-2rd-content {
-          text-indent: 10px;
-        }
-        .right-top-2rd-link {
-          text-decoration: underline;
-          color: black;
-          text-indent: 10px;
-        }
-      }
-    }
+    width: 60%; 
     .right-main-container {
       .right-mid-container {
         width: 450px;
-        .right-1rd-text {
+        .right-1st-text {
           padding-top: 50px;
           padding-bottom: 10px;
         }
-        .right-1rd-text {
+        .right-1st-text {
           padding-bottom: 10px;
         }
-        .right-1rd-input {
+        .right-1st-input {
           border: 1px solid black;
           border-radius: 5px;
           width: 450px;
           height: 50px;
         }
-        .right-2rd-text {
+        .right-valid-text {
+          color: red;
+          padding-top: 10px;
+        }
+        .right-2nd-text {
           padding-top: 40px;
           padding-bottom: 10px;
         }
-        .right-2rd-input {
+        .right-2nd-input {
           border: 1px solid black;
           border-radius: 5px;
           width: 450px;
@@ -169,66 +138,82 @@
           border-radius: 5px;
           width: 450px;
           height: 50px;
+          margin-bottom: 10px;
+        } 
+        .right-3rd-text2-red {
+          color: red;
         }
-        .right-3rd-text2 {
-          line-height: 30px;
-        }
-        .right-4rd-text {
+        .right-4th-text {
           padding-top: 40px;
           padding-bottom: 10px;
         }
-        .right-4rd-input {
+        .right-4th-input {
           border: 1px solid black;
           border-radius: 5px;
           width: 450px;
           height: 50px;
+          margin-bottom: 10px;
         }
-        .right-5rd-text {
+        .right-5th-text {
           padding-top: 40px;
           padding-bottom: 10px;
         }
-        .right-5rd-input {
+        .right-5th-input {
           border: 1px solid black;
           border-radius: 5px;
           width: 450px;
           height: 50px;
+          margin-bottom: 10px;
         }
-        .right-6rd-text {
+        .right-5th-text-valid {
+          color: red;
+        }
+        .right-6th-set {
+        position: relative;
+        .right-6th-text {
           padding-top: 40px;
           padding-bottom: 10px;
         }
-        .right-6rd-input {
+        .right-6th-input {
           border: 1px solid black;
           border-radius: 5px;
           width: 450px;
           height: 50px;
+          margin-bottom: 10px;
+        }
+        .visibility-icon {
+          cursor: pointer;
+          position: absolute; 
+          top: 80px;
+          right: 10px;
         }
       }
-      .right-bottom-1rd-text-input {
+    }
+      .right-bottom-1st-text-input {
         display: flex;
         align-items: center;
         padding-top: 50px;
-        .right-bottom-1rd-input {
+        .right-bottom-1st-input {
           width: 25px;
           height: 25px;
         }
-        .right-bottom-1rd-text {
+        .right-bottom-1st-text {
           width: 420px;
           padding-left: 10px;
           font-size: 15px;
         }
       }
-      .right-bottom-2rd {
+      .right-bottom-2nd {
         padding-left: 40px;
         padding-top: 30px;
-        .right-bottom-2rd-text-input {
+        .right-bottom-2nd-text-input {
           display: flex;
           align-items: center;
-          .right-bottom-2rd-input {
+          .right-bottom-2nd-input {
             width: 25px;
             height: 25px;
           }
-          .right-bottom-2rd-text {
+          .right-bottom-2nd-text {
             text-indent: 10px;
           }
         }
@@ -244,48 +229,48 @@
             text-indent: 10px;
           }
         }
-        .right-bottom-4rd-text-input {
+        .right-bottom-4th-text-input {
           display: flex;
           align-items: center;
           padding-top: 30px;
-          .right-bottom-4rd-input {
+          .right-bottom-4th-input {
             width: 25px;
             height: 25px;
           }
-          .right-bottom-4rd-text {
+          .right-bottom-4th-text {
             text-indent: 10px;
           }
         }
       }
-      .right-bottom-5rd-text-input {
+      .right-bottom-5th-text-input {
         display: flex;
         align-items: center;
         padding-top: 30px;
-        .right-bottom-5rd-input {
+        .right-bottom-5th-input {
           width: 25px;
           height: 25px;
         }
-        .right-bottom-5rd-text {
+        .right-bottom-5th-text {
           text-indent: 10px;
         }
-        .right-bottom-5rd-link {
+        .right-bottom-5th-link {
           text-decoration: underline;
           color: black;
         }
       }
-      .right-bottom-6rd-text-input {
+      .right-bottom-6th-text-input {
         display: flex;
         align-items: center;
         padding-top: 30px;
         padding-bottom: 30px;
-        .right-bottom-6rd-input {
+        .right-bottom-6th-input {
           width: 25px;
           height: 25px;
         }
-        .right-bottom-6rd-text {
+        .right-bottom-6th-text {
           text-indent: 10px;
         }
-        .right-bottom-6rd-link {
+        .right-bottom-6th-link {
           text-decoration: underline;
           color: black;
         }
