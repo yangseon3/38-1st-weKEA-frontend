@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./Listpage.scss";
 
 function Listpage() {
@@ -114,3 +114,5 @@ function Listpage() {
 }
 
 export default Listpage;
+
+// const
