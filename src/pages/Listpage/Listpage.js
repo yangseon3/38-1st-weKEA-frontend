@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Listpage.scss";
+import ThumbNail from "./Thumbnail";
 
 function Listpage() {
   const [isBoxVisible1, setIsBoxVisible1] = useState(false);
   const [isBoxVisible2, setIsBoxVisible2] = useState(false);
-
+  // const test = ["a", "b", "c", "d", "1", "2", "3", "4"];
   function filterBoxToggle1() {
     setIsBoxVisible1(!isBoxVisible1);
   }
@@ -108,38 +109,92 @@ function Listpage() {
         </div>
       </div>
       <div className="container">
-        컨테이너
-        <div className="item">d</div>
-        <div className="item">d</div>
-        <div className="item">d</div>
-        <div className="item">d</div>
-        <div className="item">d</div>
-        <div className="item">d</div>
+        {TEST_CONST.map(item => {
+          return (
+            <ThumbNail
+              key={item.id}
+              url={item.url}
+              id={item.id}
+              title={item.title}
+              size={item.size}
+              price={item.price}
+            />
+          );
+        })}
       </div>
-      <div className="show-more-button">더보기</div>
+      <div className="button-frame">
+        <div className="show-more-button">
+          <button className="button">더 보기</button>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default Listpage;
 
-const LIST_PAGE_CONST_DATA = [
+const TEST_CONST = [
   {
+    url: "https://picsum.photos/200",
     id: "1",
+    price: "1234원",
+    size: "big",
+    title: "하하",
   },
   {
+    url: "https://picsum.photos/200",
     id: "2",
+    price: "3마넌",
+    size: "엄청큼",
+    title: "11",
   },
   {
+    url: "https://picsum.photos/200",
     id: "3",
+    price: "14만",
+    size: "xxx",
+    title: "소파",
   },
   {
+    url: "https://picsum.photos/200",
     id: "4",
+    price: "40만언",
+    size: "ㄸㄷ",
+    title: "ㅋㅋ",
   },
   {
+    url: "https://picsum.photos/200",
     id: "5",
+    price: "ㅇㅇㅇ",
+    size: "aasd3213213f",
+    title: "11",
   },
   {
+    url: "https://picsum.photos/200",
     id: "6",
+    price: "ㄹㅇㄹㅇㄹ",
+    size: "333",
+    title: "4343",
+  },
+  {
+    url: "https://picsum.photos/200",
+    id: "7",
+    price: "ㅍㅇㅍㅇ",
+    size: "aasdf",
+    title: "33",
+  },
+  {
+    url: "https://picsum.photos/200",
+    id: "8",
+    price: "ㅋㅋㅋㅋ",
+    size: "aasdf",
+    title: "555",
+  },
+  {
+    url: "https://picsum.photos/200",
+    id: "9",
+    price: "ㅇㄹㄹㅇ",
+    size: "aasdf",
+    title: "ㅁㅁㅁ",
   },
 ];
