@@ -1,0 +1,34 @@
+.purchase-history {
+  display: flex;
+  padding-left: 120px;
+  padding-top: 90px;
+  height: 2000px;
+  .left {
+    width: 520px;
+    .content {
+      position: sticky;
+      top: 0px;
+      border-right: 1px rgb(221, 221, 221) solid;
+      margin-top: 100px;
+      margin-right: 50px;
+      padding-right: 220px;
+      padding-top: 30px;
+      padding-bottom: 40px;
+      .top {
+        font-size: 27px;
+        font-weight: 650;
+        margin-bottom: 30px;
+      }
+      .bottom {
+        font-size: 12px;
+        letter-spacing: 0.3px;
+        line-height: 15px;
+        color: rgb(83, 83, 83);
+        .span {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
