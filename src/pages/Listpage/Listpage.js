@@ -107,7 +107,11 @@ function Listpage() {
           </div>
         </div>
       </div>
-      <div className="component-area">컴포넌트 자리</div>
+      <div className="component-area">
+        {LIST_PAGE_CONST_DATA.map(item => {
+          return <div className="item">gdgd</div>;
+        })}
+      </div>
       <div className="show-more-button">더보기</div>
     </div>
   );
@@ -115,4 +119,23 @@ function Listpage() {
 
 export default Listpage;
 
-// const
+const LIST_PAGE_CONST_DATA = [
+  {
+    id: "1",
+  },
+  {
+    id: "2",
+  },
+  {
+    id: "3",
+  },
+  {
+    id: "4",
+  },
+  {
+    id: "5",
+  },
+  {
+    id: "6",
+  },
+];
