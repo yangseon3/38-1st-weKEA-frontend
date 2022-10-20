@@ -12,7 +12,7 @@ function LoginModal({ setToggleModal }) {
     const { className } = e.target;
     if (
       className === "material-symbols-outlined" ||
-      className === "modal-right-bg"
+      className === "login-modal-bg"
     ) {
       setUnmount(true);
       setTimeout(() => {
@@ -22,10 +22,10 @@ function LoginModal({ setToggleModal }) {
   };
   return (
     <div
-      className={`modal-right-bg${unmount ? " menu-bar-bg-unmount" : ""}`}
+      className={`login-modal-bg${unmount ? " menu-bar-bg-unmount" : ""}`}
       onClick={closeModal}
     >
-      <div className={`modal-right ${unmount ? "modal-right-unmount" : ""}`}>
+      <div className={`login-modal ${unmount ? "login-modal-unmount" : ""}`}>
         <header>
           <div className="close-btn">
             <span className="material-symbols-outlined">close</span>
@@ -44,7 +44,7 @@ function LoginModal({ setToggleModal }) {
             const { id, content, url } = menu;
             return (
               <li
-                className="modal-right-menu"
+                className="login-modal-menu"
                 key={id}
                 onClick={() => movePage(url)}
               >

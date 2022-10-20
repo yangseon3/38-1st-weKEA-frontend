@@ -1,13 +1,13 @@
 @import "../../styles/variables.scss";
 @import "../../styles/animation.scss";
 
-.modal-right-bg {
+.login-modal-bg {
   @include modal-background;
   -webkit-animation: menuBarBgAnimation 0.3s;
   animation: menuBarBgAnimation 0.3s;
-  .modal-right {
-    -webkit-animation: modalRightMountAnimation 0.3s;
-    animation: modalRightMountAnimation 0.3s;
+  .login-modal {
+    -webkit-animation: loginModalMountAnimation 0.3s;
+    animation: loginModalMountAnimation 0.3s;
     position: fixed;
     top: 0px;
     right: 0px;
@@ -80,7 +80,7 @@
         }
       }
     }
-    .modal-right-menu {
+    .login-modal-menu {
       padding-left: 50px;
       margin-top: 50px;
       font-size: 15px;
@@ -93,7 +93,7 @@
   }
 }
 
-.modal-right-unmount {
+.login-modal-unmount {
   transform: translateX(100%);
   transition: all 0.3s;
 }

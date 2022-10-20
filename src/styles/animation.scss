@@ -43,7 +43,7 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes modalRightMountAnimation {
+@-webkit-keyframes loginModalMountAnimation {
   from {
     transform: translateX(100%);
   }
@@ -51,13 +51,11 @@
     transform: translateX(0);
   }
 }
-@keyframes modalRightMountAnimation {
+@keyframes loginModalMountAnimation {
   from {
     transform: translateX(100%);
   }
   to {
     transform: translateX(0);
   }
-}
-@keyframes modalRightunMountAnimation {
 }
