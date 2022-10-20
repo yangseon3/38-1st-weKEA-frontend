@@ -3,24 +3,30 @@ import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  // const [id, setId] = useState();
-  // const [pw, setPw] = useState();
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [alert, setAlert] = useState(false);
   const navigate = useNavigate();
-
-  // const isValid = id.includes("@") && pw.length > 6;
 
   const userInfoHander = e => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
-  // const onClickPw = e => {
-  //   setUserInfo({ ...userInfo, password: e.target.value });
-  // };
+
+  const [showPassword, setShowPassword] = useState(true);
+
+  const togglePass = () => {
+    setShowPassword(boolean => !boolean);
+  };
+
   const { email, password } = userInfo;
   console.log(email, password);
-  // const isUserValid = email.includes("@") && password.length > 1 ;
+  const emailRegex =
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+  const pwRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+
+  const isEmailValid = emailRegex.test(email);
+  const isPasswordValid = pwRegex.test(password);
 
   // const signin = () => {
   //   fetch("http://10.58.52.248:3000/user/signin", {
@@ -75,40 +81,49 @@ function Login() {
       </div>
       <div className="right-container">
         <form className="right-form" onChange={userInfoHander}>
-          <div className="right-login-1rd-text">
+          <div className="right-login-1st-text">
             이메일 또는 확인된 휴대폰 번호
           </div>
           <input
             name="email"
-            className="right-login-input"
+            className={`right-login-input ${
+              email.length === 0 ||
+              (isEmailValid ? "valid-input" : "invalid-input")
+            }`}
             type="text"
-            // onChange={onClickId}
           />
-          {/* <div className="right-login-text">
-            이메일 또는 휴대폰 번호를 입력해주세요.
-          </div> */}
-          <div className="right-login-2rd-text">
+          {email.length === 0 || isEmailValid || (
+            <div className="right-login-text">이메일을 입력해주세요.</div>
+          )}
+          {/* <div className="right-login-2nd-text">
             <div> 다른 로그인 옵션:</div>
             <Link className="rigth-link-text"> 일회용 코드로 로그인</Link>
-          </div>
+          </div> */}
           <div></div>
-          <div className="right-pw-1rd-text">비밀번호</div>
+          <div className="right-pw-1st-text">비밀번호</div>
           <input
             name="password"
-            className="right-login-input"
-            type="password"
-            // onChange={onClickPw}
+            className={`right-login-input ${
+              password.length === 0 ||
+              (isPasswordValid ? "valid-input" : "invalid-input")
+            }`}
+            type={showPassword ? "password" : "text"}
           />
-          {/* <div>비밀번호를 입력해 주세요</div> */}
+          <span onClick={togglePass} className="material-symbols-outlined">
+            {showPassword ? "visibility_off" : "visibility"}
+          </span>
+          {password.length === 0 || isPasswordValid || (
+            <div>비밀번호는 8자 이상 입력해주세요</div>
+          )}
           <div>
             <Link className="rigth-link-text">비밀번호 찾기</Link>
           </div>
           <div className="right-checkbox">
             <div className="right-checkbox-wrapper">
               <input className="right-checkbox-input" type="checkbox" />
-              <div className="right-checkbox-1rd-text">로그인 상태 유지</div>
+              <div className="right-checkbox-1st-text">로그인 상태 유지</div>
               {alert && (
-                <div className="right-checkbox-2rd-text">
+                <div className="right-checkbox-2nd-text">
                   로그인 상태를 유지하면 방문 할 때마다 다시 로그인 할 필요가
                   없습니다. 이 옵션은 개인 기기에서만 사용하는 것이 좋습니다.
                 </div>
