@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DetailModal from "./DetailModal";
+import DetailModal from "./components/DetailModal";
 import "./Detail.scss";
 
 function Detail() {
