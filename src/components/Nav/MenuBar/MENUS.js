@@ -1,4 +1,4 @@
-const MENU_DATA = [
+const MENUS = [
   { id: 1, menu: "온라인 쇼룸", type: "big-text" },
   { id: 2, menu: "서비스", type: "big-text" },
   { id: 3, menu: "we 특가", type: "bold-text" },
@@ -13,4 +13,4 @@ const MENU_DATA = [
   { id: 12, menu: "내 프로필", type: "common-text" },
 ];
 
-export default MENU_DATA;
+export default MENUS;

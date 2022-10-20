@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuBar from "./MenuBar/MenuBar";
 import Logo from "../Logo";
-import ModalRight from "../ModalRight/ModalRight";
+import LoginModal from "../LoginModal/LoginModal";
 import "./Nav.scss";
 
 function Nav() {
@@ -49,7 +49,7 @@ function Nav() {
       {toggleMenu && (
         <MenuBar toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
       )}
-      {toggleModal && <ModalRight setToggleModal={setToggleModal} />}
+      {toggleModal && <LoginModal setToggleModal={setToggleModal} />}
     </div>
   );
 }

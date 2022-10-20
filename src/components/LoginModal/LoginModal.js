@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./ModalRight.scss";
+import "./LoginModal.scss";
 
-function ModalRight({ setToggleModal }) {
+function LoginModal({ setToggleModal }) {
   const [unmount, setUnmount] = useState(false);
   const navigate = useNavigate();
   const movePage = url => {
     navigate(url);
   };
   const closeModal = e => {
+    const { className } = e.target;
     if (
-      e.target.className === "material-symbols-outlined" ||
-      e.target.className === "modal-right-bg"
+      className === "material-symbols-outlined" ||
+      className === "modal-right-bg"
     ) {
       setUnmount(true);
       setTimeout(() => {
@@ -39,8 +40,8 @@ function ModalRight({ setToggleModal }) {
           <span className="material-symbols-outlined">arrow_forward_ios</span>
         </div>
         <ul>
-          {MODAL_RIGHT_DATA.map(el => {
-            const { id, content, url } = el;
+          {LOGIN_MODAL_MENU.map(menu => {
+            const { id, content, url } = menu;
             return (
               <li
                 className="modal-right-menu"
@@ -57,10 +58,10 @@ function ModalRight({ setToggleModal }) {
   );
 }
 
-const MODAL_RIGHT_DATA = [
+const LOGIN_MODAL_MENU = [
   { id: 1, content: "로그인", url: "/login" },
   { id: 2, content: "구매 내역", url: "/" },
   { id: 3, content: "위시리스트", url: "/" },
   { id: 4, content: "배송 조회", url: "/" },
 ];
-export default ModalRight;
+export default LoginModal;

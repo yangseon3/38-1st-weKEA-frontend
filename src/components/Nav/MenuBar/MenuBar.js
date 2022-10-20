@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../../Logo";
-import MENU_DATA from "./MENU_DATA";
+import MENUS from "./MENUS";
 import "./MenuBar.scss";
 import CategoryBox from "./CategoryBox";
 
@@ -38,16 +38,11 @@ function MenuBar({ setToggleMenu }) {
           </div>
         </header>
         <ul className="menu-list">
-          <li
-            className="big-text"
-            onClick={() => {
-              categoryHandler();
-            }}
-          >
+          <li className="big-text" onClick={categoryHandler}>
             모든 제품
           </li>
           <CategoryBox showCategory={showCategory} />
-          {MENU_DATA.map(el => {
+          {MENUS.map(el => {
             const { id, menu, type } = el;
             return (
               <li className={type} key={id}>
