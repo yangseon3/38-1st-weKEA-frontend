@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ImageModal from "./components/ImageModal";
 import SideModal from "./components/SideModal";
@@ -6,42 +6,44 @@ import "./Detail.scss";
 
 function Detail() {
   const [isIamgeModalOpen, setIsIamgeModalOpen] = useState(0);
-  const [images, setImages] = useState([
-    {
-      id: 1,
-      url: "https://cdn.pixabay.com/photo/2016/11/19/15/50/chair-1840011_1280.jpg",
+  const [productInfo, setProductInfo] = useState({
+    id: "",
+    name: "",
+    thumbnail: "",
+    description: "",
+    category: "",
+    images: [],
+    options: {
+      size: "",
+      price: "",
+      color: ["white", "black"],
     },
-    {
-      id: 2,
-      url: "https://cdn.pixabay.com/photo/2021/08/07/21/00/beach-6529372_1280.jpg",
-    },
-    {
-      id: 3,
-      url: "https://cdn.pixabay.com/photo/2020/08/08/19/29/church-5473775_1280.jpg",
-    },
-    // this is example -> 받아온 데이터로 교체할 예정
-  ]);
+  });
+  const [images, setImages] = useState([]);
   const [isUnmountModal, setIsUnmountModal] = useState(false);
   const [sideModal, setSideModal] = useState("");
+  const [selectedColor, setSelectedColor] = useState(0);
+  const { id, name, description, options } = productInfo;
+  const { size, price, color } = options;
   const modalContent = {
     description: {
-      className: "side-modal-content",
+      className: "side-modal",
       title: "제품 설명",
-      content: "설명에 해당하는 변수가 들어갈 예정입니다.",
+      content: description,
     },
     size: {
-      className: "side-modal-content",
+      className: "side-modal",
       title: "치수",
-      content: "치수에 해당하는 변수가 들어갈 예정입니다.",
+      content: size,
     },
     cart: {
-      className: "cart-modal-contentsid",
-      title: ` 제품이 장바구니에 추가되었습니다.`, // 앞에 상품 이름 변수 추가 예정
+      className: "side-modal-blue",
+      title: `${name} 제품이 장바구니에 추가되었습니다.`,
       content: <Link to="/cart">장바구니로 이동</Link>,
     },
     wishlist: {
-      className: "wishlist-modal-content",
-      title: ` 제품이 위시리스트에 추가되었습니다.`, // 앞에 상품 이름 변수 추가 예정
+      className: "side-modal-blue",
+      title: `${name} 제품이 위시리스트에 추가되었습니다.`,
       content: <Link to="/wishlist">위시리스트로 이동</Link>,
     },
   };
@@ -64,6 +66,21 @@ function Detail() {
       }, 300);
     }
   };
+  const priceToString = price => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }; // 세자리수마다 콤마 찍어주는 정규표현식
+  const selectColor = e => {
+    const { id } = e.target.dataset;
+    setSelectedColor(parseInt(id));
+  };
+  useEffect(() => {
+    fetch("/data/DETAIL.json")
+      .then(response => response.json())
+      .then(data => {
+        setProductInfo(data);
+        setImages([{ id: "thumbnail", url: data.thumbnail }, ...data.images]);
+      });
+  }, []);
   return (
     <>
       {isIamgeModalOpen !== 0 && (
@@ -101,7 +118,7 @@ function Detail() {
           </div>
           <div className="product-number">
             <span className="product-number-title">제품 번호</span>
-            <span className="product-number-content">1</span>
+            <span className="product-number-content">{id}</span>
           </div>
           <div
             className="detail-description"
@@ -118,13 +135,25 @@ function Detail() {
         </section>
         <aside className="detail-info">
           <header>
-            <div className="detail-name">Example</div>
-            <div className="detail-color">블랙,화이트</div>
-            <div className="detail-price">₩ 100,000원</div>
+            <div className="detail-name">{name}</div>
+            <div className="detail-color">
+              {color[0]}, {color[1]}
+            </div>
+            <div className="detail-price">₩ {priceToString(price)}원</div>
           </header>
           <div className="select-color">
-            <div className="color"></div>
-            <div className="color"></div>
+            <div
+              className={`color ${selectedColor === 0 ? "selected" : ""}`}
+              style={{ backgroundColor: color[0] }}
+              onClick={selectColor}
+              data-id="0"
+            ></div>
+            <div
+              className={`color ${selectedColor === 1 ? "selected" : ""}`}
+              style={{ backgroundColor: color[1] }}
+              onClick={selectColor}
+              data-id="1"
+            ></div>
           </div>
           <div className="how-to-buy">
             <span>어떻게 구매하시겠어요?</span>

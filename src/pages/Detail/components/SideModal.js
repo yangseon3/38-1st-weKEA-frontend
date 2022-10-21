@@ -9,9 +9,9 @@ function SideModal({ className, title, content, isUnmountModal, closeModal }) {
       onClick={closeModal}
     >
       <div
-        className={`side-modal ${isUnmountModal ? "side-modal-unmount" : ""}`}
+        className={`${className} ${isUnmountModal ? "side-modal-unmount" : ""}`}
       >
-        <div className={className}>
+        <div className="side-modal-content">
           <header>
             <span className="material-symbols-outlined" data-id="close-modal">
               close

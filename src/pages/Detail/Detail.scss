@@ -66,6 +66,10 @@
         border-radius: 50px;
         border: 1px solid #d7d7d7;
         margin-right: 10px;
+        cursor: pointer;
+      }
+      .selected {
+        border: 3px solid #1658af;
       }
     }
     .how-to-buy {
