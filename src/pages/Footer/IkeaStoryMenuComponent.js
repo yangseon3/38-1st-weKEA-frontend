@@ -1,17 +1,13 @@
 import React from "react";
-import "./Footer";
 
-function FooterMenuComponent({
+function IkeaStoryMenuComponent({
   title,
-  item1,
-  item2,
-  item3,
-  item4,
-  item5,
-  item6,
-  item7,
-  item8,
-  item9,
+  introducingBrand,
+  lifeInsideHouse,
+  sustainableLife,
+  housePhilosophy,
+  newsRoom,
+  recruiting,
 }) {
   return (
     <div className="footer-menu-frame-inside-component">
@@ -19,33 +15,24 @@ function FooterMenuComponent({
         {title}
       </div>
       <div className="item1 footer-menu-frame-inside-component-item">
-        {item1}
+        {introducingBrand}
       </div>
       <div className="item2 footer-menu-frame-inside-component-item">
-        {item2}
+        {lifeInsideHouse}
       </div>
       <div className="item3 footer-menu-frame-inside-component-item">
-        {item3}
+        {sustainableLife}
       </div>
       <div className="item4 footer-menu-frame-inside-component-item">
-        {item4}
+        {housePhilosophy}
       </div>
       <div className="item5 footer-menu-frame-inside-component-item">
-        {item5}
+        {newsRoom}
       </div>
       <div className="item6 footer-menu-frame-inside-component-item">
-        {item6}
-      </div>
-      <div className="item7 footer-menu-frame-inside-component-item">
-        {item7}
-      </div>
-      <div className="item8 footer-menu-frame-inside-component-item">
-        {item8}
-      </div>
-      <div className="item9 footer-menu-frame-inside-component-item">
-        {item9}
+        {recruiting}
       </div>
     </div>
   );
 }
-export default FooterMenuComponent;
+export default IkeaStoryMenuComponent;

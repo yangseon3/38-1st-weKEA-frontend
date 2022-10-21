@@ -1,15 +1,27 @@
 import React from "react";
 import "./Footer.scss";
 import FooterSignUpComponent from "./FooterSignUpComponent";
-import FooterMenuComponent from "./FooterMenuComponent";
+import CustomerInquiryMenuComponent from "./CustomerInquiryMenuComponent";
 import FooterBusinessInfo from "./FooterBusinessInfo";
+import ShoppingMenuComponent from "./ShoppingMenuComponent";
+import ServiceMenuComponent from "./ServiceMenuComponent";
+import IkeaStoryMenuComponent from "./IkeaStoryMenuComponent";
+import FooterIconComponent from "./FooterIconComponent";
+import { CUSTOMER_INQUIRY_MENU_ITEM } from "./FooterConstData";
+import { SHOPPING_MENU_ITEM } from "./FooterConstData";
+import { SERVICE_MENU_DATA } from "./FooterConstData";
+import { IKEA_STORY_MENU_BAR_ITEM } from "./FooterConstData";
+import { WEBSITE_TERMS_MENU } from "./FooterConstData";
+import { COMPANY_INFO } from "./FooterConstData";
+import { MEMBERSHIP_SIGNUP_GUIDING_DATA } from "./FooterConstData";
+import { FOOTER_ICON_DATA } from "./FooterConstData";
 
 function Footer() {
   return (
     <div className="footer-frame">
       <div className="footer-main">
         <div className="membership-signup-area">
-          {FOOTER_CONST_1.map(item => {
+          {MEMBERSHIP_SIGNUP_GUIDING_DATA.map(item => {
             return (
               <div key={item.title}>
                 <FooterSignUpComponent
@@ -22,19 +34,68 @@ function Footer() {
           })}
         </div>
         <div className="footer-menu-area-container">
-          {FOOTER_CONST_2.map(item => {
+          {CUSTOMER_INQUIRY_MENU_ITEM.map(item => {
             return (
-              <div className="footer-menu-component-container" key={item.id}>
-                <FooterMenuComponent
+              <div className="footer-menu-component-container" key={item.title}>
+                <CustomerInquiryMenuComponent
                   title={item.title}
-                  item1={item.item1}
-                  item2={item.item2}
-                  item3={item.item3}
-                  item4={item.item4}
-                  item5={item.item5}
-                  item6={item.item6}
-                  item7={item.item7}
-                  item8={item.item8}
+                  customerSupport={item.customerSupport}
+                  fAQ={item.fAQ}
+                  makeAQuestion={item.makeAQuestion}
+                  deliveryCheck={item.deliveryCheck}
+                  changeAndRefund={item.changeAndRefund}
+                  qualityInsurance={item.qualityInsurance}
+                  recall={item.recall}
+                  feedBack={item.feedBack}
+                />
+              </div>
+            );
+          })}
+          {SHOPPING_MENU_ITEM.map(item => {
+            return (
+              <div className="footer-menu-component-container" key={item.title}>
+                <ShoppingMenuComponent
+                  title={item.title}
+                  remoteOrder={item.remoteOrder}
+                  forBusiness={item.forBusiness}
+                  selfPlanning={item.selfPlanning}
+                  mobileApp={item.mobileApp}
+                  tipForUsing={item.tipForUsing}
+                  tipForPurchasing={item.tipForPurchasing}
+                  paymentOption={item.paymentOption}
+                  giftCard={item.giftCard}
+                />
+              </div>
+            );
+          })}
+          {SERVICE_MENU_DATA.map(item => {
+            return (
+              <div className="footer-menu-component-container" key={item.title}>
+                <ServiceMenuComponent
+                  title={item.title}
+                  ikeaService={item.ikeaService}
+                  deliveryService={item.deliveryService}
+                  assemblyService={item.assemblyService}
+                  installService={item.installService}
+                  kitchenService={item.kitchenService}
+                  planningService={item.planningService}
+                  designService={item.designService}
+                  buyBackService={item.buyBackService}
+                />
+              </div>
+            );
+          })}
+          {IKEA_STORY_MENU_BAR_ITEM.map(item => {
+            return (
+              <div className="footer-menu-component-container" key={item.title}>
+                <IkeaStoryMenuComponent
+                  title={item.title}
+                  introducingBrand={item.introducingBrand}
+                  lifeInsideHouse={item.lifeInsideHouse}
+                  sustainableLife={item.sustainableLife}
+                  housePhilosophy={item.housePhilosophy}
+                  newsRoom={item.newsRoom}
+                  recruiting={item.recruiting}
                 />
               </div>
             );
@@ -43,21 +104,15 @@ function Footer() {
       </div>
       <div className="footer-icon-and-language-area">
         <div className="footer-icon-area">
-          <button className="icon1 footer-icon-button">
-            <span className="material-symbols-outlined footer-icon">mail</span>
-          </button>
-          <button className="icon2 footer-icon-button">
-            <span className="material-symbols-outlined footer-icon">call</span>
-          </button>
-          <button className="icon3 footer-icon-button">
-            <span className="material-symbols-outlined footer-icon">home</span>
-          </button>
-          <button className="icon4 footer-icon-button">
-            <span className="material-symbols-outlined footer-icon">
-              settings
-            </span>
-          </button>
+          {FOOTER_ICON_DATA.map(item => {
+            return (
+              <div key={item.id}>
+                <FooterIconComponent icon={item.icon} />
+              </div>
+            );
+          })}
         </div>
+
         <div className="footer-language-area">
           <button className="change-country-button footer-language-area-button">
             🌏 국가 변경
@@ -68,30 +123,34 @@ function Footer() {
           </select>
         </div>
       </div>
+
       <div className="footer-company-info-area">
         <div className="footer-company-info-area-bar">
           <div className="year-of-ikea ">
             © Inter IKEA Systems B.V 1999-2022
           </div>
-          <div className="footer-company-info-menu">
-            {FOOTER_CONST_3.map(item => {
+          <div className="footer-website-terms-menu">
+            {WEBSITE_TERMS_MENU.map(item => {
               return (
-                <div
-                  key={item.id}
-                  className="footer-company-info-menu-each-item"
-                >
-                  {" "}
-                  {item.item}
+                <div key={item.id} className="each-terms-item">
+                  {item.termsElement}
                 </div>
               );
             })}
           </div>
         </div>
+
         <div className="ikea-business-info-area">
-          {FOOTER_CONST_4.map(item => {
+          {COMPANY_INFO.map(item => {
             return (
-              <div className="ikea-business-info-component-container">
-                <FooterBusinessInfo id={item.id} item={item.item} />
+              <div
+                className="ikea-business-info-component-container"
+                key={item.title}
+              >
+                <FooterBusinessInfo
+                  id={item.id}
+                  companyInfo={item.companyInfo}
+                />
               </div>
             );
           })}
@@ -101,122 +160,3 @@ function Footer() {
   );
 }
 export default Footer;
-
-const FOOTER_CONST_1 = [
-  {
-    title: "IKEA Family",
-    discription:
-      "지금 IKEA Family에 무료로 가입하고 다양한 멤버 전용 혜택을 누리세요.",
-    buttonText: "IKEA Family 가입하기",
-  },
-  {
-    title: "IKEA Business Network",
-    discription:
-      "여러분의 더 나은 비즈니스 환경을 위한 다양한 혜택들을 받으세요",
-    buttonText: "IKEA Business Network 가입하기",
-  },
-];
-
-const FOOTER_CONST_2 = [
-  {
-    id: "1",
-    title: "고객문의",
-    item1: "고객지원",
-    item2: "자주 묻는 질문",
-    item3: "문의하기",
-    item4: "배송조회",
-    item5: "교환환불",
-    item6: "품질보증",
-    item7: "제품리콜",
-    item8: "피드백",
-    item9: "부품 신청",
-  },
-  {
-    id: "2",
-    title: "쇼핑하기",
-    item1: "헤이오더",
-    item2: "IKEA for Business",
-    item3: "셀프 플래닝",
-    item4: "IKEA 모바일 앱",
-    item5: "제품 사용 팁/가이드",
-    item6: "제품 구매 가이드",
-    item7: "결제옵션",
-    item8: "기프트 카드",
-  },
-  {
-    id: "3",
-    title: "서비스",
-    item1: "IKEA 서비스",
-    item2: "배송 서비스 ",
-    item3: "조립 서비스",
-    item4: "설치 서비스",
-    item5: "주방 서비스",
-    item6: "플래닝 서비스",
-    item7: "인테리어 디자인 서비스",
-    item8: "바이백 서비스",
-  },
-  {
-    id: "4",
-    title: "IKEA 이야기",
-    item1: "브랜드 소개",
-    item2: "집에서의 삶",
-    item3: "지속가능한 생활",
-    item4: "내가 아끼는 집, 나를 아끼는 집",
-    item5: "뉴스룸",
-    item6: "채용정보",
-  },
-];
-
-const FOOTER_CONST_3 = [
-  {
-    id: "1",
-    item: "개인정보처리방침",
-  },
-  {
-    id: "2",
-    item: "쿠키",
-  },
-
-  {
-    id: "3",
-    item: "정책",
-  },
-  {
-    id: "4",
-    item: "쿠키",
-  },
-  {
-    id: "5",
-    item: "설정",
-  },
-  {
-    id: "6",
-    item: "웹사이트",
-  },
-  { id: "7", item: "이용약관" },
-  { id: "8", item: "Responsible disclosure" },
-];
-
-const FOOTER_CONST_4 = [
-  { id: "1", item: "weKEA 코리아" },
-  {
-    id: "2",
-    item: "주소 : (우) 16435 서울특별시 강남구 선릉로 57 weKEA 선릉점",
-  },
-  {
-    id: "3",
-    item: "사업자 등록번호 : 143-16-83331 사업자정보확인",
-  },
-  {
-    id: "4",
-    item: "대표자 : 김코드",
-  },
-  {
-    id: "5",
-    item: "통신판매업 신고 : 2022-서울강남-1234",
-  },
-  {
-    id: "6",
-    item: "TEL : 1234-5678",
-  },
-];
