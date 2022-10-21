@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Logo from "../../Logo";
-import MENUS from "./MENUS";
+import Logo from "../../Logo/Logo";
 import CategoryBox from "./CategoryBox";
+import MENUS from "./MENUS";
 import "./MenuBar.scss";
 
 function MenuBar({ setToggleMenu }) {

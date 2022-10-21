@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../Logo";
+import Logo from "../Logo/Logo";
 import MenuBar from "./MenuBar/MenuBar";
-import LoginModal from "../LoginModal/LoginModal";
+import LoginModal from "./LoginModal/LoginModal";
 import "./Nav.scss";
 
 function Nav() {
