@@ -1,0 +1,99 @@
+@import "../../styles/variables.scss";
+
+.nav {
+  .sidebar {
+    @include flex(flex-start, center, column);
+    position: fixed;
+    display: inline-block;
+    width: 120px;
+    height: 100vh;
+    div {
+      @include flex(center, center, column);
+      width: 120px;
+      height: 90px;
+    }
+    .menu {
+      .menu-icon {
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        &:hover {
+          border-radius: 24px;
+          background-color: #f2f2f2;
+        }
+      }
+      .menu-text {
+        font-size: 13px;
+      }
+    }
+  }
+  .nav-bar {
+    @include flex(space-around, center, row);
+    padding-left: 120px;
+    width: 100%;
+    height: 90px;
+    .logo {
+      @include flex(center, center, row);
+      width: 90px;
+      height: 36px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      img {
+        width: 100%;
+      }
+    }
+    .search {
+      position: relative;
+      width: 40%;
+      flex: 0.8;
+      input {
+        width: 100%;
+        height: 50px;
+        background-color: #f2f2f2;
+        border: none;
+        border-radius: 30px;
+        padding-left: 40px;
+        &:hover {
+          background-color: #d7d7d7;
+        }
+      }
+      span {
+        position: absolute;
+        left: 10px;
+        top: 13px;
+      }
+    }
+    .nav-members {
+      @include flex(space-around, center, row);
+      width: 320px;
+      height: 44px;
+      div {
+        @include flex(center, center, row);
+        height: 44px;
+      }
+      .login-or-signup {
+        width: 210px;
+        cursor: pointer;
+        .text {
+          margin-left: 5px;
+        }
+        &:hover {
+          border-radius: 30px;
+          background-color: #f2f2f2;
+        }
+      }
+      .wishlist,
+      .cart {
+        width: 50px;
+        cursor: pointer;
+        &:hover {
+          border-radius: 24px;
+          background-color: #f2f2f2;
+        }
+      }
+    }
+  }
+}
