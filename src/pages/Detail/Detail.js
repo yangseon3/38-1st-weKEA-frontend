@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../../components/Nav/Nav";
 import ImageModal from "./components/ImageModal";
 import SideModal from "./components/SideModal";
 import "./Detail.scss";
@@ -84,6 +85,7 @@ function Detail() {
   }, []);
   return (
     <>
+      <Nav />
       {imageModalIndex !== 0 && (
         <ImageModal
           images={images}
@@ -92,7 +94,6 @@ function Detail() {
           isUnmountModal={isUnmountModal}
         />
       )}
-
       {sideModal !== "" && (
         <SideModal
           className={modalContent[sideModal].className}
