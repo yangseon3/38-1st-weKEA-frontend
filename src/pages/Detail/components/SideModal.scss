@@ -1,10 +1,11 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/animation.scss";
 
 .side-modal-bg {
   @include modal-background;
   z-index: 99;
-  -webkit-animation: modalbgAnimation 0.3s;
-  animation: modalbgAnimation 0.3s;
+  -webkit-animation: modalBgAnimation 0.3s;
+  animation: modalBgAnimation 0.3s;
   .side-modal {
     position: fixed;
     top: 0px;
@@ -56,8 +57,8 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: #1658af;
-    -webkit-animation: loginModalMountAnimation 0.3s;
-    animation: loginModalMountAnimation 0.3s;
+    -webkit-animation: sideModalAnimation 0.3s;
+    animation: sideModalAnimation 0.3s;
     .side-modal-content {
       header {
         @include flex(flex-end, center, row);
@@ -88,40 +89,6 @@
         font-size: 18px;
       }
     }
-  }
-}
-
-@-webkit-keyframes loginModalMountAnimation {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes loginModalMountAnimation {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes modalbgAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes modalbgAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 .side-modal-unmount {

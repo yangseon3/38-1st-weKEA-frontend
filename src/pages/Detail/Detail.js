@@ -76,7 +76,7 @@ function Detail() {
     setSelectedColor(parseInt(id));
   };
   useEffect(() => {
-    fetch("/data/DETAIL.json")
+    fetch("/data/detail.json")
       .then(response => response.json())
       .then(data => {
         setProductInfo(data);
