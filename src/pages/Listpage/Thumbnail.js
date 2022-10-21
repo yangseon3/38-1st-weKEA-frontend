@@ -8,10 +8,8 @@ function ThumbNail({ url, id, title, size, price }) {
       <div className="size item">{size} cm</div>
       <div className="price item">₩ {price}</div>
       <div className="item icon-container">
-        <span className="icon material-symbols-outlined">
-          add_shopping_cart
-        </span>
-        <span className="icon material-symbols-outlined">heart_plus</span>
+        <span class="material-symbols-outlined">add_shopping_cart</span>
+        <span class="material-symbols-outlined">heart_plus</span>
       </div>
     </div>
   );

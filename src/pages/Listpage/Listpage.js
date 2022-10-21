@@ -3,105 +3,107 @@ import "./Listpage.scss";
 import ThumbNail from "./Thumbnail";
 
 function Listpage() {
-  const [isBoxVisible1, setIsBoxVisible1] = useState(false);
-  const [isBoxVisible2, setIsBoxVisible2] = useState(false);
-  // const test = ["a", "b", "c", "d", "1", "2", "3", "4"];
-  function filterBoxToggle1() {
-    setIsBoxVisible1(!isBoxVisible1);
+  const [isTotalFilterBoxVisible, setIsTotalFilterBoxVisible] = useState(false);
+  const [isPriceFilterBoxVisible, setIsPriceFilterBoxVisible] = useState(false);
+
+  function totalFilterBoxToggle() {
+    setIsTotalFilterBoxVisible(!isTotalFilterBoxVisible);
   }
-  function filterBoxToggle2() {
-    setIsBoxVisible2(!isBoxVisible2);
+  function priceFilterBoxToggle() {
+    setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
   }
 
   function isClickOnBox(e) {
     e.stopPropagation();
     if (
-      isBoxVisible1 == true &&
+      isTotalFilterBoxVisible === true &&
       !e.target.className.includes("drop-box") &&
       !e.target.className.includes("item") &&
-      e.target.type != "radio"
+      e.target.type !== "radio"
     ) {
-      setIsBoxVisible1(!isBoxVisible1);
+      setIsTotalFilterBoxVisible(!isTotalFilterBoxVisible);
     }
     if (
-      isBoxVisible2 == true &&
+      isPriceFilterBoxVisible === true &&
       !e.target.className.includes("drop-box") &&
       !e.target.className.includes("item") &&
-      e.target.type != "radio"
+      e.target.type !== "radio"
     ) {
-      setIsBoxVisible2(!isBoxVisible2);
+      setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
     }
   }
   return (
     <div className="listpage" onClick={isClickOnBox}>
       <div className="filter-bar">
-        <div className="one cont">
+        <div className="total-filter-frame">
           <div
-            className="filter1-container filter-container"
-            onClick={filterBoxToggle1}
+            className="total-filter-container filter-container"
+            onClick={totalFilterBoxToggle}
           >
-            <button className="button filter1">
+            <button className="filter-button">
               정렬
-              {isBoxVisible1 ? "▲" : "▼"}
+              {isTotalFilterBoxVisible ? "▲" : "▼"}
             </button>
           </div>
           <div>
-            {isBoxVisible1 && (
-              <div className="drop-box1 drop-box">
+            {isTotalFilterBoxVisible && (
+              <div className="total-drop-box drop-box">
                 <div className="item">
-                  <span>가격 높은순</span> <input type="radio" name="radio1" />
+                  <span className="filter-inneritem">가격 높은순</span>{" "}
+                  <input type="radio" name="total-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>가격 낮은순</span> <input type="radio" name="radio1" />
+                  <span className="filter-inneritem">가격 낮은순</span>{" "}
+                  <input type="radio" name="total-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>최신순</span>
-                  <input type="radio" name="radio1" />
+                  <span className="filter-inneritem">최신순</span>
+                  <input type="radio" name="total-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>이름순</span>
-                  <input type="radio" name="radio1" />
+                  <span className="filter-inneritem">이름순</span>
+                  <input type="radio" name="total-filter-box-radio" />
                 </div>
               </div>
             )}
           </div>
         </div>
-        <div className="two cont">
+        <div className="price-filter-total-frame">
           <div
-            className="filter2-container filter-container"
-            onClick={filterBoxToggle2}
+            className="price-filter-container filter-container"
+            onClick={priceFilterBoxToggle}
           >
-            <button className="button filter2">
+            <button className="filter-button">
               가격
-              {isBoxVisible2 ? "▲" : "▼"}
+              {isPriceFilterBoxVisible ? "▲" : "▼"}
             </button>
           </div>
           <div>
-            {isBoxVisible2 && (
-              <div className="drop-box2 drop-box">
+            {isPriceFilterBoxVisible && (
+              <div className="price-filter-drop-box drop-box">
                 <div className="item">
-                  <span>₩0 - 49,999</span>
-                  <input type="radio" name="radio2" />
+                  <span className="filter-inneritem">₩0 - 49,999</span>
+                  <input type="radio" name="price-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>₩50,000 - 99,999</span>
-                  <input type="radio" name="radio2" />
+                  <span className="filter-inneritem">₩50,000 - 99,999</span>
+                  <input type="radio" name="price-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>₩100,000 - 199,999</span>
-                  <input type="radio" name="radio2" />
+                  <span className="filter-inneritem">₩100,000 - 199,999</span>
+                  <input type="radio" name="price-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>₩200,000 - 299,999</span>
-                  <input type="radio" name="radio2" />
+                  <span className="filter-inneritem">₩200,000 - 299,999</span>
+                  <input type="radio" name="price-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>₩300,000 - 499,999</span>
-                  <input type="radio" name="radio2" />
+                  <span className="filter-inneritem">₩300,000 - 499,999</span>
+                  <input type="radio" name="price-filter-box-radio" />
                 </div>
                 <div className="item">
-                  <span>₩500,000 +</span>
-                  <input type="radio" name="radio2" />
+                  <span className="filter-inneritem">₩500,000 +</span>
+                  <input type="radio" name="price-filter-box-radio" />
                 </div>
               </div>
             )}
@@ -123,8 +125,8 @@ function Listpage() {
         })}
       </div>
       <div className="button-frame">
-        <div className="show-more-button">
-          <button className="button">더 보기</button>
+        <div className="show-more-button-frame">
+          <button className="show-more-button">더 보기</button>
         </div>
       </div>
     </div>
