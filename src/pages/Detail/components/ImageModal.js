@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ImageModal.scss";
 
-function ImageModal({ images, isModalOpen, closeModal, unmountModal }) {
+function ImageModal({ images, isModalOpen, closeModal, isUnmountModal }) {
   const [sliderTranslateX, setSliderTranslateX] = useState(
     (isModalOpen - 1) * -80
   );
@@ -16,13 +16,12 @@ function ImageModal({ images, isModalOpen, closeModal, unmountModal }) {
   const sliderWidth = images.length * 80;
   return (
     <div
-      className={`image-modal-bg${
-        unmountModal ? " image-modal-bg-unmount" : ""
-      }`}
+      className={`image-modal-bg${isUnmountModal ? " modal-bg-unmount" : ""}`}
+      data-id="close-modal"
       onClick={e => closeModal(e)}
     >
       <div
-        className={`image-modal${unmountModal ? " image-modal-unmount" : ""}`}
+        className={`image-modal${isUnmountModal ? " image-modal-unmount" : ""}`}
       >
         {canGoBack && (
           <button type="button" className="back-button">

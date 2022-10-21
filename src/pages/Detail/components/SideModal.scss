@@ -1,0 +1,84 @@
+@import "../../../styles/variables.scss";
+
+.side-modal-bg {
+  @include modal-background;
+  z-index: 99;
+  -webkit-animation: modalbgAnimation 0.3s;
+  animation: modalbgAnimation 0.3s;
+  .side-modal {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 480px;
+    height: 100vh;
+    padding-left: 40px;
+    padding-right: 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: white;
+    -webkit-animation: loginModalMountAnimation 0.3s;
+    animation: loginModalMountAnimation 0.3s;
+    .side-modal-content {
+      header {
+        @include flex(flex-end, center, row);
+        height: 92px;
+        span {
+          @include flex(center, center, null);
+          width: 45px;
+          height: 45px;
+          cursor: pointer;
+          &:hover {
+            border-radius: 24px;
+            background-color: #f2f2f2;
+          }
+        }
+      }
+      h1 {
+        font-size: 24px;
+        font-weight: bolder;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes loginModalMountAnimation {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes loginModalMountAnimation {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes modalbgAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modalbgAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.side-modal-unmount {
+  transform: translateX(100%);
+  transition: all 0.3s;
+}

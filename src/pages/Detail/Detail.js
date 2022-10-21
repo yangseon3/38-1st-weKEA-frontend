@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ImageModal from "./components/ImageModal";
+import SideModal from "./components/SideModal";
 import "./Detail.scss";
 
 function Detail() {
@@ -18,21 +19,31 @@ function Detail() {
       url: "https://cdn.pixabay.com/photo/2020/08/08/19/29/church-5473775_1280.jpg",
     },
   ]);
-  const [unmountModal, setUnmountModal] = useState(false);
+  const [isUnmountModal, setIsUnmountModal] = useState(false);
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+  const [isSizeOpen, setIsSizeOpen] = useState(false);
   const openModal = i => {
     setIsModalOpen(i + 1);
   };
+  const openDescription = () => {
+    setIsDescriptionOpen(true);
+  };
+  const openSize = () => {
+    setIsSizeOpen(true);
+  };
   const closeModal = e => {
     e.stopPropagation();
-    if (e.target.className === "image-modal-bg") {
-      setUnmountModal(true);
+    const { id } = e.target.dataset;
+    if (id === "close-modal") {
+      setIsUnmountModal(true);
       setTimeout(() => {
-        setIsModalOpen(0);
-        setUnmountModal(false);
+        isModalOpen !== 0 && setIsModalOpen(0);
+        isDescriptionOpen && setIsDescriptionOpen(false);
+        isSizeOpen && setIsSizeOpen(false);
+        setIsUnmountModal(false);
       }, 300);
     }
   };
-  console.log(isModalOpen);
   return (
     <>
       {isModalOpen !== 0 && (
@@ -40,7 +51,25 @@ function Detail() {
           images={images}
           isModalOpen={isModalOpen}
           closeModal={closeModal}
-          unmountModal={unmountModal}
+          isUnmountModal={isUnmountModal}
+        />
+      )}
+      {isDescriptionOpen && (
+        <SideModal
+          className={"side-modal-content"}
+          title={"제품 설명"}
+          content={"여기에 제품 설명이 들어갑니다."}
+          closeModal={closeModal}
+          isUnmountModal={isUnmountModal}
+        />
+      )}
+      {isSizeOpen && (
+        <SideModal
+          className={"side-modal-content"}
+          title={"치수"}
+          content={"100x200"}
+          closeModal={closeModal}
+          isUnmountModal={isUnmountModal}
         />
       )}
       <div className="detail-page">
@@ -63,18 +92,13 @@ function Detail() {
             <span className="product-number-title">제품 번호</span>
             <span className="product-number-content">1</span>
           </div>
-          <div className="detail-description">
+          <div className="detail-description" onClick={openDescription}>
             <span>제품 설명</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
+            <span className="material-symbols-outlined">arrow_forward</span>
           </div>
-          <div className="detail-size">
+          <div className="detail-size" onClick={openSize}>
             <span>치수</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </div>
-          <div className="recommend-similar">
-            {
-              //캐러셀 컴포넌트
-            }
+            <span className="material-symbols-outlined">arrow_forward</span>
           </div>
         </section>
         <aside className="detail-info">
@@ -117,14 +141,6 @@ function Detail() {
             </div>
           </div>
         </aside>
-        <div className="recommend-other">
-          {
-            //캐러셀 컴포넌트
-          }
-        </div>
-        {
-          //Footer 컴포넌트
-        }
       </div>
     </>
   );
