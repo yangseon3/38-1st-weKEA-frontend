@@ -110,7 +110,7 @@ function Listpage() {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="thumbnail-component-container">
         {TEST_CONST.map(item => {
           return (
             <ThumbNail
@@ -124,7 +124,7 @@ function Listpage() {
           );
         })}
       </div>
-      <div className="button-frame">
+      <div className="show-more-button-container">
         <div className="show-more-button-frame">
           <button className="show-more-button">더 보기</button>
         </div>

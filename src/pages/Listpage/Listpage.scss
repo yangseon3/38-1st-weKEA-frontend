@@ -51,14 +51,14 @@
       background-color: rgb(214, 214, 214);
     }
   }
-  .container {
+  .thumbnail-component-container {
     border-bottom: rgb(197, 197, 197) 1px solid;
     width: 90vw;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
   }
-  .button-frame {
+  .show-more-button-container {
     display: flex;
     justify-content: center;
     .show-more-button-frame {
@@ -76,7 +76,7 @@
         font-size: 12px;
         font-weight: 800;
       }
-      .button:hover {
+      .show-more-button:hover {
         border: 2px solid black;
       }
     }
