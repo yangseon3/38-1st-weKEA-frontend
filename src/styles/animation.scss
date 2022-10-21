@@ -1,6 +1,9 @@
 @-webkit-keyframes menuBarMount {
   from {
-    left: -480px;
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 @keyframes menuBarMount {
@@ -11,23 +14,7 @@
     transform: translateX(0);
   }
 }
-@-webkit-keyframes menuBarUnmount {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-@keyframes menuBarUnmount {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-@-webkit-keyframes menuBarBgAnimation {
+@-webkit-keyframes modalBgAnimation {
   from {
     opacity: 0;
   }
@@ -35,7 +22,7 @@
     opacity: 1;
   }
 }
-@keyframes menuBarBgAnimation {
+@keyframes modalBgAnimation {
   from {
     opacity: 0;
   }
@@ -43,7 +30,7 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes loginModalMountAnimation {
+@-webkit-keyframes sideModalAnimation {
   from {
     transform: translateX(100%);
   }
@@ -51,7 +38,7 @@
     transform: translateX(0);
   }
 }
-@keyframes loginModalMountAnimation {
+@keyframes sideModalAnimation {
   from {
     transform: translateX(100%);
   }

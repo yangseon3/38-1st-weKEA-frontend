@@ -3,11 +3,11 @@
 
 .login-modal-bg {
   @include modal-background;
-  -webkit-animation: menuBarBgAnimation 0.3s;
-  animation: menuBarBgAnimation 0.3s;
+  -webkit-animation: modalBgAnimation 0.3s;
+  animation: modalBgAnimation 0.3s;
   .login-modal {
-    -webkit-animation: loginModalMountAnimation 0.3s;
-    animation: loginModalMountAnimation 0.3s;
+    -webkit-animation: sideModalAnimation 0.3s;
+    animation: sideModalAnimation 0.3s;
     position: fixed;
     top: 0px;
     right: 0px;
