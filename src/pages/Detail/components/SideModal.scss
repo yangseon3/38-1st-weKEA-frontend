@@ -26,6 +26,7 @@
           @include flex(center, center, null);
           width: 45px;
           height: 45px;
+          background-color: white;
           cursor: pointer;
           &:hover {
             border-radius: 24px;

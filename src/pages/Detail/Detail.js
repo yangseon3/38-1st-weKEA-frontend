@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import ImageModal from "./components/ImageModal";
 import SideModal from "./components/SideModal";
 import "./Detail.scss";
 
 function Detail() {
-  const [isModalOpen, setIsModalOpen] = useState(0);
+  const [isIamgeModalOpen, setIsIamgeModalOpen] = useState(0);
   const [images, setImages] = useState([
     {
       id: 1,
@@ -18,18 +19,38 @@ function Detail() {
       id: 3,
       url: "https://cdn.pixabay.com/photo/2020/08/08/19/29/church-5473775_1280.jpg",
     },
+    // this is example -> 받아온 데이터로 교체할 예정
   ]);
   const [isUnmountModal, setIsUnmountModal] = useState(false);
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
-  const [isSizeOpen, setIsSizeOpen] = useState(false);
+  const [sideModal, setSideModal] = useState("");
+  const modalContent = {
+    description: {
+      className: "side-modal-content",
+      title: "제품 설명",
+      content: "설명에 해당하는 변수가 들어갈 예정입니다.",
+    },
+    size: {
+      className: "side-modal-content",
+      title: "치수",
+      content: "치수에 해당하는 변수가 들어갈 예정입니다.",
+    },
+    cart: {
+      className: "cart-modal-contentsid",
+      title: ` 제품이 장바구니에 추가되었습니다.`, // 앞에 상품 이름 변수 추가 예정
+      content: <Link to="/cart">장바구니로 이동</Link>,
+    },
+    wishlist: {
+      className: "wishlist-modal-content",
+      title: ` 제품이 위시리스트에 추가되었습니다.`, // 앞에 상품 이름 변수 추가 예정
+      content: <Link to="/wishlist">위시리스트로 이동</Link>,
+    },
+  };
   const openModal = i => {
-    setIsModalOpen(i + 1);
+    setIsIamgeModalOpen(i + 1);
   };
-  const openDescription = () => {
-    setIsDescriptionOpen(true);
-  };
-  const openSize = () => {
-    setIsSizeOpen(true);
+  const openSideModal = e => {
+    const { name } = e.target.dataset;
+    setSideModal(name);
   };
   const closeModal = e => {
     e.stopPropagation();
@@ -37,40 +58,30 @@ function Detail() {
     if (id === "close-modal") {
       setIsUnmountModal(true);
       setTimeout(() => {
-        isModalOpen !== 0 && setIsModalOpen(0);
-        isDescriptionOpen && setIsDescriptionOpen(false);
-        isSizeOpen && setIsSizeOpen(false);
+        isIamgeModalOpen !== 0 && setIsIamgeModalOpen(0);
+        sideModal && setSideModal("");
         setIsUnmountModal(false);
       }, 300);
     }
   };
   return (
     <>
-      {isModalOpen !== 0 && (
+      {isIamgeModalOpen !== 0 && (
         <ImageModal
           images={images}
-          isModalOpen={isModalOpen}
+          isIamgeModalOpen={isIamgeModalOpen}
           closeModal={closeModal}
           isUnmountModal={isUnmountModal}
         />
       )}
-      {isDescriptionOpen && (
+      {sideModal !== "" && (
         <SideModal
-          className={"side-modal-content"}
-          title={"제품 설명"}
-          content={"여기에 제품 설명이 들어갑니다."}
+          className={modalContent[sideModal].className}
+          title={modalContent[sideModal].title}
+          content={modalContent[sideModal].content}
           closeModal={closeModal}
           isUnmountModal={isUnmountModal}
-        />
-      )}
-      {isSizeOpen && (
-        <SideModal
-          className={"side-modal-content"}
-          title={"치수"}
-          content={"100x200"}
-          closeModal={closeModal}
-          isUnmountModal={isUnmountModal}
-        />
+        ></SideModal>
       )}
       <div className="detail-page">
         <header></header>
@@ -92,11 +103,15 @@ function Detail() {
             <span className="product-number-title">제품 번호</span>
             <span className="product-number-content">1</span>
           </div>
-          <div className="detail-description" onClick={openDescription}>
+          <div
+            className="detail-description"
+            onClick={openSideModal}
+            data-name="description"
+          >
             <span>제품 설명</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
-          <div className="detail-size" onClick={openSize}>
+          <div className="detail-size" onClick={openSideModal} data-name="size">
             <span>치수</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
@@ -133,11 +148,22 @@ function Detail() {
             </ul>
           </div>
           <div className="add-to-cart">
-            <button type="button" className="buy-btn">
+            <button
+              type="button"
+              className="buy-btn"
+              onClick={openSideModal}
+              data-name="cart"
+            >
               구매하기
             </button>
             <div className="heart-icon-wrapper">
-              <span className="material-symbols-outlined">favorite</span>
+              <span
+                className="material-symbols-outlined"
+                onClick={openSideModal}
+                data-name="wishlist"
+              >
+                favorite
+              </span>
             </div>
           </div>
         </aside>
