@@ -1,24 +1,23 @@
-.login-main-container {
+.login-page {
   width: 100vw;
   display: flex;
-  .left-main-container {
+  .login-description-wrapper {
     width: 40%;
-
     background-color: rgb(2, 88, 162);
     color: white;
 
-    .left-container {
+    .login-description {
       display: flex;
       justify-content: space-between;
       flex-direction: column;
       height: 100vh;
       padding: 50px 90px;
-      .left-top-container {
+      .login-description-header {
         display: flex;
         align-items: center;
         position: relative;
 
-        .left-top-emoticon-arrow {
+        .prev-btn-wrapper {
           position: absolute;
           left: -55px;
           .material-symbols-outlined {
@@ -26,40 +25,35 @@
           }
         }
       }
-      .left-center-container {
+      .login-description-body {
         font-size: 15px;
         line-height: 20px;
-        .left-login-text {
+        .login-description-title {
           color: rgb(251, 217, 16);
           font-size: 35px;
           font-weight: 900;
           padding-bottom: 30px;
         }
-        .left-center-3rd-text {
+        p:last-child {
           padding-top: 20px;
         }
       }
-      .left-bottom-container {
+      .login-description-footer {
         line-height: 20px;
         font-size: 12px;
-        .left-bottom-text {
-          display: flex;
-        }
-        .left-bottom-link {
-          text-decoration: underline;
-          color: white;
+        .login-description-footer-link {
+          text-decoration: underline; 
         }
       }
     }
   }
-  .right-container {
+  .login-form-wrapper {
     display: flex;
-    .right-form {
-      // height: 900px;
+    .login-form {
       padding-top: 60px;
       padding-left: 80px;
       position: relative;
-      .right-login-input {
+      .login-form-input {
         width: 450px;
         height: 50px;
         margin-top: 10px;
@@ -71,7 +65,7 @@
           border: 2px solid;
         }
       }
-      .right-email-valid-text {
+      .login-form-email-valid {
         color: red;
       }
       .visiblility-icon {
@@ -80,43 +74,38 @@
         top: 70px;
         right: 15px;
       }
-      .right-login-2nd-text {
-        display: flex;
-        color: black;
-      }
-      .rigth-link-text {
-        text-decoration: underline;
-        color: black;
+      .login-form-input-text {
+        text-decoration: underline; 
         text-indent: 10px;
       }
-      .right-pw-wrapper {
+      .login-form-pw-wrapper {
         position: relative;
       }
-      .right-pw-1st-text {
+      .login-form-pw-title{
         padding-top: 30px;
       }
-      .right-pw-valid-text {
+      .login-form-pw-valid {
         color: red;
         padding-bottom:10px ;
       }
-      .right-checkbox {
+      .login-form-checkbox {
         position: relative;
         display: flex;
         justify-content: space-between;
         padding: 30px 0px;
         align-items: center;
-        .right-checkbox-wrapper {
+        .login-form-checkbox-wrapper {
           display: flex;
           align-items: center;
         }
-        .right-checkbox-input {
+        .login-form-checkbox-input {
           width: 25px;
           height: 25px;
         }
-        .right-checkbox-1st-text {
+        .login-form-checkbox-text {
           text-indent: 10px;
         }
-        .right-checkbox-2nd-text {
+        .login-form-checkbox-valid {
           position: absolute;
           background-color: black;
           color: white;
@@ -127,7 +116,7 @@
           right: -10px;
           width: 500px;
         }
-        .right-checkbox-3rd-text {
+        .login-form-checkbox-mark {
           position: relative;
           width: 20px;
           font-weight: bold;
@@ -135,11 +124,11 @@
             width: 100%;
           }
         }
-        .right-checkbox-3rd-text:hover {
+        .login-form-checkbox-mark:hover {
           cursor: pointer;
         } 
       }
-      .right-login-button {
+      .login-form-button {
         width: 450px;
         height: 55px;
         border: none;
@@ -147,21 +136,21 @@
         background-color: rgb(0, 95, 147);
         color: white;
       }
-      .right-login-button:hover {
+      .login-form-button:hover {
         background-color: rgb(0, 79, 147);
       }
-      .right-signup-text {
+      .login-form-signup-page-text {
         padding-top: 70px;
         font-weight: bold;
         padding-bottom: 50px;
       }
-      .right-signup-button {
+      .login-form-signup-button {
         width: 450px;
         height: 55px;
         border-radius: 30px;
         background-color: white;
       }
-      .right-signup-button:hover {
+      .login-form-signup-button:hover {
         border: 3px solid black;
       }
       .valid-input{
