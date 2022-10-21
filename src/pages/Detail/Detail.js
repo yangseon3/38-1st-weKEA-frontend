@@ -5,7 +5,7 @@ import SideModal from "./components/SideModal";
 import "./Detail.scss";
 
 function Detail() {
-  const [isIamgeModalOpen, setIsIamgeModalOpen] = useState(0);
+  const [imageModalIndex, setImageModalIndex] = useState(0);
   const [productInfo, setProductInfo] = useState({
     id: "",
     name: "",
@@ -23,6 +23,7 @@ function Detail() {
   const [isUnmountModal, setIsUnmountModal] = useState(false);
   const [sideModal, setSideModal] = useState("");
   const [selectedColor, setSelectedColor] = useState(0);
+
   const { id, name, description, options } = productInfo;
   const { size, price, color } = options;
   const modalContent = {
@@ -48,7 +49,7 @@ function Detail() {
     },
   };
   const openModal = i => {
-    setIsIamgeModalOpen(i + 1);
+    setImageModalIndex(i + 1);
   };
   const openSideModal = e => {
     const { name } = e.target.dataset;
@@ -60,7 +61,7 @@ function Detail() {
     if (id === "close-modal") {
       setIsUnmountModal(true);
       setTimeout(() => {
-        isIamgeModalOpen !== 0 && setIsIamgeModalOpen(0);
+        imageModalIndex !== 0 && setImageModalIndex(0);
         sideModal && setSideModal("");
         setIsUnmountModal(false);
       }, 300);
@@ -83,14 +84,15 @@ function Detail() {
   }, []);
   return (
     <>
-      {isIamgeModalOpen !== 0 && (
+      {imageModalIndex !== 0 && (
         <ImageModal
           images={images}
-          isIamgeModalOpen={isIamgeModalOpen}
+          imageModalIndex={imageModalIndex}
           closeModal={closeModal}
           isUnmountModal={isUnmountModal}
         />
       )}
+
       {sideModal !== "" && (
         <SideModal
           className={modalContent[sideModal].className}

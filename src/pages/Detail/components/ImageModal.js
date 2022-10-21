@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./ImageModal.scss";
 
-function ImageModal({ images, isIamgeModalOpen, closeModal, isUnmountModal }) {
+function ImageModal({ images, imageModalIndex, closeModal, isUnmountModal }) {
   const [sliderTranslateX, setSliderTranslateX] = useState(
-    (isIamgeModalOpen - 1) * -80
+    (imageModalIndex - 1) * -80
   );
   const canGoForward = sliderTranslateX > (images.length - 1) * -80;
   const canGoBack = sliderTranslateX < 0;
