@@ -1,15 +1,15 @@
-.signup-main-container {
+.signup-page {
   width: 100vw;
   display: flex;
-  .left-container {
+  .signup-description-wrapper {
     width: 40%;
-    .left-main-container {
+    .signup-description {
       padding: 30px 80px;
-      .left-top-1st-container {
+      .signup-description-header {
         display: flex;
         align-items: center;
         position: relative;
-        .left-top-icon-arrow {
+        .prev-btn-wrapper {
           position: absolute;
           left: -55px;
         }
@@ -17,113 +17,98 @@
           cursor: pointer;
         }
       }
-      .left-top-2nd-container {
+      .signup-description-title {
         display: flex;
         padding-top: 20px;
         font-size: 32px;
         font-weight: 800;
-        .left-2nd-text1 {
+        :first-child {
           color: #0058a3;
         }
-        .left-2nd-text2 {
+        :last-child {
           text-indent: 10px;
         }
       }
-      .left-top-3rd-container {
+      .signup-description-content {
         display: flex;
         padding-top: 20px;
-        .left-3rd-text2 {
-          text-indent: 10px;
-          text-decoration: underline;
-          color: black;
+        :last-child{
+          text-indent: 5px;
+          text-decoration: underline; 
         }
       }
-      .left-blank-set {
+      .signup-description-image-wrapper {
         display: flex;
         padding-top: 50px;
-        .left-image-1st-container {
+        .signup-description-1st-image {
           display: flex;
           flex-wrap: wrap;
           flex-direction: row;
           padding-bottom: 50px;
-          .img {
+          img {
             width: 200px;
             margin: 5px 5px 5px 0px;
           }
         }
-        .left-image-2nd-container {
+        .signup-description-2nd-image {
           display: flex;
           flex-wrap: wrap;
           flex-direction: row;
-          .img {
+          img {
             width: 200px;
             margin: 5px 0px 5px 5px;
           }
         }
       }
     }
-    .left-bottom-container {
+    .signup-description-footer {
       line-height: 20px;
       font-size: 12px;
-      .left-bottom-text {
+      .signup-description-content {
         display: flex;
       }
-      .left-bottom-link {
-        text-decoration: underline;
-        color: black;
+      .signup-description-text {
+        text-decoration: underline; 
       }
     }
   }
-  .right-container {
+  .signup-form-wrapper {
     padding: 60px 80px;
     width: 60%; 
-    .right-main-container {
-      .right-mid-container {
+    .signup-form {
+      .signup-form-body {
         width: 450px;
-        .right-1st-text {
+        .signup-form-text {
           padding-top: 50px;
-          padding-bottom: 10px;
+          padding-bottom: 10px;  
         }
-        .right-1st-text {
-          padding-bottom: 10px;
-        }
-        .right-1st-input {
+        .signup-form-input {
           border: 1px solid black;
           border-radius: 5px;
           width: 450px;
           height: 50px;
+          margin-bottom: 10px;
         }
-        .right-valid-text {
-          color: red;
-          padding-top: 10px;
-        }
-        .right-2nd-text {
-          padding-top: 40px;
-          padding-bottom: 10px;
-        }
-        .right-2nd-input {
-          border: 1px solid black;
-          border-radius: 5px;
-          width: 450px;
-          height: 50px;
-        }
-        .right-3rd-text-emotion {
+        .signup-form-valid-text {
+          color: red; 
+        }  
+        .signup-form-content-hover {
           display: flex;
           align-items: center;
           justify-content: space-between;
           padding-top: 40px;
           padding-bottom: 10px;
-          .rigth-text-hover {
+          .signup-form-hover {
             position: absolute;
             background-color: black;
             color: white;
             border: 1px solid black;
             padding: 10px 10px;
             border-radius: 5px;
-            top: 450px;
+            top: 350px;
             right: 220px;
           }
-          .right-text-hover-img {
+          .signup-form-hover-img {
             position: relative;
             cursor: pointer;
           }
@@ -132,64 +117,18 @@
             height: 20px;
             font-weight: bold;
           }
-        }
-        .right-3rd-input {
-          border: 1px solid black;
-          border-radius: 5px;
-          width: 450px;
-          height: 50px;
-          margin-bottom: 10px;
-        } 
-        .right-3rd-text2-red {
-          color: red;
-        }
-        .right-4th-text {
-          padding-top: 40px;
-          padding-bottom: 10px;
-        }
-        .right-4th-input {
-          border: 1px solid black;
-          border-radius: 5px;
-          width: 450px;
-          height: 50px;
-          margin-bottom: 10px;
-        }
-        .right-5th-text {
-          padding-top: 40px;
-          padding-bottom: 10px;
-        }
-        .right-5th-input {
-          border: 1px solid black;
-          border-radius: 5px;
-          width: 450px;
-          height: 50px;
-          margin-bottom: 10px;
-        }
-        .right-5th-text-valid {
-          color: red;
-        }
-        .right-6th-set {
+        }  
+        .signup-form-password-wrapper {
         position: relative;
-        .right-6th-text {
-          padding-top: 40px;
-          padding-bottom: 10px;
-        }
-        .right-6th-input {
-          border: 1px solid black;
-          border-radius: 5px;
-          width: 450px;
-          height: 50px;
-          margin-bottom: 10px;
-        }
-        .right-password-text{
-          color: red;
-        }
-        .visibility-icon {
-          cursor: pointer;
-          position: absolute; 
-          top: 80px;
-          right: 10px;
-        }
+      } 
+      .right-password-text{
+        color: red;
+      }
+      .visibility-icon {
+        cursor: pointer;
+        position: absolute; 
+        top: 90px;
+        right: 10px;
       }
       .valid-input {
         border: 1px solid rgb(2, 88, 163);
@@ -204,100 +143,56 @@
         }
       }
     }
-      .right-bottom-1st-text-input {
+      .signup-form-checkbox {
         display: flex;
         align-items: center;
         padding-top: 50px;
-        .right-bottom-1st-input {
+      }
+        .signup-form-checkbox-input {
           width: 25px;
           height: 25px;
         }
-        .right-bottom-1st-text {
+        .signup-form-checkbox-text {
           width: 420px;
           padding-left: 10px;
           font-size: 15px;
         }
-      }
-      .right-bottom-2nd {
+      .signup-form-checkbox-wrapper {
         padding-left: 40px;
         padding-top: 30px;
-        .right-bottom-2nd-text-input {
+        .signup-form-checkbox-input-sort {
           display: flex;
-          align-items: center;
-          .right-bottom-2nd-input {
-            width: 25px;
-            height: 25px;
-          }
-          .right-bottom-2nd-text {
+          align-items: center; 
+          padding-bottom: 30px;
+          .signup-form-checkbox-content {
             text-indent: 10px;
           }
-        }
-        .right-bottom-3rd-text-input {
-          display: flex;
-          align-items: center;
-          padding-top: 30px;
-          .right-bottom-3rd-input {
-            width: 25px;
-            height: 25px;
-          }
-          .right-bottom-3rd-text {
-            text-indent: 10px;
-          }
-        }
-        .right-bottom-4th-text-input {
-          display: flex;
-          align-items: center;
-          padding-top: 30px;
-          .right-bottom-4th-input {
-            width: 25px;
-            height: 25px;
-          }
-          .right-bottom-4th-text {
-            text-indent: 10px;
-          }
-        }
+        }  
       }
-      .right-bottom-5th-text-input {
+      .signup-form-bottom-checkbox {
         display: flex;
-        align-items: center;
-        padding-top: 30px;
-        .right-bottom-5th-input {
-          width: 25px;
-          height: 25px;
-        }
-        .right-bottom-5th-text {
-          text-indent: 10px;
-        }
-        .right-bottom-5th-link {
-          text-decoration: underline;
-          color: black;
-        }
-      }
-      .right-bottom-6th-text-input {
-        display: flex;
-        align-items: center;
-        padding-top: 30px;
+        align-items: center;  
         padding-bottom: 30px;
-        .right-bottom-6th-input {
+        .signup-form-bottom-checkbox-input {
           width: 25px;
           height: 25px;
         }
-        .right-bottom-6th-text {
+        .signup-form-bottom-checkbox-text {
           text-indent: 10px;
         }
-        .right-bottom-6th-link {
-          text-decoration: underline;
-          color: black;
+        .signup-form-bottom-checkbox-link {
+          text-decoration: underline; 
         }
-      }
-      .right-botton-button {
+      } 
+      .signup-form-button {
         border: 1px solid black;
         border-radius: 30px;
         width: 450px;
         height: 50px;
         background-color: black;
         color: white;
-        font-weight: bold;
+        font-weight: bold; 
+        margin-top: 40px;
       }
     }
   }
