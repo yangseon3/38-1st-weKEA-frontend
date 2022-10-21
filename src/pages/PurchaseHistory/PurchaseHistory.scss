@@ -3,9 +3,9 @@
   padding-left: 120px;
   padding-top: 90px;
   height: 2000px;
-  .left {
+  .order-history {
     width: 520px;
-    .content {
+    .order-history-content-box {
       position: sticky;
       top: 0px;
       border-right: 1px rgb(221, 221, 221) solid;
@@ -14,21 +14,24 @@
       padding-right: 220px;
       padding-top: 30px;
       padding-bottom: 40px;
-      .top {
+      .purchase-history-text {
         font-size: 27px;
         font-weight: 650;
         margin-bottom: 30px;
       }
-      .bottom {
+      .question-about-omission {
         font-size: 12px;
         letter-spacing: 0.3px;
         line-height: 15px;
         color: rgb(83, 83, 83);
-        .span {
+        .link-to-order-list {
           text-decoration: underline;
           cursor: pointer;
         }
       }
     }
+  }
+  .purchase-list-box {
+    border: 1px solid red;
   }
 }
