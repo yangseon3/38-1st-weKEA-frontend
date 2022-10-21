@@ -1,18 +1,18 @@
 import React from "react";
 import "./Footer.scss";
-import FooterLeftComponent from "./FooterLeftComponent";
-import FooterRightComponent from "./FooterRightComponent";
-import FooterLast from "./FooterLast";
+import FooterSignUpComponent from "./FooterSignUpComponent";
+import FooterMenuComponent from "./FooterMenuComponent";
+import FooterBusinessInfo from "./FooterBusinessInfo";
 
 function Footer() {
   return (
     <div className="footer-frame">
-      <div className="top">
-        <div className="left">
+      <div className="footer-main">
+        <div className="membership-signup-area">
           {FOOTER_CONST_1.map(item => {
             return (
               <div key={item.title}>
-                <FooterLeftComponent
+                <FooterSignUpComponent
                   title={item.title}
                   discription={item.discription}
                   buttonText={item.buttonText}
@@ -21,11 +21,11 @@ function Footer() {
             );
           })}
         </div>
-        <div className="right">
+        <div className="footer-menu-area-container">
           {FOOTER_CONST_2.map(item => {
             return (
-              <div className="component-container" key={item.id}>
-                <FooterRightComponent
+              <div className="footer-menu-component-container" key={item.id}>
+                <FooterMenuComponent
                   title={item.title}
                   item1={item.item1}
                   item2={item.item2}
@@ -41,36 +41,45 @@ function Footer() {
           })}
         </div>
       </div>
-      <div className="center">
-        <div className="left">
-          <button className="icon1 button">
-            <span className="material-symbols-outlined icon">mail</span>
+      <div className="footer-icon-and-language-area">
+        <div className="footer-icon-area">
+          <button className="icon1 footer-icon-button">
+            <span className="material-symbols-outlined footer-icon">mail</span>
           </button>
-          <button className="icon2 button">
-            <span className="material-symbols-outlined icon">call</span>
+          <button className="icon2 footer-icon-button">
+            <span className="material-symbols-outlined footer-icon">call</span>
           </button>
-          <button className="icon3 button">
-            <span className="material-symbols-outlined icon">home</span>
+          <button className="icon3 footer-icon-button">
+            <span className="material-symbols-outlined footer-icon">home</span>
           </button>
-          <button className="icon4 button">
-            <span className="material-symbols-outlined icon">settings</span>
+          <button className="icon4 footer-icon-button">
+            <span className="material-symbols-outlined footer-icon">
+              settings
+            </span>
           </button>
         </div>
-        <div className="right">
-          <button className="button1 button">🌏 국가 변경</button>
-          <select className="button2 button">
-            <option value="grape">한국어</option>
-            <option value="melon">English</option>
+        <div className="footer-language-area">
+          <button className="change-country-button footer-language-area-button">
+            🌏 국가 변경
+          </button>
+          <select className="change-language-button footer-language-area-button">
+            <option value="korea-option">한국어</option>
+            <option value="english-option">English</option>
           </select>
         </div>
       </div>
-      <div className="bottom">
-        <div className="bar">
-          <div className="left ">© Inter IKEA Systems B.V 1999-2022</div>
-          <div className="right">
+      <div className="footer-company-info-area">
+        <div className="footer-company-info-area-bar">
+          <div className="year-of-ikea ">
+            © Inter IKEA Systems B.V 1999-2022
+          </div>
+          <div className="footer-company-info-menu">
             {FOOTER_CONST_3.map(item => {
               return (
-                <div key={item.id} className="each-item">
+                <div
+                  key={item.id}
+                  className="footer-company-info-menu-each-item"
+                >
                   {" "}
                   {item.item}
                 </div>
@@ -78,11 +87,11 @@ function Footer() {
             })}
           </div>
         </div>
-        <div className="last">
+        <div className="ikea-business-info-area">
           {FOOTER_CONST_4.map(item => {
             return (
-              <div className="item-container">
-                <FooterLast id={item.id} item={item.item} />
+              <div className="ikea-business-info-component-container">
+                <FooterBusinessInfo id={item.id} item={item.item} />
               </div>
             );
           })}
