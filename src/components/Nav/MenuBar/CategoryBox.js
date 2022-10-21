@@ -8,17 +8,18 @@ function CategoryBox({ showCategory }) {
   const movePage = url => {
     navigate(url);
   };
-  const categoryHeight = {
-    height: showCategory ? "210px" : "0px",
-  };
   return (
-    <div className="category-box-wrapper" style={categoryHeight}>
+    <div
+      className={`category-box-wrapper ${
+        showCategory ? "show" : "hide"
+      }-category-box`}
+    >
       <ul className="category-box">
         {CATEGORY.map(category => {
-          const { id, name, url } = category;
+          const { id, title, url } = category;
           return (
             <li className="bold-text" key={id} onClick={() => movePage(url)}>
-              {name}
+              {title}
             </li>
           );
         })}

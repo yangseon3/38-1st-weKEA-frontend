@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MenuBar from "./MenuBar/MenuBar";
 import Logo from "../Logo";
+import MenuBar from "./MenuBar/MenuBar";
 import LoginModal from "../LoginModal/LoginModal";
 import "./Nav.scss";
 
@@ -14,6 +14,10 @@ function Nav() {
   };
   const openModal = () => {
     setToggleModal(true);
+  };
+  const movePage = e => {
+    const { path } = e.target.dataset;
+    navigate(path);
   };
   return (
     <div className="nav">
@@ -39,16 +43,26 @@ function Nav() {
             <span className="text">Hi! 로그인 또는 가입하기</span>
           </div>
           <div className="wishlist">
-            <span className="material-symbols-outlined">favorite</span>
+            <span
+              className="material-symbols-outlined"
+              data-path="/wishlist"
+              onClick={movePage}
+            >
+              favorite
+            </span>
           </div>
           <div className="cart">
-            <span className="material-symbols-outlined">shopping_cart</span>
+            <span
+              className="material-symbols-outlined"
+              data-path="/cart"
+              onClick={movePage}
+            >
+              shopping_cart
+            </span>
           </div>
         </div>
       </div>
-      {toggleMenu && (
-        <MenuBar toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
-      )}
+      {toggleMenu && <MenuBar setToggleMenu={setToggleMenu} />}
       {toggleModal && <LoginModal setToggleModal={setToggleModal} />}
     </div>
   );

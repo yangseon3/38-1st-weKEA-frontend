@@ -9,11 +9,8 @@ function LoginModal({ setToggleModal }) {
     navigate(url);
   };
   const closeModal = e => {
-    const { className } = e.target;
-    if (
-      className === "material-symbols-outlined" ||
-      className === "login-modal-bg"
-    ) {
+    const { area } = e.target.dataset;
+    if (area === "close-modal") {
       setUnmount(true);
       setTimeout(() => {
         setToggleModal(false);
@@ -24,11 +21,14 @@ function LoginModal({ setToggleModal }) {
     <div
       className={`login-modal-bg${unmount ? " menu-bar-bg-unmount" : ""}`}
       onClick={closeModal}
+      data-area="close-modal"
     >
       <div className={`login-modal ${unmount ? "login-modal-unmount" : ""}`}>
         <header>
           <div className="close-btn">
-            <span className="material-symbols-outlined">close</span>
+            <span className="material-symbols-outlined" data-area="close-modal">
+              close
+            </span>
           </div>
         </header>
         <div className="modal-login">
@@ -41,14 +41,14 @@ function LoginModal({ setToggleModal }) {
         </div>
         <ul>
           {LOGIN_MODAL_MENU.map(menu => {
-            const { id, content, url } = menu;
+            const { id, title, url } = menu;
             return (
               <li
                 className="login-modal-menu"
                 key={id}
                 onClick={() => movePage(url)}
               >
-                {content}
+                {title}
               </li>
             );
           })}
@@ -59,9 +59,9 @@ function LoginModal({ setToggleModal }) {
 }
 
 const LOGIN_MODAL_MENU = [
-  { id: 1, content: "로그인", url: "/login" },
-  { id: 2, content: "구매 내역", url: "/" },
-  { id: 3, content: "위시리스트", url: "/" },
-  { id: 4, content: "배송 조회", url: "/" },
+  { id: 1, title: "로그인", url: "/login" },
+  { id: 2, title: "구매 내역", url: "/purchasehistory" },
+  { id: 3, title: "위시리스트", url: "/wishlist" },
+  { id: 4, title: "배송 조회", url: "/" },
 ];
 export default LoginModal;
