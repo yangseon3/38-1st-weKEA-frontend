@@ -7,16 +7,16 @@ function Main() {
   const navigate = useNavigate();
 
   const goToChairListPage = () => {
-    navigate("/main/category/chair");
+    navigate("/category/chair");
   };
   const goToDeskListPage = () => {
-    navigate("/main/category/Desk");
+    navigate("/category/Desk");
   };
   const goToShelfListPage = () => {
-    navigate("/main/category/Shelf");
+    navigate("/category/Shelf");
   };
   const goToDrawerListPage = () => {
-    navigate("/main/category/Drawer");
+    navigate("/category/Drawer");
   };
 
   return (
