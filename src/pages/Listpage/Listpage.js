@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Listpage.scss";
-import ThumbNail from "./Thumbnail";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 function Listpage() {
   const [isTotalFilterBoxVisible, setIsTotalFilterBoxVisible] = useState(false);
@@ -110,10 +110,10 @@ function Listpage() {
           </div>
         </div>
       </div>
-      <div className="thumbnail-component-container">
+      <div className="ProductCard-component-container">
         {TEST_CONST.map(item => {
           return (
-            <ThumbNail
+            <ProductCard
               key={item.id}
               url={item.url}
               id={item.id}
