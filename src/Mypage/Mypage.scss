@@ -1,0 +1,66 @@
+.mypage { 
+    display: flex;  
+    padding-left: 120px;
+    padding-right: 30px;
+    width: 100vw;
+    height: 280px;
+    padding-top: 100px; 
+    .mypage-description {
+        width: 70%;  
+        height: 220px;
+        .mypage-description-content{
+            font-size: 36px;
+            font-weight: bold;  
+            line-height: 50px;
+        }
+        .mypage-description-content-title{
+            font-size: 36px;
+            color: rgb(0, 124, 193);
+            padding-left: 10px;
+        }
+        .mypage-description-guide-content{
+            font-size: 14px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .mypage-description-guide-link{
+            text-decoration: underline; 
+        }
+    }
+    .mypage-id-card-box {
+        width: 30%;   
+        border-radius: 10px; 
+        font-weight: bold; 
+        box-shadow: 10px 10px 10px 10px rgb(232, 233, 237);
+        .mypage-id-card-content{
+            padding: 20px; 
+            background-color: rgb(0, 124, 193);  
+            color: white;   
+            border-radius: 10px 10px 0px 0px;   
+            .mypage-id-card-guide{
+                font-size: 15px;
+                padding-bottom: 10px;
+            }
+            .mypage-id-card-name {
+                font-size: 20px;
+            }
+        }
+        .mypage-id-card-box-blank { 
+            height: 20px;
+            background-color: rgb(255, 219, 0);
+        }
+        .mypage-id-card-box-point-box{   
+            padding-top: 30px; 
+            padding-bottom: 30px; 
+            font-size: 20px;
+            background-color: rgb(241, 243, 247);
+            border-radius: 0px 0px 10px 10px; 
+            .mypage-id-card-point{
+                padding-left: 10px;
+            }
+            .mypage-id-card-point-value{
+                padding-left: 220px;
+            }
+        }
+    }
+}
