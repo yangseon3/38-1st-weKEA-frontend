@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
+import SideModal from "../../components/SideModal/SideModal";
 import ImageModal from "./components/ImageModal";
-import SideModal from "./components/SideModal";
 import "./Detail.scss";
 
 function Detail() {
