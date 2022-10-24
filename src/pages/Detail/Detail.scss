@@ -38,8 +38,10 @@
     position: -webkit-sticky;
     position: sticky;
     top: 80px;
-    header {
-      div {
+    .detail-info-header {
+      .detail-name,
+      .detail-color,
+      .detail-price {
         margin-bottom: 10px;
       }
       .detail-name {
@@ -49,6 +51,14 @@
       .detail-color {
         font-size: 1.3rem;
         font-weight: lighter;
+        .color-name {
+          &::after {
+            content: ", ";
+          }
+          &:last-child::after {
+            content: none;
+          }
+        }
       }
       .detail-price {
         font-size: 2rem;
@@ -81,20 +91,20 @@
         padding-right: 20px;
         border: 0.5px solid #d7d7d7;
         border-radius: 15px;
-        li {
+        .how-to-buy-list {
           @include flex(flex-start, center, row);
           height: 75px;
           &:first-child {
             border-bottom: 1px solid #d7d7d7;
           }
-          div {
+          .how-to-buy-content-wrapper {
             @include flex(flex-start, flex-start, column);
             margin-left: 10px;
-            h4 {
+            .how-to-buy-title {
               font-weight: bold;
               margin-bottom: 5px;
             }
-            span {
+            .how-to-buy-content {
               color: gray;
               opacity: 0.6;
               text-decoration: underline;
@@ -161,7 +171,7 @@
     border-top: 1px solid #d7d7d7;
     cursor: pointer;
     &:hover {
-      span:first-child {
+      .detail-title {
         text-decoration: underline;
       }
     }

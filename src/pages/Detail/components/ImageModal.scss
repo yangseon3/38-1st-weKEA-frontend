@@ -1,4 +1,5 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/animation.scss";
 
 .image-modal-bg {
   @include flex(center, center, null);
@@ -53,38 +54,7 @@
     }
   }
 }
-@-webkit-keyframes imageModalOpenAnimation {
-  from {
-    scale: 0;
-  }
-  to {
-    scale: 1;
-  }
-}
-@keyframes imageModalOpenAnimation {
-  from {
-    scale: 0;
-  }
-  to {
-    scale: 1;
-  }
-}
-@-webkit-keyframes modalbgAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes modalbgAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+
 .image-modal-unmount {
   scale: 0;
   transition: all 0.3s;

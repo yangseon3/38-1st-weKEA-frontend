@@ -102,4 +102,21 @@
     transform: translateX(0);
   }
 }
+@-webkit-keyframes imageModalOpenAnimation {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+@keyframes imageModalOpenAnimation {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+
 // modalBgAnimation과 menuBarBgAnimation은 역할과 기능이 겹치기 때문에 추후에 menuBarBgAnimation을 삭제하고 Nav에도 modalBgAnimation을 적용할 예정이며, loginModalMountAnimation도 같은 이유로 sideModalAnimation으로 교체하여 사용할 예정

@@ -24,7 +24,7 @@ function Router() {
         <Route path="/category/chair" element={<Chair />} />
         <Route path="/category/drawer" element={<Drawer />} />
         <Route path="/category/shelf" element={<Shelf />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/detail/:productId" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

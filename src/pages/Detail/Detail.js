@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SideModal from "../../components/SideModal/SideModal";
 import ImageModal from "./components/ImageModal";
 import "./Detail.scss";
@@ -24,6 +24,7 @@ function Detail() {
   const [sideModal, setSideModal] = useState("");
   const [selectedColor, setSelectedColor] = useState(0);
 
+  const { productId } = useParams();
   const { id, name, description, options } = productInfo;
   const { size, price, color } = options;
   const modalContent = {
@@ -64,7 +65,9 @@ function Detail() {
     }, 300);
   };
   const priceToString = price => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parseInt(price)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }; // 세자리수마다 콤마 찍어주는 정규표현식
   const selectColor = e => {
     const { id } = e.target.dataset;
@@ -78,6 +81,17 @@ function Detail() {
         setImages([{ id: "thumbnail", url: data.thumbnail }, ...data.images]);
       });
   }, []);
+  // useEffect(() => {
+  //   fetch(`http://10.58.52.155:3000/page/detail/${productId}`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setProductInfo(data.productDetail);
+  //       setImages([
+  //         { id: "thumbnail", url: data.productDetail.thumbnail },
+  //         ...data.productDetail.images,
+  //       ]);
+  //     });
+  // }, []);
   return (
     <>
       {imageModalIndex !== 0 && (
@@ -107,7 +121,7 @@ function Detail() {
                   key={img.id}
                   onClick={() => openModal(i)}
                 >
-                  <img alt={img.id} src={img.url} />
+                  <img alt={`product${img.id}`} src={img.url} />
                 </div>
               );
             })}
@@ -121,53 +135,63 @@ function Detail() {
             onClick={openSideModal}
             data-name="description"
           >
-            <span>제품 설명</span>
+            <span className="detail-title">제품 설명</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
           <div className="detail-size" onClick={openSideModal} data-name="size">
-            <span>치수</span>
+            <span className="detail-title">치수</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
         </section>
         <aside className="detail-info">
-          <header>
+          <header className="detail-info-header">
             <div className="detail-name">{name}</div>
             <div className="detail-color">
-              {color[0]}, {color[1]}
+              {color.map(colorName => {
+                return (
+                  <span key={colorName} className="color-name">
+                    {colorName}
+                  </span>
+                );
+              })}
             </div>
             <div className="detail-price">₩ {priceToString(price)}원</div>
           </header>
           <div className="select-color">
-            <div
-              className={`color ${selectedColor === 0 ? "selected" : ""}`}
-              style={{ backgroundColor: color[0] }}
-              onClick={selectColor}
-              data-id="0"
-            ></div>
-            <div
-              className={`color ${selectedColor === 1 ? "selected" : ""}`}
-              style={{ backgroundColor: color[1] }}
-              onClick={selectColor}
-              data-id="1"
-            ></div>
+            {color.map((color, index) => {
+              return (
+                <div
+                  className={`color ${
+                    selectedColor === index ? "selected" : ""
+                  }`}
+                  style={{ backgroundColor: color }}
+                  onClick={selectColor}
+                  data-id={index}
+                />
+              );
+            })}
           </div>
           <div className="how-to-buy">
             <span>어떻게 구매하시겠어요?</span>
             <ul className="how-to-buy-box">
-              <li>
+              <li className="how-to-buy-list">
                 <span className="material-symbols-outlined">
                   local_shipping
                 </span>
-                <div>
-                  <h4>배송</h4>
-                  <span>구매 가능 여부 확인</span>
+                <div className="how-to-buy-content-wrapper">
+                  <h4 className="how-to-buy-title">배송</h4>
+                  <span className="how-to-buy-content">
+                    구매 가능 여부 확인
+                  </span>
                 </div>
               </li>
-              <li>
+              <li className="how-to-buy-list">
                 <span className="material-symbols-outlined">store</span>
-                <div>
-                  <h4>매장</h4>
-                  <span>매장 재고 및 재입고 날짜 확인</span>
+                <div className="how-to-buy-content-wrapper">
+                  <h4 className="how-to-buy-title">매장</h4>
+                  <span className="how-to-buy-content">
+                    매장 재고 및 재입고 날짜 확인
+                  </span>
                 </div>
               </li>
             </ul>

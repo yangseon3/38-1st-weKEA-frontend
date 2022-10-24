@@ -16,7 +16,7 @@
   ],
   "options": {
     "size": "100cm x 200cm",
-    "price": "150,000",
+    "price": "150000",
     "color": ["white", "black"]
   }
 }
