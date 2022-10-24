@@ -59,7 +59,8 @@ function Cart() {
   const priceToString = price => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-  useEffect(() => {
+
+  const getMockData = () => {
     fetch("/data/Cart/product.json", {
       method: "GET",
       headers: {
@@ -68,6 +69,10 @@ function Cart() {
     })
       .then(response => response.json())
       .then(data => setProducts(data));
+  };
+
+  useEffect(() => {
+    getMockData();
   }, []);
 
   return (

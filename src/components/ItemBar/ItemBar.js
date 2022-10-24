@@ -1,7 +1,13 @@
 import React from "react";
 import "./ItemBar.scss";
 
-function ItemBar({ product, priceToString, moveTo, setProducts }) {
+function ItemBar({
+  product,
+  priceToString,
+  moveTo,
+  setProducts,
+  deleteRequest,
+}) {
   const { thumbnail, price, color, name, size, quantity } = product;
   const numbers = () => {
     let array = [];
@@ -44,7 +50,9 @@ function ItemBar({ product, priceToString, moveTo, setProducts }) {
               keyboard_arrow_down
             </span>
           </div>
-          <span className="delete-button">삭제</span>
+          <span className="delete-button" onClick={deleteRequest}>
+            삭제
+          </span>
           <span className="wishlist-button">{moveTo}에 저장</span>
         </footer>
       </div>
