@@ -1,13 +1,7 @@
 import React from "react";
 import "./ItemBar.scss";
 
-function ItemBar({
-  product,
-  priceToString,
-  moveTo,
-  setProducts,
-  deleteRequest,
-}) {
+function ItemBar({ product, priceToString, moveTo, deleteRequest }) {
   const { thumbnail, price, color, name, size, quantity } = product;
   const numbers = () => {
     let array = [];

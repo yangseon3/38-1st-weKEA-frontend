@@ -22,13 +22,13 @@ function Cart() {
 
   const sideModalContent = {
     refund: {
-      className: "side-modal",
+      className: "white-modal",
       title: "마음이 바뀌어도 괜찮습니다!",
       content:
         "구입한 weKEA 제품이 만족스럽지 않다면 언제든지 새제품과 미개봉 제품을 반품하고 전액 환불받을 수 있습니다",
     },
     security: {
-      className: "side-modal",
+      className: "white-modal",
       title: "이 사이트는 안전합니다",
       content: "weKEA는 민감한 정보를 다루지 않아 안전합니다.",
     },
@@ -38,16 +38,12 @@ function Cart() {
     const { id } = e.target.dataset;
     setSideModal(id);
   };
-  const closeModal = e => {
-    e.stopPropagation();
-    const { id } = e.target.dataset;
-    if (id === "close-modal") {
-      setIsUnmountModal(true);
-      setTimeout(() => {
-        sideModal !== "" && setSideModal("");
-        setIsUnmountModal(false);
-      }, 300);
-    }
+  const closeModal = () => {
+    setIsUnmountModal(true);
+    setTimeout(() => {
+      sideModal !== "" && setSideModal("");
+      setIsUnmountModal(false);
+    }, 300);
   };
   const toggleCouponForm = () => {
     setIsCouponFormOpened(!isCouponFormOpened);
