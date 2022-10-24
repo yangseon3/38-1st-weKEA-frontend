@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav/Nav";
 import "./Mypage.scss";
 
 function Mypage() {
+  const mypagePoing = e => {
+    e.preventDefault();
+    fetch("http://10.58.52.58:3000", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ point }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem("token", data.userInfo.accessToken);
+        localStorage.setItem(
+          "userName",
+          JSON.stringify(data.userInfo.userName)
+        );
+      });
+  };
+
   return (
     <>
       <Nav />
