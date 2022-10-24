@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ImageModal.scss";
 
-function ImageModal({ images, imageModalIndex, closeModal, isUnmountModal }) {
-  const [sliderTranslateX, setSliderTranslateX] = useState(
-    (imageModalIndex - 1) * -80
-  );
-  const canGoForward = sliderTranslateX > (images.length - 1) * -80;
-  const canGoBack = sliderTranslateX < 0;
+function ImageModal({
+  images,
+  imageModalIndex,
+  closeModal,
+  isUnmountModal,
+  setImageModalIndex,
+}) {
+  const sliderTranslateX = (imageModalIndex - 1) * -80;
+  const canGoForward = imageModalIndex < images.length;
+  const canGoBack = imageModalIndex > 1;
+  console.log(canGoForward);
   const sliderMoveForward = () => {
-    canGoForward && setSliderTranslateX(x => x - 80);
+    canGoForward && setImageModalIndex(index => index + 1);
   };
   const sliderMoveBack = () => {
-    canGoBack && setSliderTranslateX(x => x + 80);
+    canGoBack && setImageModalIndex(index => index - 1);
   };
   const sliderWidth = images.length * 80;
   return (
@@ -50,10 +55,10 @@ function ImageModal({ images, imageModalIndex, closeModal, isUnmountModal }) {
               transform: `translateX(${sliderTranslateX}vw)`,
             }}
           >
-            {images.map(img => {
+            {images.map(productImage => {
               return (
-                <div className="image-modal-img-wrapper" key={img.id}>
-                  <img src={img.url} />
+                <div className="image-modal-img-wrapper" key={productImage.id}>
+                  <img src={productImage.url} />
                 </div>
               );
             })}

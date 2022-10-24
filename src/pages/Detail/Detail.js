@@ -1,51 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SideModal from "../../components/SideModal/SideModal";
 import ImageModal from "./components/ImageModal";
 import "./Detail.scss";
 
 function Detail() {
   const [imageModalIndex, setImageModalIndex] = useState(0);
-  const [productInfo, setProductInfo] = useState({
-    id: "",
-    name: "",
-    thumbnail: "",
-    description: "",
-    category: "",
-    images: [],
-    options: {
-      size: "",
-      price: "",
-      color: ["white", "black"],
-    },
-  });
-  const [images, setImages] = useState([]);
+  const [productInfo, setProductInfo] = useState(null);
   const [isUnmountModal, setIsUnmountModal] = useState(false);
   const [sideModal, setSideModal] = useState("");
   const [selectedColor, setSelectedColor] = useState(0);
 
-  const { productId } = useParams();
-  const { id, name, description, options } = productInfo;
-  const { size, price, color } = options;
   const modalContent = {
     description: {
-      className: "side-modal",
+      className: "white-modal",
       title: "제품 설명",
-      content: description,
+      content: productInfo?.description,
     },
     size: {
-      className: "side-modal",
+      className: "white-modal",
       title: "치수",
-      content: size,
+      content: productInfo?.options.size,
     },
     cart: {
-      className: "side-modal-blue",
-      title: `${name} 제품이 장바구니에 추가되었습니다.`,
+      className: "blue-modal",
+      title: `${productInfo?.name} 제품이 장바구니에 추가되었습니다.`,
       content: <Link to="/cart">장바구니로 이동</Link>,
     },
     wishlist: {
-      className: "side-modal-blue",
-      title: `${name} 제품이 위시리스트에 추가되었습니다.`,
+      className: "blue-modal",
+      title: `${productInfo?.name} 제품이 위시리스트에 추가되었습니다.`,
       content: <Link to="/wishlist">위시리스트로 이동</Link>,
     },
   };
@@ -56,7 +40,7 @@ function Detail() {
     const { name } = e.target.dataset;
     setSideModal(name);
   };
-  const closeModal = e => {
+  const closeModal = () => {
     setIsUnmountModal(true);
     setTimeout(() => {
       imageModalIndex !== 0 && setImageModalIndex(0);
@@ -77,27 +61,19 @@ function Detail() {
     fetch("/data/detail.json")
       .then(response => response.json())
       .then(data => {
-        setProductInfo(data);
-        setImages([{ id: "thumbnail", url: data.thumbnail }, ...data.images]);
+        setProductInfo({
+          ...data,
+          images: [{ id: "thumbnail", url: data.thumbnail }, ...data.images],
+        });
       });
   }, []);
-  // useEffect(() => {
-  //   fetch(`http://10.58.52.155:3000/page/detail/${productId}`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       setProductInfo(data.productDetail);
-  //       setImages([
-  //         { id: "thumbnail", url: data.productDetail.thumbnail },
-  //         ...data.productDetail.images,
-  //       ]);
-  //     });
-  // }, []);
   return (
     <>
       {imageModalIndex !== 0 && (
         <ImageModal
-          images={images}
+          images={productInfo?.images}
           imageModalIndex={imageModalIndex}
+          setImageModalIndex={setImageModalIndex}
           closeModal={closeModal}
           isUnmountModal={isUnmountModal}
         />
@@ -114,21 +90,24 @@ function Detail() {
       <div className="detail-page">
         <section className="detail-content">
           <div className="detail-img">
-            {images.map((img, i) => {
+            {productInfo?.images.map((productImage, i) => {
               return (
                 <div
                   className="detail-img-wrapper"
-                  key={img.id}
+                  key={productImage.id}
                   onClick={() => openModal(i)}
                 >
-                  <img alt={`product${img.id}`} src={img.url} />
+                  <img
+                    alt={`product${productImage.id}`}
+                    src={productImage.url}
+                  />
                 </div>
               );
             })}
           </div>
           <div className="product-number">
             <span className="product-number-title">제품 번호</span>
-            <span className="product-number-content">{id}</span>
+            <span className="product-number-content">{productInfo?.id}</span>
           </div>
           <div
             className="detail-description"
@@ -145,9 +124,9 @@ function Detail() {
         </section>
         <aside className="detail-info">
           <header className="detail-info-header">
-            <div className="detail-name">{name}</div>
+            <div className="detail-name">{productInfo?.name}</div>
             <div className="detail-color">
-              {color.map(colorName => {
+              {productInfo?.options.color.map(colorName => {
                 return (
                   <span key={colorName} className="color-name">
                     {colorName}
@@ -155,10 +134,12 @@ function Detail() {
                 );
               })}
             </div>
-            <div className="detail-price">₩ {priceToString(price)}원</div>
+            <div className="detail-price">
+              ₩ {priceToString(productInfo?.options.price)}원
+            </div>
           </header>
           <div className="select-color">
-            {color.map((color, index) => {
+            {productInfo?.options.color.map((color, index) => {
               return (
                 <div
                   className={`color ${
