@@ -15,11 +15,11 @@ function Mypage() {
               IKEA Family
             </span>
           </div>
-          <div className="mypage-description-guide-content">
+          <div className="mypage-description-guide-benefit">
             IKEA Family 허브를 방문해 주셔서 감사합니다. 이곳에서 IKEA Family
-            맴버십의 장저을 모두 확인해보세요.
+            맴버십의 장점을 모두 확인해보세요.
           </div>
-          <span className="mypage-description-guide-content">
+          <span className="mypage-description-guide-modify">
             이름, 주소 또는 설정을 수정하고 싶으세요?{" "}
           </span>
           <span className="mypage-description-guide-link">계정 관리</span>
