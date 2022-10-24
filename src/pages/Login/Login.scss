@@ -42,7 +42,7 @@
         line-height: 20px;
         font-size: 12px;
         .login-description-footer-link {
-          text-decoration: underline; 
+          text-decoration: underline;
         }
       }
     }
@@ -75,18 +75,18 @@
         right: 15px;
       }
       .login-form-input-text {
-        text-decoration: underline; 
+        text-decoration: underline;
         text-indent: 10px;
       }
       .login-form-pw-wrapper {
         position: relative;
       }
-      .login-form-pw-title{
+      .login-form-pw-title {
         padding-top: 30px;
       }
       .login-form-pw-valid {
         color: red;
-        padding-bottom:10px ;
+        padding-bottom: 10px;
       }
       .login-form-checkbox {
         position: relative;
@@ -126,7 +126,7 @@
         }
         .login-form-checkbox-mark:hover {
           cursor: pointer;
-        } 
+        }
       }
       .login-form-button {
         width: 450px;
@@ -153,13 +153,13 @@
       .login-form-signup-button:hover {
         border: 3px solid black;
       }
-      .valid-input{
+      .valid-input {
         border: 1px solid green;
         &:focus {
           border: 2px solid green;
         }
       }
-      .invalid-input{
+      .invalid-input {
         border: 1px solid red;
         &:focus {
           border: 2px solid red;

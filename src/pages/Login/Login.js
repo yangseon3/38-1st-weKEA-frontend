@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import API from "../../config";
 import "./Login.scss";
 import Logo from "../../components/Logo/Logo";
+import ModalContainer from "../Login/Modal/ModalContainer";
 
 function Login() {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
@@ -165,6 +166,7 @@ function Login() {
           >
             개인 회원 가입하기
           </button>
+          <ModalContainer />
         </form>
       </main>
     </div>
