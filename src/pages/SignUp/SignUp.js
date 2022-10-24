@@ -69,9 +69,9 @@ function SignUp() {
         phoneNumber,
         birthday,
       }),
-    })
-      .then(response => response.json())
-      .then(data => console.log(data));
+    });
+    // .then(response => response.json())
+    // .then(data => console.log(data));
   };
 
   return (
