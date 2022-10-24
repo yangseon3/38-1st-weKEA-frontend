@@ -69,7 +69,9 @@ function SignUp() {
         phoneNumber,
         birthday,
       }),
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
 
   return (
@@ -100,8 +102,12 @@ function SignUp() {
               isPasswordValid={isPasswordValid}
               togglePass={togglePass}
             />
+
+            <Checkbox />
+            <button className="signup-form-button" onClick={signupRequest}>
+              회원가입
+            </button>
           </form>
-          <Checkbox signupRequest={signupRequest} />
         </div>
       </main>
     </div>
