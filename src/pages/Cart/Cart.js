@@ -96,7 +96,6 @@ function Cart() {
                   product={product}
                   priceToString={priceToString}
                   moveTo={"위시리스트"}
-                  setProducts={setProducts}
                 />
               );
             })}
