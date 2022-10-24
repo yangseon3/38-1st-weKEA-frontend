@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import "./Main.scss";
 
 function Main() {
+  const [randomMainImg, setRandomMainImg] = useState([]);
+
+  useEffect(() => {
+    console.log("fetch함수 실행 테스트용 콘솔로그");
+    fetch("https://10.58.52.238:3000/", {
+      method: "GET",
+    })
+      .then(response => response.json())
+      .then(data => console.log("data"));
+  }, []);
+
   const navigate = useNavigate();
 
   const goToChairListPage = () => {
@@ -42,18 +53,15 @@ function Main() {
           >
             <img
               alt="chair"
-              className="main-chair-img main-page-4image"
+              className="main-page-4image"
               src="https://www.target.com.au/medias/static_content/product/images/full/85/83/A1788583.jpg?impolicy=product_portrait_hero"
             />
             <div className="category-text chair-categoty-text">Chair</div>
           </div>
 
-          <div
-            className="main-image-wrapper drawer-image-wrapper"
-            onClick={goToDrawerListPage}
-          >
+          <div className="main-image-wrapper " onClick={goToDrawerListPage}>
             <img
-              className="main-drawer-img main-page-4image"
+              className="main-page-4image"
               alt="drawer"
               src="https://assets.pbimgs.com/pbimgs/ab/images/dp/wcm/202224/0212/livingston-9-drawer-wide-dresser-1-c.jpg"
             />
@@ -65,7 +73,7 @@ function Main() {
             onClick={goToShelfListPage}
           >
             <img
-              className="main-shelf-img main-page-4image"
+              className="main-page-4image"
               alt="shelf"
               src="https://www.ikea.com/kr/en/images/products/burhult-sibbhult-wall-shelf-combination-white-white__1092767_pe863011_s5.jpg?f=s"
             />
@@ -80,3 +88,5 @@ function Main() {
 }
 
 export default Main;
+
+// const MAIN_IMAGES_DATA = [];
