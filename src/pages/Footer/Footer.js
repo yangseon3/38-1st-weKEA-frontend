@@ -1,113 +1,97 @@
 import React from "react";
 import "./Footer.scss";
 import FooterSignUpComponent from "./FooterSignUpComponent";
-import CustomerInquiryMenuComponent from "./CustomerInquiryMenuComponent";
 import FooterBusinessInfo from "./FooterBusinessInfo";
-import ShoppingMenuComponent from "./ShoppingMenuComponent";
-import ServiceMenuComponent from "./ServiceMenuComponent";
-import IkeaStoryMenuComponent from "./IkeaStoryMenuComponent";
 import FooterIconComponent from "./FooterIconComponent";
-import { CUSTOMER_INQUIRY_MENU_ITEM } from "./FooterConstData";
-import { SHOPPING_MENU_ITEM } from "./FooterConstData";
-import { SERVICE_MENU_DATA } from "./FooterConstData";
-import { IKEA_STORY_MENU_BAR_ITEM } from "./FooterConstData";
-import { WEBSITE_TERMS_MENU } from "./FooterConstData";
-import { COMPANY_INFO } from "./FooterConstData";
-import { MEMBERSHIP_SIGNUP_GUIDING_DATA } from "./FooterConstData";
-import { FOOTER_ICON_DATA } from "./FooterConstData";
+import {
+  WEBSITE_TERMS_MENU,
+  COMPANY_INFO,
+  MEMBERSHIP_SIGNUP_GUIDING_DATA,
+  FOOTER_ICON_DATA,
+  CUSTOMER_INQUIRIES,
+  SHOPPING,
+  SERVICE,
+  IKEA_STORY,
+} from "./FooterConstData";
 
 function Footer() {
+  function CustomerInquiries(props) {
+    return <div key={props.id}>{props.title}</div>;
+  }
+  function Shopping(props) {
+    return <div key={props.id}>{props.title}</div>;
+  }
+  function Service(props) {
+    return <div key={props.id}>{props.title}</div>;
+  }
+  function IkeaStory(props) {
+    return <div key={props.id}>{props.title}</div>;
+  }
   return (
     <div className="footer-frame">
       <div className="footer-main">
         <div className="membership-signup-area">
-          {MEMBERSHIP_SIGNUP_GUIDING_DATA.map(item => {
+          {MEMBERSHIP_SIGNUP_GUIDING_DATA.map(title => {
             return (
-              <div key={item.title}>
+              <div key={title.title}>
                 <FooterSignUpComponent
-                  title={item.title}
-                  discription={item.discription}
-                  buttonText={item.buttonText}
+                  title={title.title}
+                  discription={title.discription}
+                  buttonText={title.buttonText}
                 />
               </div>
             );
           })}
         </div>
-        <div className="footer-menu-area-container">
-          {CUSTOMER_INQUIRY_MENU_ITEM.map(item => {
-            return (
-              <div className="footer-menu-component-container" key={item.title}>
-                <CustomerInquiryMenuComponent
-                  title={item.title}
-                  customerSupport={item.customerSupport}
-                  fAQ={item.fAQ}
-                  makeAQuestion={item.makeAQuestion}
-                  deliveryCheck={item.deliveryCheck}
-                  changeAndRefund={item.changeAndRefund}
-                  qualityInsurance={item.qualityInsurance}
-                  recall={item.recall}
-                  feedBack={item.feedBack}
-                />
-              </div>
-            );
-          })}
-          {SHOPPING_MENU_ITEM.map(item => {
-            return (
-              <div className="footer-menu-component-container" key={item.title}>
-                <ShoppingMenuComponent
-                  title={item.title}
-                  remoteOrder={item.remoteOrder}
-                  forBusiness={item.forBusiness}
-                  selfPlanning={item.selfPlanning}
-                  mobileApp={item.mobileApp}
-                  tipForUsing={item.tipForUsing}
-                  tipForPurchasing={item.tipForPurchasing}
-                  paymentOption={item.paymentOption}
-                  giftCard={item.giftCard}
-                />
-              </div>
-            );
-          })}
-          {SERVICE_MENU_DATA.map(item => {
-            return (
-              <div className="footer-menu-component-container" key={item.title}>
-                <ServiceMenuComponent
-                  title={item.title}
-                  ikeaService={item.ikeaService}
-                  deliveryService={item.deliveryService}
-                  assemblyService={item.assemblyService}
-                  installService={item.installService}
-                  kitchenService={item.kitchenService}
-                  planningService={item.planningService}
-                  designService={item.designService}
-                  buyBackService={item.buyBackService}
-                />
-              </div>
-            );
-          })}
-          {IKEA_STORY_MENU_BAR_ITEM.map(item => {
-            return (
-              <div className="footer-menu-component-container" key={item.title}>
-                <IkeaStoryMenuComponent
-                  title={item.title}
-                  introducingBrand={item.introducingBrand}
-                  lifeInsideHouse={item.lifeInsideHouse}
-                  sustainableLife={item.sustainableLife}
-                  housePhilosophy={item.housePhilosophy}
-                  newsRoom={item.newsRoom}
-                  recruiting={item.recruiting}
-                />
-              </div>
-            );
-          })}
+        <div className="footer-main-menu-box-container">
+          <div className="footer-main-menu-box">
+            <div className="footer-main-menu-box-bold-title">고객문의</div>
+            {CUSTOMER_INQUIRIES.map(title => {
+              return (
+                <div className="menu-each-item-box">
+                  <CustomerInquiries key={title.id} title={title.title} />
+                </div>
+              );
+            })}
+          </div>
+          <div className="footer-main-menu-box">
+            <div className="footer-main-menu-box-bold-title">쇼핑하기</div>
+            {SHOPPING.map(title => {
+              return (
+                <div className="menu-each-item-box">
+                  <Shopping key={title.id} title={title.title} />
+                </div>
+              );
+            })}
+          </div>
+          <div className="footer-main-menu-box">
+            <div className="footer-main-menu-box-bold-title">IKEA 서비스</div>
+            {SERVICE.map(title => {
+              return (
+                <div className="menu-each-item-box">
+                  <Service key={title.id} title={title.title} />
+                </div>
+              );
+            })}
+          </div>
+          <div className="footer-main-menu-box">
+            <div className="footer-main-menu-box-bold-title">브랜드 소개</div>
+            {IKEA_STORY.map(title => {
+              return (
+                <div className="menu-each-item-box">
+                  <IkeaStory key={title.id} title={title.title} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       <div className="footer-icon-and-language-area">
         <div className="footer-icon-area">
-          {FOOTER_ICON_DATA.map(item => {
+          {FOOTER_ICON_DATA.map(icon => {
             return (
-              <div key={item.id}>
-                <FooterIconComponent icon={item.icon} />
+              <div key={icon.id}>
+                <FooterIconComponent icon={icon.icon} />
               </div>
             );
           })}
@@ -130,10 +114,10 @@ function Footer() {
             © Inter IKEA Systems B.V 1999-2022
           </div>
           <div className="footer-website-terms-menu">
-            {WEBSITE_TERMS_MENU.map(item => {
+            {WEBSITE_TERMS_MENU.map(terms => {
               return (
-                <div key={item.id} className="each-terms-item">
-                  {item.termsElement}
+                <div key={terms.id} className="each-terms-item">
+                  {terms.termsElement}
                 </div>
               );
             })}
@@ -141,15 +125,15 @@ function Footer() {
         </div>
 
         <div className="ikea-business-info-area">
-          {COMPANY_INFO.map(item => {
+          {COMPANY_INFO.map(info => {
             return (
               <div
                 className="ikea-business-info-component-container"
-                key={item.title}
+                key={info.title}
               >
                 <FooterBusinessInfo
-                  id={item.id}
-                  companyInfo={item.companyInfo}
+                  id={info.id}
+                  companyInfo={info.companyInfo}
                 />
               </div>
             );

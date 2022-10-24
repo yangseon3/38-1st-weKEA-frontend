@@ -5,6 +5,20 @@
 
   .footer-main {
     display: flex;
+    .footer-main-menu-box-container {
+      display: flex;
+      .footer-main-menu-box {
+        width: 170px;
+        margin-right: 60px;
+        .footer-main-menu-box-bold-title {
+          margin-bottom: 20px;
+          font-weight: 800;
+        }
+        .menu-each-item-box {
+          margin-bottom: 20px;
+        }
+      }
+    }
     .membership-signup-area {
       width: 380px;
       .footer-signup-component-frame {
@@ -37,32 +51,6 @@
           border-radius: 18px;
           font-weight: 700;
           border: none;
-        }
-      }
-    }
-    .footer-menu-area-container {
-      width: 70%;
-      display: flex;
-      justify-content: space-between;
-      padding-right: 30px;
-      .footer-menu-component-container {
-        .footer-menu-frame-inside-component {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          width: 200px;
-          height: 100%;
-          .footer-menu-component-title {
-            font-weight: 800;
-          }
-
-          .footer-menu-frame-inside-component-item {
-            cursor: pointer;
-            font-size: 14px;
-          }
-          .footer-menu-frame-inside-component-item:hover {
-            text-decoration: underline;
-          }
         }
       }
     }
