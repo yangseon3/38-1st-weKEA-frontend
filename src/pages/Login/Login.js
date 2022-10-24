@@ -157,6 +157,7 @@ function Login() {
             weKEA 계정이 없으신가요? 지금 바로 만들어보세요.
           </div>
           <button
+            type="button"
             onClick={() => {
               return navigate(`/SignUp`);
             }}
