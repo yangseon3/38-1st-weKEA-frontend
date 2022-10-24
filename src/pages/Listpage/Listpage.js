@@ -18,7 +18,7 @@ function Listpage() {
     if (
       isTotalFilterBoxVisible === true &&
       !e.target.className.includes("drop-box") &&
-      !e.target.className.includes("item") &&
+      !e.target.className.includes("filter-inneritem") &&
       e.target.type !== "radio"
     ) {
       setIsTotalFilterBoxVisible(!isTotalFilterBoxVisible);
@@ -26,7 +26,7 @@ function Listpage() {
     if (
       isPriceFilterBoxVisible === true &&
       !e.target.className.includes("drop-box") &&
-      !e.target.className.includes("item") &&
+      !e.target.className.includes("filter-inneritem") &&
       e.target.type !== "radio"
     ) {
       setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
@@ -48,19 +48,19 @@ function Listpage() {
           <div>
             {isTotalFilterBoxVisible && (
               <div className="total-drop-box drop-box">
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">가격 높은순</span>{" "}
                   <input type="radio" name="total-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">가격 낮은순</span>{" "}
                   <input type="radio" name="total-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">최신순</span>
                   <input type="radio" name="total-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">이름순</span>
                   <input type="radio" name="total-filter-box-radio" />
                 </div>
@@ -81,27 +81,27 @@ function Listpage() {
           <div>
             {isPriceFilterBoxVisible && (
               <div className="price-filter-drop-box drop-box">
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩0 - 49,999</span>
                   <input type="radio" name="price-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩50,000 - 99,999</span>
                   <input type="radio" name="price-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩100,000 - 199,999</span>
                   <input type="radio" name="price-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩200,000 - 299,999</span>
                   <input type="radio" name="price-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩300,000 - 499,999</span>
                   <input type="radio" name="price-filter-box-radio" />
                 </div>
-                <div className="item">
+                <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩500,000 +</span>
                   <input type="radio" name="price-filter-box-radio" />
                 </div>
