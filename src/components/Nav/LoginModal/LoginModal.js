@@ -8,25 +8,24 @@ function LoginModal({ setToggleModal }) {
   const movePage = url => {
     navigate(url);
   };
-  const closeModal = e => {
-    const { area } = e.target.dataset;
-    if (area === "close-modal") {
-      setUnmount(true);
-      setTimeout(() => {
-        setToggleModal(false);
-      }, 300);
-    }
+  const closeModal = () => {
+    setUnmount(true);
+    setTimeout(() => {
+      setToggleModal(false);
+    }, 300);
   };
   return (
     <div
       className={`login-modal-bg${unmount ? " menu-bar-bg-unmount" : ""}`}
       onClick={closeModal}
-      data-area="close-modal"
     >
-      <div className={`login-modal ${unmount ? "login-modal-unmount" : ""}`}>
+      <div
+        className={`login-modal ${unmount ? "login-modal-unmount" : ""}`}
+        onClick={e => e.stopPropagation()}
+      >
         <header>
           <div className="close-btn">
-            <span className="material-symbols-outlined" data-area="close-modal">
+            <span className="material-symbols-outlined" onClick={closeModal}>
               close
             </span>
           </div>
