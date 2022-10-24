@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../../components/Nav/Nav";
 import SideModal from "../../components/SideModal/SideModal";
 import ItemBar from "./ItemBar/ItemBar";
 import "./Cart.scss";
@@ -73,7 +72,6 @@ function Cart() {
 
   return (
     <>
-      <Nav />
       {sideModal !== "" && (
         <SideModal
           className={sideModalContent[sideModal].className}

@@ -8,11 +8,13 @@ import Desk from "./pages/Categories/Desk";
 import Chair from "./pages/Categories/Chair";
 import Drawer from "./pages/Categories/Drawer";
 import Shelf from "./pages/Categories/Shelf";
+import Nav from "./components/Nav/Nav";
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Nav />
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
