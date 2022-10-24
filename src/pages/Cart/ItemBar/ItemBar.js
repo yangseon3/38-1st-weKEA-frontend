@@ -46,7 +46,7 @@ function ItemBar({
                 })}
               </optgroup>
             </select>
-            <span className="material-symbols-outlined">
+            <span className="material-symbols-outlined quantity-icon">
               keyboard_arrow_down
             </span>
           </div>

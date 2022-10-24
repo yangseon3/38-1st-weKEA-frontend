@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../../components/Nav/Nav";
 import SideModal from "../../components/SideModal/SideModal";
-import ItemBar from "../../components/ItemBar/ItemBar";
+import ItemBar from "./ItemBar/ItemBar";
 import "./Cart.scss";
 
 function Cart() {
