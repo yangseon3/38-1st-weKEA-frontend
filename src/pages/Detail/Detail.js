@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Nav from "../../components/Nav/Nav";
 import SideModal from "../../components/SideModal/SideModal";
 import ImageModal from "./components/ImageModal";
 import "./Detail.scss";
@@ -57,16 +56,12 @@ function Detail() {
     setSideModal(name);
   };
   const closeModal = e => {
-    e.stopPropagation();
-    const { id } = e.target.dataset;
-    if (id === "close-modal") {
-      setIsUnmountModal(true);
-      setTimeout(() => {
-        imageModalIndex !== 0 && setImageModalIndex(0);
-        sideModal && setSideModal("");
-        setIsUnmountModal(false);
-      }, 300);
-    }
+    setIsUnmountModal(true);
+    setTimeout(() => {
+      imageModalIndex !== 0 && setImageModalIndex(0);
+      sideModal && setSideModal("");
+      setIsUnmountModal(false);
+    }, 300);
   };
   const priceToString = price => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -85,7 +80,6 @@ function Detail() {
   }, []);
   return (
     <>
-      <Nav />
       {imageModalIndex !== 0 && (
         <ImageModal
           images={images}
@@ -104,7 +98,6 @@ function Detail() {
         ></SideModal>
       )}
       <div className="detail-page">
-        <header></header>
         <section className="detail-content">
           <div className="detail-img">
             {images.map((img, i) => {

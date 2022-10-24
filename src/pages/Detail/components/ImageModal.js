@@ -17,11 +17,11 @@ function ImageModal({ images, imageModalIndex, closeModal, isUnmountModal }) {
   return (
     <div
       className={`image-modal-bg${isUnmountModal ? " modal-bg-unmount" : ""}`}
-      data-id="close-modal"
-      onClick={e => closeModal(e)}
+      onClick={closeModal}
     >
       <div
         className={`image-modal${isUnmountModal ? " image-modal-unmount" : ""}`}
+        onClick={e => e.stopPropagation()}
       >
         {canGoBack && (
           <button type="button" className="back-button">
