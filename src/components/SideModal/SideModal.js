@@ -12,13 +12,16 @@ function SideModal({ className, title, content, isUnmountModal, closeModal }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="side-modal-content">
-          <header>
-            <span className="material-symbols-outlined" onClick={closeModal}>
+          <header className="side-modal-header">
+            <span
+              className="material-symbols-outlined side-modal-close-button"
+              onClick={closeModal}
+            >
               close
             </span>
           </header>
-          <h1>{title}</h1>
-          <p>{content}</p>
+          <h1 className="side-modal-title">{title}</h1>
+          <p className="side-modal-body">{content}</p>
         </div>
       </div>
     </div>

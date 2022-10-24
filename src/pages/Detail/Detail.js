@@ -30,7 +30,11 @@ function Detail() {
     wishlist: {
       className: "blue-modal",
       title: `${productInfo?.name} 제품이 위시리스트에 추가되었습니다.`,
-      content: <Link to="/wishlist">위시리스트로 이동</Link>,
+      content: (
+        <Link to="/wishlist" className="side-modal-link">
+          위시리스트로 이동
+        </Link>
+      ),
     },
   };
   const openModal = i => {
