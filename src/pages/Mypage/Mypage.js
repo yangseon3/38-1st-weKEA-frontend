@@ -1,18 +1,43 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import API from "../../config";
 import "./Mypage.scss";
 
 function Mypage() {
-  const [user, setUser] = useState();
+  const [userInfo, setUserInfo] = useState(null);
+
+  const navigate = useNavigate();
+
+  const priceToString = price => {
+    return parseInt(price)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const needLogin = () => {
+    alert("로그인이 필요합니다.");
+    navigate("/login");
+  };
 
   useEffect(() => {
     fetch(API.mypage, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        authorization: localStorage.getItem("token"),
+      },
     })
-      .then(response => response.json())
-      .then(result => setUser(result));
-  });
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("error");
+        }
+      })
+      .then(result => setUserInfo(result.data))
+      .catch(needLogin);
+  }, []);
 
   return (
     <>
@@ -41,14 +66,16 @@ function Mypage() {
               고객님의 IKEA Family ID 입니다.
             </div>
             <div className="mypage-id-card-name">
-              {user.lastName}
-              {user.firstName}
+              {userInfo?.userName.lastName}
+              {userInfo?.userName.firstName}
             </div>
           </div>
           <div className="mypage-id-card-box-blank"></div>
           <div className="mypage-id-card-box-point-box">
             <span className="mypage-id-card-point">point</span>
-            <span className="mypage-id-card-point-value">1000000</span>
+            <span className="mypage-id-card-point-value">
+              {priceToString(userInfo?.point)}
+            </span>
           </div>
         </div>
       </div>
