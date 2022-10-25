@@ -32,6 +32,46 @@ function Listpage() {
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
+
+  function priceFilterRangeFrom0To49999() {
+    const rangeTestArray = productCardData.filter(
+      product => product.productPrice < 50000
+    );
+    setProductCardData(rangeTestArray);
+  }
+
+  function priceFilterRangeFrom50000To99999() {
+    const rangeTestArray = productCardData.filter(
+      product => product.productPrice < 100000 && product.productPrice >= 50000
+    );
+    setProductCardData(rangeTestArray);
+  }
+
+  function priceFilterRangeFrom100000To199999() {
+    const rangeTestArray = productCardData.filter(
+      product => product.productPrice < 199999 && product.productPrice >= 100000
+    );
+    setProductCardData(rangeTestArray);
+  }
+  function priceFilterRangeFrom200000To299999() {
+    const rangeTestArray = productCardData.filter(
+      product => product.productPrice < 299999 && product.productPrice >= 200000
+    );
+    setProductCardData(rangeTestArray);
+  }
+  function priceFilterRangeFrom300000To499999() {
+    const rangeTestArray = productCardData.filter(
+      product => product.productPrice < 499999 && product.productPrice >= 300000
+    );
+    setProductCardData(rangeTestArray);
+  }
+  function priceFilterRangeFrom500000() {
+    const rangeTestArray = productCardData.filter(
+      product => product.productPrice >= 500000
+    );
+    setProductCardData(rangeTestArray);
+  }
+
   useEffect(() => {
     fetch(apiAddress, {
       method: "GET",
@@ -144,27 +184,51 @@ function Listpage() {
               <div className="price-filter-drop-box drop-box">
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩0 - 49,999</span>
-                  <input type="radio" name="price-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="price-filter-box-radio"
+                    onClick={priceFilterRangeFrom0To49999}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩50,000 - 99,999</span>
-                  <input type="radio" name="price-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="price-filter-box-radio"
+                    onClick={priceFilterRangeFrom50000To99999}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩100,000 - 199,999</span>
-                  <input type="radio" name="price-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="price-filter-box-radio"
+                    onClick={priceFilterRangeFrom100000To199999}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩200,000 - 299,999</span>
-                  <input type="radio" name="price-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="price-filter-box-radio"
+                    onClick={priceFilterRangeFrom200000To299999}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩300,000 - 499,999</span>
-                  <input type="radio" name="price-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="price-filter-box-radio"
+                    onClick={priceFilterRangeFrom300000To499999}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">₩500,000 +</span>
-                  <input type="radio" name="price-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="price-filter-box-radio"
+                    onClick={priceFilterRangeFrom500000}
+                  />
                 </div>
               </div>
             )}
