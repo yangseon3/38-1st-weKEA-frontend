@@ -8,9 +8,6 @@ function Listpage() {
   const [productCardData, setProductCardData] = useState([]);
   const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [sortByState, setSortByState] = useState();
-  // const navigate = useNavigate();
-  // const CATEGORY_ID = 1;
   const sortBy = searchParams.get("sortBy");
   const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}`;
 
@@ -25,7 +22,7 @@ function Listpage() {
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
-
+  console.log(showMoreOffsetCount);
   function sortBynewest() {
     searchParams.set("sortBy", "newest");
     setSearchParams(searchParams);
@@ -49,6 +46,7 @@ function Listpage() {
 
   function showMoreButtonApiRequest() {
     setShowMoreOffsetCount(showMoreOffsetCount + 4);
+    console.log(productCardData);
   }
 
   const [isTotalFilterBoxVisible, setIsTotalFilterBoxVisible] = useState(false);

@@ -1,6 +1,11 @@
 import React from "react";
 import "./ProductCard.scss";
 function ProductCard({ url, id, title, size, price, color }) {
+  const priceToString = price => {
+    return parseInt(price)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   return (
     <div key={id} className="ProductCard-container">
       <img
@@ -15,7 +20,7 @@ function ProductCard({ url, id, title, size, price, color }) {
         {size} , {color}
       </div>
       <div className="ProductCard-item-price ProductCard-component-each-item">
-        ₩ {price}
+        ₩ {priceToString(price)}
       </div>
       <div className="ProductCard-component-each-item ProductCard-item-icon-container">
         <span className="ProductCard-add-cart-and-heart-icon material-symbols-outlined">
