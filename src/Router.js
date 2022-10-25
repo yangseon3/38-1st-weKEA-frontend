@@ -8,7 +8,7 @@ import Desk from "./pages/Categories/Desk";
 import Chair from "./pages/Categories/Chair";
 import Drawer from "./pages/Categories/Drawer";
 import Shelf from "./pages/Categories/Shelf";
-import Mypage from "./Mypage/Mypage";
+import Mypage from "../src/pages/Mypage/Mypage";
 
 function Router() {
   return (
