@@ -146,6 +146,7 @@ function Detail() {
             {productInfo?.options.color.map((color, index) => {
               return (
                 <div
+                  key={color}
                   className={`color ${
                     selectedColor === index ? "selected" : ""
                   }`}

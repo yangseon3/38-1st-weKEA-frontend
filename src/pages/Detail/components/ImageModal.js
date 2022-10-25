@@ -11,7 +11,6 @@ function ImageModal({
   const sliderTranslateX = (imageModalIndex - 1) * -80;
   const canGoForward = imageModalIndex < images.length;
   const canGoBack = imageModalIndex > 1;
-  console.log(canGoForward);
   const sliderMoveForward = () => {
     canGoForward && setImageModalIndex(index => index + 1);
   };
