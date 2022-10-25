@@ -25,7 +25,11 @@ function Detail() {
     cart: {
       className: "blue-modal",
       title: `${productInfo?.name} 제품이 장바구니에 추가되었습니다.`,
-      content: <Link to="/cart">장바구니로 이동</Link>,
+      content: (
+        <Link to="/cart" className="side-modal-link">
+          장바구니로 이동
+        </Link>
+      ),
     },
     wishlist: {
       className: "blue-modal",
