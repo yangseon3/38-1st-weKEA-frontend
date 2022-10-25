@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../../config";
-import "./Login.scss";
 import Logo from "../../components/Logo/Logo";
+import "./Login.scss";
 
 function Login() {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
@@ -67,7 +67,6 @@ function Login() {
               </span>
             </div>
             <Logo />
-            {/* //logo 컴포넌트로 바꿀예정 */}
           </header>
           <main className="login-description-body">
             <h1 className="login-description-title">로그인</h1>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../../components/Nav/Nav";
-import "./Mypage.scss";
 import API from "../../config";
+import "./Mypage.scss";
 
 function Mypage() {
   const [user, setUser] = useState();
+
   useEffect(() => {
     fetch(API.mypage, {
       method: "GET",
