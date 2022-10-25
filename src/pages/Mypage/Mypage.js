@@ -9,9 +9,6 @@ function Mypage() {
   useEffect(() => {
     fetch(API.mypage, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
     })
       .then(response => response.json())
       .then(result => setUser(result));
@@ -51,7 +48,7 @@ function Mypage() {
           <div className="mypage-id-card-box-blank"></div>
           <div className="mypage-id-card-box-point-box">
             <span className="mypage-id-card-point">point</span>
-            <span className="mypage-id-card-point-value">{user.point}</span>
+            <span className="mypage-id-card-point-value">1000000</span>
           </div>
         </div>
       </div>
