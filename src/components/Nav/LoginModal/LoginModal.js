@@ -16,11 +16,11 @@ function LoginModal({ setToggleModal, userName }) {
   };
   return (
     <div
-      className={`login-modal-bg${unmount ? " menu-bar-bg-unmount" : ""}`}
+      className={`login-modal-bg${unmount ? " modal-bg-unmount" : ""}`}
       onClick={closeModal}
     >
       <div
-        className={`login-modal ${unmount ? "login-modal-unmount" : ""}`}
+        className={`login-modal ${unmount ? "side-modal-unmount" : ""}`}
         onClick={e => e.stopPropagation()}
       >
         <header>
