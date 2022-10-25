@@ -1,0 +1,53 @@
+@import "../../../styles/variables.scss";
+
+.wish-list-item {
+  @include flex(center, center, row);
+  height: 200px;
+  padding: 40px;
+  border-bottom: 1px solid#dfdfdf;
+  &:last-child {
+    border: none;
+  }
+  .thumbnail-wrapper {
+    width: 140px;
+    height: 140px;
+    img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: scale-down;
+      object-fit: scale-down;
+    }
+  }
+  .wish-list-item-content {
+    @include flex(space-around, space-between, column);
+    width: 100%;
+    height: 140px;
+    padding-left: 20px;
+    .product-info {
+      @include flex(space-between, flex-start, row);
+      width: 100%;
+      line-height: 25px;
+      .product-name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .product-color,
+      .product-size {
+        font-size: 16px;
+      }
+      .product-price {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .functions {
+      @include flex(space-between, center, row);
+      width: 30%;
+      .delete-button,
+      .add-to-cart-button {
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+}

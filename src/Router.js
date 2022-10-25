@@ -9,6 +9,7 @@ import Chair from "./pages/Categories/Chair";
 import Drawer from "./pages/Categories/Drawer";
 import Shelf from "./pages/Categories/Shelf";
 import Mypage from "../src/pages/Mypage/Mypage";
+import WishList from "./pages/WishList/WishList";
 import Nav from "./components/Nav/Nav";
 
 function Router() {
@@ -25,6 +26,7 @@ function Router() {
         <Route path="/category/drawer" element={<Drawer />} />
         <Route path="/category/shelf" element={<Shelf />} />
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/wishlist" element={<WishList />} />
       </Routes>
     </BrowserRouter>
   );
