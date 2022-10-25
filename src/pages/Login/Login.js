@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../../config";
 import Logo from "../../components/Logo/Logo";
-import ModalContainer from "../../components/Modal/ModalContainer";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import "./Login.scss";
 
 function Login() {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [alert, setAlert] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
+  const [isAlertModalAppear, setIsAlertModalAppear] = useState(false);
 
   const navigate = useNavigate();
-
+  const appearAlertModal = () => {
+    setIsAlertModalAppear(true);
+    setTimeout(() => {
+      setIsAlertModalAppear(false);
+    }, 3000);
+  };
   const userInfoHander = e => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
@@ -20,7 +26,6 @@ function Login() {
   const togglePass = () => {
     setShowPassword(!showPassword);
   };
-
   const { email, password } = userInfo;
 
   const emailRegex =
@@ -51,7 +56,6 @@ function Login() {
         );
       });
   };
-  console.log(userInfo);
 
   return (
     <div className="login-page">
@@ -153,7 +157,7 @@ function Login() {
               <img src="https://img.icons8.com/ios/344/info--v3.png" />
             </div>
           </div>
-          <button className="login-form-button">로그인</button>
+          {<button className="login-form-button">로그인</button>}
           <div className="login-form-signup-page-text">
             weKEA 계정이 없으신가요? 지금 바로 만들어보세요.
           </div>
@@ -166,7 +170,13 @@ function Login() {
           >
             개인 회원 가입하기
           </button>
-          <ModalContainer />
+          {isAlertModalAppear && (
+            <AlertModal
+              alertModalContent={
+                "가입하지 않은 아이디이거나, 잘못된 비밀번호입니다."
+              }
+            />
+          )}
         </form>
       </main>
     </div>
