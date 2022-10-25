@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginModal.scss";
 
-function LoginModal({ setToggleModal }) {
+function LoginModal({ setToggleModal, userName }) {
   const [unmount, setUnmount] = useState(false);
   const navigate = useNavigate();
   const movePage = url => {
@@ -31,14 +31,40 @@ function LoginModal({ setToggleModal }) {
           </div>
         </header>
         <div className="modal-login">
-          <h1>Hello!</h1>
-          <span onClick={() => movePage("/login")}>로그인</span>
+          <h1>Hello{userName !== null && ` ${userName.firstName}`}!</h1>
+          {userName !== null ? (
+            <span
+              onClick={() => {
+                localStorage.removeItem("token");
+              }}
+            >
+              로그아웃
+            </span>
+          ) : (
+            <span onClick={() => movePage("/login")}>로그인</span>
+          )}
         </div>
-        <div className="modal-signup" onClick={() => movePage("/signup")}>
-          <span>weKEA 계정 생성하기</span>
-          <span className="material-symbols-outlined">arrow_forward_ios</span>
-        </div>
+        {userName !== null ? (
+          <div className="modal-mypage" onClick={() => movePage("/mypage")}>
+            <span>My weKEA</span>
+            <span className="material-symbols-outlined">arrow_forward_ios</span>
+          </div>
+        ) : (
+          <div className="modal-signup" onClick={() => movePage("/signup")}>
+            <span>weKEA 계정 생성하기</span>
+            <span className="material-symbols-outlined">arrow_forward_ios</span>
+          </div>
+        )}
         <ul>
+          {userName !== null ? (
+            <li className="login-modal-menu" onClick={() => movePage("/login")}>
+              로그아웃
+            </li>
+          ) : (
+            <li className="login-modal-menu" onClick={() => movePage("/login")}>
+              로그인
+            </li>
+          )}
           {LOGIN_MODAL_MENU.map(menu => {
             const { id, title, url } = menu;
             return (
@@ -58,7 +84,6 @@ function LoginModal({ setToggleModal }) {
 }
 
 const LOGIN_MODAL_MENU = [
-  { id: 1, title: "로그인", url: "/login" },
   { id: 2, title: "구매 내역", url: "/purchasehistory" },
   { id: 3, title: "위시리스트", url: "/wishlist" },
   { id: 4, title: "배송 조회", url: "/" },
