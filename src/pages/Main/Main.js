@@ -7,7 +7,6 @@ function Main() {
   const [randomMainImg, setRandomMainImg] = useState([]);
 
   useEffect(() => {
-    console.log("fetch함수 실행 테스트용 콘솔로그");
     fetch("https://10.58.52.238:3000/", {
       method: "GET",
     })
