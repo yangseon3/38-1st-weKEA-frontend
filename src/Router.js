@@ -14,8 +14,8 @@ import Nav from "./components/Nav/Nav";
 function Router() {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
-        <Nav />
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
