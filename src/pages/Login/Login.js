@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../../config";
 import Logo from "../../components/Logo/Logo";
-import ModalContainer from "../Login/Modal/ModalContainer";
+import ModalContainer from "../../components/Modal/ModalContainer";
 import "./Login.scss";
 
 function Login() {
