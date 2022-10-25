@@ -4,17 +4,7 @@ import ItemBar from "./ItemBar/ItemBar";
 import "./Cart.scss";
 
 function Cart() {
-  const [products, setProducts] = useState([
-    {
-      id: "",
-      name: "",
-      thumbnail: "",
-      price: "",
-      size: "",
-      color: "",
-      quantity: "",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
   const [isCouponFormOpened, setIsCouponFormOpened] = useState(false);
   const [sideModal, setSideModal] = useState("");
   const [isUnmountModal, setIsUnmountModal] = useState(false);
