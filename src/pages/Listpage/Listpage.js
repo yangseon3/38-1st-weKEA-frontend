@@ -1,19 +1,41 @@
 import React, { useState, useEffect } from "react";
 import "./Listpage.scss";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
 import ProductCard from "../../components/ProductCard/ProductCard";
 
 function Listpage() {
   const [productCardData, setProductCardData] = useState([]);
   const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
-  const navigate = useNavigate();
-  const CATEGORY_ID = 1;
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const [sortByState, setSortByState] = useState();
+  // const navigate = useNavigate();
+  // const CATEGORY_ID = 1;
+  const sortBy = searchParams.get("sortBy");
+  const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}`;
 
-  // const sortByPriceASC = () => {
-  //   navigate(`categories/1?offset=0&limit=4&sortby=priceASC`);
-  // };
-  const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}`;
+  function sortByPriceASC() {
+    searchParams.set("sortBy", "priceASC");
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
+  }
 
+  function sortByPriceDESC() {
+    searchParams.set("sortBy", "priceDESC");
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
+  }
+
+  function sortBynewest() {
+    searchParams.set("sortBy", "newest");
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
+  }
+  function sortBynameASC() {
+    searchParams.set("sortBy", "nameASC");
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
+  }
   useEffect(() => {
     fetch(apiAddress, {
       method: "GET",
@@ -23,7 +45,7 @@ function Listpage() {
     })
       .then(response => response.json())
       .then(data => setProductCardData(data.getProductsByCategoryId));
-  }, [showMoreOffsetCount]);
+  }, [showMoreOffsetCount, sortBy]);
 
   function showMoreButtonApiRequest() {
     setShowMoreOffsetCount(showMoreOffsetCount + 4);
@@ -76,19 +98,35 @@ function Listpage() {
               <div className="total-drop-box drop-box">
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">가격 높은순</span>{" "}
-                  <input type="radio" name="total-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="total-filter-box-radio"
+                    onClick={sortByPriceDESC}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">가격 낮은순</span>{" "}
-                  <input type="radio" name="total-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="total-filter-box-radio"
+                    onClick={sortByPriceASC}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">최신순</span>
-                  <input type="radio" name="total-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="total-filter-box-radio"
+                    onClick={sortBynewest}
+                  />
                 </div>
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">이름순</span>
-                  <input type="radio" name="total-filter-box-radio" />
+                  <input
+                    type="radio"
+                    name="total-filter-box-radio"
+                    onClick={sortBynameASC}
+                  />
                 </div>
               </div>
             )}
