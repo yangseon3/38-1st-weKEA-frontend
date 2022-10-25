@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { API } from "../../config";
+import { useNavigate } from "react-router-dom";
+import API from "../../config";
+import Logo from "../../components/Logo/Logo";
 import "./Login.scss";
 
 function Login() {
@@ -33,7 +34,7 @@ function Login() {
 
   const loginRequest = e => {
     e.preventDefault();
-    fetch("API".login, {
+    fetch(API.login, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,8 +66,7 @@ function Login() {
                 arrow_back
               </span>
             </div>
-            <div className="logo">위케아</div>
-            {/* //logo 컴포넌트로 바꿀예정 */}
+            <Logo />
           </header>
           <main className="login-description-body">
             <h1 className="login-description-title">로그인</h1>
