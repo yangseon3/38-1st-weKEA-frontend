@@ -1,8 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Listpage.scss";
+import { useNavigate } from "react-router-dom";
 import ProductCard from "../../components/ProductCard/ProductCard";
 
 function Listpage() {
+  const [productCardData, setProductCardData] = useState([]);
+  const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
+  const navigate = useNavigate();
+  const CATEGORY_ID = 1;
+
+  // const sortByPriceASC = () => {
+  //   navigate(`categories/1?offset=0&limit=4&sortby=priceASC`);
+  // };
+  const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}`;
+
+  useEffect(() => {
+    fetch(apiAddress, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => response.json())
+      .then(data => setProductCardData(data.getProductsByCategoryId));
+  }, [showMoreOffsetCount]);
+
+  function showMoreButtonApiRequest() {
+    setShowMoreOffsetCount(showMoreOffsetCount + 4);
+  }
+
   const [isTotalFilterBoxVisible, setIsTotalFilterBoxVisible] = useState(false);
   const [isPriceFilterBoxVisible, setIsPriceFilterBoxVisible] = useState(false);
 
@@ -111,22 +137,28 @@ function Listpage() {
         </div>
       </div>
       <div className="ProductCard-component-container">
-        {TEST_CONST.map(item => {
+        {productCardData.map(productInfo => {
           return (
             <ProductCard
-              key={item.id}
-              url={item.url}
-              id={item.id}
-              title={item.title}
-              size={item.size}
-              price={item.price}
+              key={productInfo.optionsId}
+              url={productInfo.productThumbnail}
+              id={productInfo.productId}
+              title={productInfo.productName}
+              size={productInfo.productSize}
+              price={productInfo.productPrice}
+              color={productInfo.productColor}
             />
           );
         })}
       </div>
       <div className="show-more-button-container">
         <div className="show-more-button-frame">
-          <button className="show-more-button">더 보기</button>
+          <button
+            className="show-more-button"
+            onClick={showMoreButtonApiRequest}
+          >
+            더 보기
+          </button>
         </div>
       </div>
     </div>

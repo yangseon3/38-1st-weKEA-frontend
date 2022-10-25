@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProductCard.scss";
-function ProductCard({ url, id, title, size, price }) {
+function ProductCard({ url, id, title, size, price, color }) {
   return (
     <div key={id} className="ProductCard-container">
       <img
@@ -12,7 +12,7 @@ function ProductCard({ url, id, title, size, price }) {
         {title}
       </div>
       <div className="ProductCard-item-size ProductCard-component-each-item">
-        {size} cm
+        {size} , {color}
       </div>
       <div className="ProductCard-item-price ProductCard-component-each-item">
         ₩ {price}
