@@ -14,6 +14,13 @@
   z-index: 999;
 }
 
+@font-face {
+  font-family: "Noto Sans KR", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap");
+  font-style: normal;
+  font-weight: normal;
+}
+
 $wekea-blue: #0c67b4;
 $wekea-dark-blue: #084392;
 $wekea-gray: #dfdfdf;
