@@ -19,20 +19,6 @@ function Cart() {
   const [sideModal, setSideModal] = useState("");
   const [isUnmountModal, setIsUnmountModal] = useState(false);
 
-  const sideModalContent = {
-    refund: {
-      className: "white-modal",
-      title: "마음이 바뀌어도 괜찮습니다!",
-      content:
-        "구입한 weKEA 제품이 만족스럽지 않다면 언제든지 새제품과 미개봉 제품을 반품하고 전액 환불받을 수 있습니다",
-    },
-    security: {
-      className: "white-modal",
-      title: "이 사이트는 안전합니다",
-      content: "weKEA는 민감한 정보를 다루지 않아 안전합니다.",
-    },
-  };
-
   const openSideModal = e => {
     const { id } = e.target.dataset;
     setSideModal(id);
@@ -74,9 +60,9 @@ function Cart() {
     <>
       {sideModal !== "" && (
         <SideModal
-          className={sideModalContent[sideModal].className}
-          title={sideModalContent[sideModal].title}
-          content={sideModalContent[sideModal].content}
+          className={SIDE_MODAL_CONTENT[sideModal].className}
+          title={SIDE_MODAL_CONTENT[sideModal].title}
+          content={SIDE_MODAL_CONTENT[sideModal].content}
           closeModal={closeModal}
           isUnmountModal={isUnmountModal}
         />
@@ -169,5 +155,19 @@ function Cart() {
     </>
   );
 }
+
+const SIDE_MODAL_CONTENT = {
+  refund: {
+    className: "white-modal",
+    title: "마음이 바뀌어도 괜찮습니다!",
+    content:
+      "구입한 weKEA 제품이 만족스럽지 않다면 언제든지 새제품과 미개봉 제품을 반품하고 전액 환불받을 수 있습니다",
+  },
+  security: {
+    className: "white-modal",
+    title: "이 사이트는 안전합니다",
+    content: "weKEA는 민감한 정보를 다루지 않아 안전합니다.",
+  },
+};
 
 export default Cart;
