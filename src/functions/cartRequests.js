@@ -1,5 +1,7 @@
+import { API } from "../config";
+
 const getCart = setState => {
-  fetch("http://10.58.52.238:3000/carts/a", {
+  fetch(API.getCart, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +15,7 @@ const getCart = setState => {
 };
 
 const addToCart = () => {
-  fetch("http://10.58.52.238:3000/carts", {
+  fetch(API.addToCart, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,7 +29,7 @@ const addToCart = () => {
 };
 
 const deleteItem = () => {
-  fetch("http://10.58.52.238:3000/carts/deleteone", {
+  fetch(API.deleteOne, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
