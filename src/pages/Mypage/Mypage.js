@@ -1,26 +1,20 @@
-import React, { useState } from "react";
-import Nav from "../components/Nav/Nav";
+import React, { useState, useEffect } from "react";
+import Nav from "../../components/Nav/Nav";
 import "./Mypage.scss";
+import API from "../../config";
 
 function Mypage() {
-  const mypagePoing = e => {
-    e.preventDefault();
-    fetch("http://10.58.52.58:3000", {
-      method: "POST",
+  const [user, setUser] = useState();
+  useEffect(() => {
+    fetch(API.mypage, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ point }),
     })
       .then(response => response.json())
-      .then(data => {
-        localStorage.setItem("token", data.userInfo.accessToken);
-        localStorage.setItem(
-          "userName",
-          JSON.stringify(data.userInfo.userName)
-        );
-      });
-  };
+      .then(result => setUser(result));
+  });
 
   return (
     <>
@@ -48,12 +42,15 @@ function Mypage() {
             <div className="mypage-id-card-guide">
               고객님의 IKEA Family ID 입니다.
             </div>
-            <div className="mypage-id-card-name">이름</div>
+            <div className="mypage-id-card-name">
+              {user.lastName}
+              {user.firstName}
+            </div>
           </div>
           <div className="mypage-id-card-box-blank"></div>
           <div className="mypage-id-card-box-point-box">
             <span className="mypage-id-card-point">point</span>
-            <span className="mypage-id-card-point-value">1000000</span>
+            <span className="mypage-id-card-point-value">{user.point}</span>
           </div>
         </div>
       </div>
