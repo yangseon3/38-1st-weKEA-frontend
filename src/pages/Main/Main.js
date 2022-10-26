@@ -87,5 +87,3 @@ function Main() {
 }
 
 export default Main;
-
-// const MAIN_IMAGES_DATA = [];

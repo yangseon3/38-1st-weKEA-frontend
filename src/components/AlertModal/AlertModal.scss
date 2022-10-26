@@ -1,0 +1,45 @@
+.modal-container {
+  z-index: 9999;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  animation: alertModalMount 3s;
+  .modal-content {
+    display: flex;
+    width: 400px;
+    height: 100px;
+    padding: 20px;
+    background-color: black;
+    position: absolute;
+    color: white;
+    right: 5%;
+    top: 10%;
+    font-size: 15px;
+    z-index: 100;
+    align-items: center;
+
+    .modal-button {
+      position: relative;
+      border: none;
+      border-radius: 50px;
+      background-color: rgb(81, 75, 75);
+      left: 10px;
+      top: 0px;
+    }
+  }
+}
+
+@keyframes alertModalMount {
+  0% {
+    right: -400px;
+  }
+  20% {
+    right: 50px;
+  }
+  80% {
+    right: 50px;
+  }
+  100% {
+    right: -400px;
+  }
+}

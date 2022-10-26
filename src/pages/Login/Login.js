@@ -1,15 +1,23 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { API } from "../../config";
+import { useNavigate } from "react-router-dom";
+import API from "../../config";
+import Logo from "../../components/Logo/Logo";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import "./Login.scss";
 
 function Login() {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [alert, setAlert] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
+  const [isAlertModalAppear, setIsAlertModalAppear] = useState(false);
 
   const navigate = useNavigate();
-
+  const appearAlertModal = () => {
+    setIsAlertModalAppear(true);
+    setTimeout(() => {
+      setIsAlertModalAppear(false);
+    }, 3000);
+  };
   const userInfoHander = e => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
@@ -18,7 +26,6 @@ function Login() {
   const togglePass = () => {
     setShowPassword(!showPassword);
   };
-
   const { email, password } = userInfo;
 
   const emailRegex =
@@ -33,21 +40,24 @@ function Login() {
 
   const loginRequest = e => {
     e.preventDefault();
-    fetch("API".login, {
+    fetch(API.login, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error("에러 발생!");
+      }, [])
       .then(data => {
-        localStorage.setItem("token", data.userInfo.accessToken);
-        localStorage.setItem(
-          "userName",
-          JSON.stringify(data.userInfo.userName)
-        );
-      });
+        localStorage.setItem("token", data.accessToken);
+        navigate("/");
+      })
+      .catch(appearAlertModal);
   };
 
   return (
@@ -65,8 +75,7 @@ function Login() {
                 arrow_back
               </span>
             </div>
-            <div className="logo">위케아</div>
-            {/* //logo 컴포넌트로 바꿀예정 */}
+            <Logo />
           </header>
           <main className="login-description-body">
             <h1 className="login-description-title">로그인</h1>
@@ -156,6 +165,7 @@ function Login() {
             weKEA 계정이 없으신가요? 지금 바로 만들어보세요.
           </div>
           <button
+            type="button"
             onClick={() => {
               return navigate(`/SignUp`);
             }}
@@ -163,6 +173,13 @@ function Login() {
           >
             개인 회원 가입하기
           </button>
+          {isAlertModalAppear && (
+            <AlertModal
+              alertModalContent={
+                "가입하지 않은 아이디이거나, 잘못된 비밀번호입니다."
+              }
+            />
+          )}
         </form>
       </main>
     </div>
