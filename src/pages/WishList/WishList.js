@@ -13,7 +13,7 @@ function WishList() {
     return price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const getMockData = () => {
+  useEffect(() => {
     fetch("/data/wishlist/WISHLIST.json", {
       method: "GET",
       headers: {
@@ -22,10 +22,6 @@ function WishList() {
     })
       .then(response => response.json())
       .then(data => setWishLists(data));
-  };
-
-  useEffect(() => {
-    getMockData();
   }, []);
 
   return (
@@ -59,7 +55,7 @@ function WishList() {
           </div>
           <p className="buy-online">이 제품을 온라인으로 구매하시겠어요?</p>
           <div className="add-to-cart-all">
-            <div className="add-to-cart-wrapper">
+            <div className="add-to-cart-all-wrapper">
               <span className="material-symbols-outlined add-to-cart-all-icon">
                 add_shopping_cart
               </span>
