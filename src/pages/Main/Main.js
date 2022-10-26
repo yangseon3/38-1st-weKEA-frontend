@@ -53,19 +53,6 @@ function Main() {
     },
   ];
 
-  const goToChairListPage = () => {
-    navigate("/category/chair");
-  };
-  const goToDeskListPage = () => {
-    navigate("/category/Desk");
-  };
-  const goToShelfListPage = () => {
-    navigate("/category/Shelf");
-  };
-  const goToDrawerListPage = () => {
-    navigate("/category/Drawer");
-  };
-
   return (
     <>
       <Nav />
