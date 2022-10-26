@@ -21,7 +21,10 @@ function MenuBar({ setToggleMenu }) {
       className={`menu-bar-bg${unmount ? " menu-bar-bg-unmount" : ""}`}
       onClick={closeMenu}
     >
-      <div className={`menu-bar ${unmount ? "menu-bar-unmount" : ""}`}>
+      <div
+        className={`menu-bar ${unmount ? "menu-bar-unmount" : ""}`}
+        onClick={e => e.stopPropagation()}
+      >
         <header>
           <div className="close-btn">
             <span className="material-symbols-outlined" onClick={closeMenu}>
