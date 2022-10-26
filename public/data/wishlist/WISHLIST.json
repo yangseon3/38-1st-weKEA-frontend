@@ -3,18 +3,24 @@
     "id": 1,
     "name": "example1",
     "thumbnail": "https://cdn.pixabay.com/photo/2022/09/28/10/43/sea-7484743_1280.jpg",
-    "price": 100000
+    "price": 100000,
+    "size": "100x50cm",
+    "color": "white"
   },
   {
     "id": 2,
     "name": "example2",
     "thumbnail": "https://cdn.pixabay.com/photo/2022/10/13/07/54/crane-houses-7518536_1280.jpg",
-    "price": 150000
+    "price": 150000,
+    "size": "100x50cm",
+    "color": "white"
   },
   {
     "id": 3,
     "name": "example3",
     "thumbnail": "https://cdn.pixabay.com/photo/2022/10/13/07/54/crane-houses-7518536_1280.jpg",
-    "price": 350000
+    "price": 350000,
+    "size": "100x50cm",
+    "color": "white"
   }
 ]

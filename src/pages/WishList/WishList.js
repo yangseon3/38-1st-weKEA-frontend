@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import WishListItem from "./WishListItem/WishListItem";
 import "./WishList.scss";
 
 function WishList() {
   const [wishLists, setWishLists] = useState([]);
+  const [isAppearAlert, setIsAppearAlert] = useState(false);
 
+  const popAlertModal = () => {
+    setIsAppearAlert(true);
+    setTimeout(() => {
+      setIsAppearAlert(false);
+    }, 3000);
+  };
   const totalPrice = () => {
     const prices = wishLists.map(product => product.price);
     return prices.reduce((total, current) => total + current, 0);
@@ -12,7 +20,6 @@ function WishList() {
   const priceToString = price => {
     return price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
   useEffect(() => {
     fetch("/data/wishlist/WISHLIST.json", {
       method: "GET",
@@ -26,6 +33,9 @@ function WishList() {
 
   return (
     <>
+      {isAppearAlert && (
+        <AlertModal alertModalContent={"장바구니에 추가되었습니다."} />
+      )}
       <div className="wish-list-page">
         <main className="wish-list-body">
           <header className="wish-list-title">
@@ -38,7 +48,7 @@ function WishList() {
                   key={product.id}
                   product={product}
                   priceToString={priceToString}
-                  moveTo={"장바구니"}
+                  popAlertModal={popAlertModal}
                 />
               );
             })}
@@ -54,7 +64,7 @@ function WishList() {
             </span>
           </div>
           <p className="buy-online">이 제품을 온라인으로 구매하시겠어요?</p>
-          <div className="add-to-cart-all">
+          <div className="add-to-cart-all" onClick={popAlertModal}>
             <div className="add-to-cart-all-wrapper">
               <span className="material-symbols-outlined add-to-cart-all-icon">
                 add_shopping_cart
