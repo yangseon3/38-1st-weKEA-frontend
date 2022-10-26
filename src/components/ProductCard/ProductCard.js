@@ -9,28 +9,28 @@ function ProductCard({ url, optionsId, productId, title, size, price, color }) {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
-    <div key={optionsId} className="ProductCard-container">
+    <div key={optionsId} className="productCard-container">
       <Link to={`detail/${productId}`}>
         <img
           src={url}
           alt={optionsId}
-          className="ProductCard-img ProductCard-component-each-item"
+          className="productCard-img productCard-component-each-item"
         />
       </Link>
-      <div className="ProductCard-item-title ProductCard-component-each-item">
+      <div className="productCard-item-title productCard-component-each-item">
         {title}
       </div>
-      <div className="ProductCard-item-size ProductCard-component-each-item">
+      <div className="productCard-item-size productCard-component-each-item">
         {size} , {color}
       </div>
-      <div className="ProductCard-item-price ProductCard-component-each-item">
+      <div className="productCard-item-price productCard-component-each-item">
         ₩ {priceToString(price)}
       </div>
-      <div className="ProductCard-component-each-item ProductCard-item-icon-container">
-        <span className="ProductCard-add-cart-and-heart-icon material-symbols-outlined">
+      <div className="productCard-component-each-item productCard-item-icon-container">
+        <span className="productCard-add-cart-and-heart-icon material-symbols-outlined">
           add_shopping_cart
         </span>
-        <span className="ProductCard-add-cart-and-heart-icon material-symbols-outlined">
+        <span className="productCard-add-cart-and-heart-icon material-symbols-outlined">
           heart_plus
         </span>
       </div>
