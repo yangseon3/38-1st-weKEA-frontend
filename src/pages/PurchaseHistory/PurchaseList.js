@@ -13,8 +13,8 @@ function PurchaseList({ purchaseDate, price, state, title }) {
           ₩ {price}
         </div>
       </div>
-      <div className="purchase-list-item-show-more-button-container">
-        <button className="purchase-list-item-show-more-button">></button>
+      <div className="show-more-detail-button-container">
+        <button className="show-more-detail-button">></button>
       </div>
     </div>
   );

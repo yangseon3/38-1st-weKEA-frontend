@@ -5,10 +5,10 @@ import PurchaseList from "./PurchaseList";
 function PurchaseHistory() {
   return (
     <div className="purchase-history">
-      <div className="order-history">
+      <div className="order-history-guide-box">
         <div className="order-history-content-box">
           <div className="purchase-history-text">구매 내역</div>
-          <div className="question-about-omission">
+          <div className="question-about-order-omission">
             주문이 목록에서 누락 되었나요?{" "}
             <span className="link-to-order-list">주문 조회</span> 기능으로
             주문을 조회해 보세요.
@@ -16,21 +16,21 @@ function PurchaseHistory() {
         </div>
       </div>
       <div className="purchase-list-box">
-        {PURCHASE_HISTORY_LIST.map(item => {
+        {PURCHASE_HISTORY_LIST.map(orderingInfo => {
           return (
-            <div key={item.purchaseDate}>
+            <div key={orderingInfo.purchaseDate}>
               <PurchaseList
-                purchaseDate={item.purchaseDate}
-                state={item.state}
-                price={item.price}
-                url={item.url}
-                title={item.title}
+                purchaseDate={orderingInfo.purchaseDate}
+                state={orderingInfo.state}
+                price={orderingInfo.price}
+                url={orderingInfo.url}
+                title={orderingInfo.title}
               />
             </div>
           );
         })}
 
-        <div className="asking-mention-for-page">
+        <div className="asking-mention-for-purchase-history-page">
           구매 내역 페이지에 대해 어떻게 생각하는지 알려주세요
         </div>
       </div>

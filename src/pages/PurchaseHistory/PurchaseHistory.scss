@@ -2,7 +2,7 @@
   display: flex;
   padding-left: 120px;
   padding-top: 90px;
-  .order-history {
+  .order-history-guide-box {
     width: 520px;
     .order-history-content-box {
       position: sticky;
@@ -18,7 +18,7 @@
         font-weight: 650;
         margin-bottom: 30px;
       }
-      .question-about-omission {
+      .question-about-order-omission {
         font-size: 12px;
         letter-spacing: 0.3px;
         line-height: 15px;
@@ -60,7 +60,7 @@
       }
     }
 
-    .asking-mention-for-page {
+    .asking-mention-for-purchase-history-page {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -69,13 +69,13 @@
       margin-bottom: 100px;
       cursor: pointer;
     }
-    .asking-mention-for-page:hover {
+    .asking-mention-for-purchase-history-page:hover {
       text-decoration: underline;
     }
   }
-  .purchase-list-item-show-more-button-container {
+  .show-more-detail-button-container {
     display: flex;
-    .purchase-list-item-show-more-button {
+    .show-more-detail-button {
       font-size: 20px;
       background-color: white;
       color: gray;

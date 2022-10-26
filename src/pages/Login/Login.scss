@@ -1,0 +1,177 @@
+.login-page {
+  width: 100vw;
+  display: flex;
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 99999;
+  .login-description-wrapper {
+    width: 40%;
+    background-color: rgb(2, 88, 162);
+    color: white;
+
+    .login-description {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      height: 100vh;
+      padding: 50px 90px;
+      .login-description-header {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .prev-btn-wrapper {
+          position: absolute;
+          left: -55px;
+          .material-symbols-outlined {
+            cursor: pointer;
+          }
+        }
+      }
+      .login-description-body {
+        font-size: 15px;
+        line-height: 20px;
+        .login-description-title {
+          color: rgb(251, 217, 16);
+          font-size: 35px;
+          font-weight: 900;
+          padding-bottom: 30px;
+        }
+        p:last-child {
+          padding-top: 20px;
+        }
+      }
+      .login-description-footer {
+        line-height: 20px;
+        font-size: 12px;
+        .login-description-footer-link {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .login-form-wrapper {
+    display: flex;
+    .login-form {
+      padding-top: 60px;
+      padding-left: 80px;
+      position: relative;
+      .login-form-input {
+        width: 450px;
+        height: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 15px;
+        border: 1px solid black;
+        border-radius: 5px;
+        &:focus {
+          border: 2px solid;
+        }
+      }
+      .login-form-email-valid {
+        color: red;
+      }
+      .visiblility-icon {
+        position: absolute;
+        cursor: pointer;
+        top: 70px;
+        right: 10px;
+      }
+      .login-form-input-text {
+        text-decoration: underline;
+        text-indent: 10px;
+      }
+      .login-form-pw-wrapper {
+        position: relative;
+        width: 450px;
+      }
+      .login-form-pw-title {
+        padding-top: 30px;
+      }
+      .login-form-pw-valid {
+        color: red;
+        padding-bottom: 10px;
+      }
+      .login-form-checkbox {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 0px;
+        align-items: center;
+        width: 450px;
+        .login-form-checkbox-wrapper {
+          display: flex;
+          align-items: center;
+        }
+        .login-form-checkbox-input {
+          width: 25px;
+          height: 25px;
+        }
+        .login-form-checkbox-text {
+          text-indent: 10px;
+        }
+        .login-form-checkbox-valid {
+          position: absolute;
+          background-color: black;
+          color: white;
+          border: 1px solid black;
+          padding: 15px 20px;
+          border-radius: 5px;
+          top: -40px;
+          right: -10px;
+          width: 500px;
+        }
+        .login-form-checkbox-mark {
+          position: relative;
+          width: 20px;
+          font-weight: bold;
+          img {
+            width: 100%;
+          }
+        }
+        .login-form-checkbox-mark:hover {
+          cursor: pointer;
+        }
+      }
+      .login-form-button {
+        width: 450px;
+        height: 55px;
+        border: none;
+        border-radius: 30px;
+        background-color: rgb(0, 95, 147);
+        color: white;
+      }
+      .login-form-button:hover {
+        background-color: rgb(0, 79, 147);
+      }
+      .login-form-signup-page-text {
+        padding-top: 70px;
+        font-weight: bold;
+        padding-bottom: 50px;
+      }
+      .login-form-signup-button {
+        width: 450px;
+        height: 55px;
+        border-radius: 30px;
+        background-color: white;
+      }
+      .login-form-signup-button:hover {
+        border: 3px solid black;
+      }
+      .valid-input {
+        border: 1px solid green;
+        &:focus {
+          border: 2px solid green;
+        }
+      }
+      .invalid-input {
+        border: 1px solid red;
+        &:focus {
+          border: 2px solid red;
+        }
+      }
+    }
+  }
+}
