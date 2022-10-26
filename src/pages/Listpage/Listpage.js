@@ -10,14 +10,10 @@ function Listpage() {
   const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
   const sortBy = searchParams.get("sortBy");
 
-  let minPrice = "";
-  let maxPrice = "";
-
-  let initialMinPrice = "0";
-  let initialMaxPrice = "9999999999";
-
-  minPrice = searchParams.get("minPrice") ? searchParams.get("minPrice") : "0";
-  maxPrice = searchParams.get("maxPrice")
+  const minPrice = searchParams.get("minPrice")
+    ? searchParams.get("minPrice")
+    : "0";
+  const maxPrice = searchParams.get("maxPrice")
     ? searchParams.get("maxPrice")
     : "99999999";
 
