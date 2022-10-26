@@ -14,7 +14,7 @@
           margin-bottom: 20px;
           font-weight: 800;
         }
-        .menu-each-item-box {
+        .each-menu-column-container {
           margin-bottom: 20px;
         }
       }
@@ -115,13 +115,12 @@
       display: flex;
       justify-content: space-between;
       font-size: 12px;
-      .year-of-ikea {
-      }
+
       .footer-website-terms-menu {
         display: flex;
         justify-content: space-between;
         width: 500px;
-        .each-terms-item:hover {
+        .each-terms:hover {
           cursor: pointer;
           text-decoration: underline;
         }

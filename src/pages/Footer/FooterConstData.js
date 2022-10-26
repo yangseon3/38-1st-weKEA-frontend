@@ -200,3 +200,16 @@ export const FOOTER_ICON_DATA = [
     icon: "settings",
   },
 ];
+
+export const LANGUAGE_OPTION_CHANGE_BOX = [
+  {
+    id: "1",
+    value: "korea-option",
+    language: "한국어",
+  },
+  {
+    id: "2",
+    value: "english-option",
+    language: "english",
+  },
+];

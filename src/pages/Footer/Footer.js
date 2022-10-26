@@ -11,33 +11,25 @@ import {
   CUSTOMER_INQUIRIES,
   SHOPPING,
   SERVICE,
+  LANGUAGE_OPTION_CHANGE_BOX,
   IKEA_STORY,
 } from "./FooterConstData";
 
 function Footer() {
-  function CustomerInquiries(props) {
-    return <div key={props.id}>{props.title}</div>;
-  }
-  function Shopping(props) {
-    return <div key={props.id}>{props.title}</div>;
-  }
-  function Service(props) {
-    return <div key={props.id}>{props.title}</div>;
-  }
-  function IkeaStory(props) {
-    return <div key={props.id}>{props.title}</div>;
+  function FooterMainMenuBoxRenderingComponent({ id, title }) {
+    return <div key={id}>{title}</div>;
   }
   return (
     <div className="footer-frame">
       <div className="footer-main">
         <div className="membership-signup-area">
-          {MEMBERSHIP_SIGNUP_GUIDING_DATA.map(title => {
+          {MEMBERSHIP_SIGNUP_GUIDING_DATA.map(inquiryTitle => {
             return (
-              <div key={title.title}>
+              <div key={inquiryTitle.title}>
                 <FooterSignUpComponent
-                  title={title.title}
-                  discription={title.discription}
-                  buttonText={title.buttonText}
+                  title={inquiryTitle.title}
+                  discription={inquiryTitle.discription}
+                  buttonText={inquiryTitle.buttonText}
                 />
               </div>
             );
@@ -48,8 +40,11 @@ function Footer() {
             <div className="footer-main-menu-box-bold-title">고객문의</div>
             {CUSTOMER_INQUIRIES.map(title => {
               return (
-                <div className="menu-each-item-box">
-                  <CustomerInquiries key={title.id} title={title.title} />
+                <div className="each-menu-column-container">
+                  <FooterMainMenuBoxRenderingComponent
+                    key={title.id}
+                    title={title.title}
+                  />
                 </div>
               );
             })}
@@ -58,8 +53,11 @@ function Footer() {
             <div className="footer-main-menu-box-bold-title">쇼핑하기</div>
             {SHOPPING.map(title => {
               return (
-                <div className="menu-each-item-box">
-                  <Shopping key={title.id} title={title.title} />
+                <div className="each-menu-column-container">
+                  <FooterMainMenuBoxRenderingComponent
+                    key={title.id}
+                    title={title.title}
+                  />
                 </div>
               );
             })}
@@ -68,8 +66,11 @@ function Footer() {
             <div className="footer-main-menu-box-bold-title">IKEA 서비스</div>
             {SERVICE.map(title => {
               return (
-                <div className="menu-each-item-box">
-                  <Service key={title.id} title={title.title} />
+                <div className="each-menu-column-container">
+                  <FooterMainMenuBoxRenderingComponent
+                    key={title.id}
+                    title={title.title}
+                  />
                 </div>
               );
             })}
@@ -78,8 +79,11 @@ function Footer() {
             <div className="footer-main-menu-box-bold-title">브랜드 소개</div>
             {IKEA_STORY.map(title => {
               return (
-                <div className="menu-each-item-box">
-                  <IkeaStory key={title.id} title={title.title} />
+                <div className="each-menu-column-container">
+                  <FooterMainMenuBoxRenderingComponent
+                    key={title.id}
+                    title={title.title}
+                  />
                 </div>
               );
             })}
@@ -102,21 +106,26 @@ function Footer() {
             🌏 국가 변경
           </button>
           <select className="change-language-button footer-language-area-button">
-            <option value="korea-option">한국어</option>
-            <option value="english-option">English</option>
+            {LANGUAGE_OPTION_CHANGE_BOX.map(el => {
+              return (
+                <option value={el.value} key={el.id}>
+                  {el.language}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>
 
       <div className="footer-company-info-area">
         <div className="footer-company-info-area-bar">
-          <div className="year-of-ikea ">
+          <div className="Company history information">
             © Inter IKEA Systems B.V 1999-2022
           </div>
           <div className="footer-website-terms-menu">
             {WEBSITE_TERMS_MENU.map(terms => {
               return (
-                <div key={terms.id} className="each-terms-item">
+                <div key={terms.id} className="each-terms">
                   {terms.termsElement}
                 </div>
               );
