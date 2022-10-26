@@ -9,6 +9,7 @@ import Email from "./components/Email";
 import Password from "./components/Password";
 import Checkbox from "./components/Checkbox";
 import Aside from "./components/Aside";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [alert, setAlert] = useState(false);
@@ -21,6 +22,8 @@ function SignUp() {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const userInfoHander = e => {
     const { name, value } = e.target;
@@ -57,7 +60,8 @@ function SignUp() {
     setShowPassword(boolean => !boolean);
   };
 
-  const signupRequest = () => {
+  const signupRequest = e => {
+    e.preventDefault();
     fetch(API.signup, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -69,11 +73,17 @@ function SignUp() {
         phoneNumber,
         birthday,
       }),
-    });
-    // .then(response => response.json())
-    // .then(data => console.log(data));
+    })
+      .then(response => {
+        console.log(response);
+        if (response.ok === true) {
+          return navigate("/Login");
+        } else {
+          throw new Error("에러 발생!");
+        }
+      })
+      .catch(error => console.log(error));
   };
-
   return (
     <div className="signup-page">
       <Aside />
