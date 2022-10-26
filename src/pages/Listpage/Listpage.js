@@ -155,7 +155,7 @@ function Listpage() {
   function changeSortBoxBoolean() {
     setIsSortBoxVisible(!isSortBoxVisible);
   }
-  function priceFilterBoxToggle() {
+  function changePriceFilterBoxToggle() {
     setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
   }
   function isClickOnBox(e) {
@@ -216,7 +216,7 @@ function Listpage() {
         <div className="price-filter-total-frame">
           <div
             className="price-filter-container filter-container"
-            onClick={priceFilterBoxToggle}
+            onClick={changePriceFilterBoxToggle}
           >
             <button className="filter-button">
               가격
