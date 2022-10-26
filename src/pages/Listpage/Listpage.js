@@ -37,38 +37,44 @@ function Listpage() {
     {
       id: "1",
       pricerange: "0 - 49,999",
-      onclickfunction: priceFilterRangeFrom0To49999,
+      minPrice: "1",
+      maxPrice: "49999",
     },
     {
       id: "2",
       pricerange: "50,000 - 99,999",
-      onclickfunction: priceFilterRangeFrom50000To99999,
+      minPrice: "50000",
+      maxPrice: "99999",
     },
     {
       id: "3",
       pricerange: "100,000 - 199,999",
-      onclickfunction: priceFilterRangeFrom100000To199999,
+      minPrice: "100000",
+      maxPrice: "199999",
     },
     {
       id: "4",
       pricerange: "200,000 - 299,999",
-      onclickfunction: priceFilterRangeFrom200000To299999,
+      minPrice: "200000",
+      maxPrice: "299999",
     },
     {
       id: "5",
       pricerange: "300,000 - 499,999",
-      onclickfunction: priceFilterRangeFrom300000To499999,
+      minPrice: "300000",
+      maxPrice: "499999",
     },
     {
       id: "6",
       pricerange: "500,000 +",
-      onclickfunction: priceFilterRangeFrom500000,
+      minPrice: "500000",
+      maxPrice: "9999999999",
     },
   ];
 
   const minPrice = searchParams.get("minPrice")
     ? searchParams.get("minPrice")
-    : "0";
+    : "1";
   const maxPrice = searchParams.get("maxPrice")
     ? searchParams.get("maxPrice")
     : "99999999";
@@ -86,6 +92,7 @@ function Listpage() {
       .then(data => {
         setProductCardData(data.getProductsByCategoryId);
         console.log(productCardData);
+        console.log("test");
       });
   }, [showMoreOffsetCount, sortBy, minPrice, maxPrice]);
 
@@ -113,39 +120,10 @@ function Listpage() {
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
-  function priceFilterRangeFrom0To49999() {
-    searchParams.set("minPrice", 0);
-    searchParams.set("maxPrice", 49999);
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function priceFilterRangeFrom50000To99999() {
-    searchParams.set("minPrice", 50000);
-    searchParams.set("maxPrice", 99999);
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function priceFilterRangeFrom100000To199999() {
-    searchParams.set("minPrice", 100000);
-    searchParams.set("maxPrice", 199999);
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function priceFilterRangeFrom200000To299999() {
-    searchParams.set("minPrice", 200000);
-    searchParams.set("maxPrice", 299999);
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function priceFilterRangeFrom300000To499999() {
-    searchParams.set("minPrice", 300000);
-    searchParams.set("maxPrice", 499999);
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function priceFilterRangeFrom500000() {
-    searchParams.set("minPrice", 500000);
-    searchParams.set("maxPrice", 99999999);
+
+  function changeQueryStringValue(minPrice, maxPrice) {
+    searchParams.set("minPrice", minPrice);
+    searchParams.set("maxPrice", maxPrice);
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
@@ -238,7 +216,12 @@ function Listpage() {
                       <input
                         type="radio"
                         name="price-filter-box-radio"
-                        onClick={pricerange.onclickfunction}
+                        onClick={() => {
+                          changeQueryStringValue(
+                            pricerange.minPrice,
+                            pricerange.maxPrice
+                          );
+                        }}
                       />
                     </div>
                   );
