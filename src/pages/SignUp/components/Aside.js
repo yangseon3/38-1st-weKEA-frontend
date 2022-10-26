@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import ASIDE_1ST from "../ASIDE_1ST";
 import ASIDE_2ND from "../ASIDE_2ND";
+import Logo from "../../../components/Logo/Logo";
 
 const Aside = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Aside = () => {
               arrow_back
             </span>
           </div>
-          <div className="logo">위케아</div>
+          <Logo />
         </header>
         <div className="signup-description-title">
           <div>weKEA</div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Checkbox = ({ signupRequest }) => {
+const Checkbox = () => {
   return (
     <>
       <div>
@@ -42,9 +42,6 @@ const Checkbox = ({ signupRequest }) => {
           개인정보 수집 • 이용 동의
         </span>
       </div>
-      <button className="signup-form-button" onClick={signupRequest}>
-        회원가입
-      </button>
     </>
   );
 };

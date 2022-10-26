@@ -1,11 +1,16 @@
 .signup-page {
   width: 100vw;
   display: flex;
+  background-color: white;
+  z-index: 10;
+  position: absolute;
+  top: 0px;
+  right: 0px;
   .signup-description-wrapper {
     width: 40%;
     .signup-description {
       padding: 30px 80px;
-      .signup-description-header {
+      &-header {
         display: flex;
         align-items: center;
         position: relative;
@@ -32,9 +37,9 @@
       .signup-description-content {
         display: flex;
         padding-top: 20px;
-        :last-child{
+        :last-child {
           text-indent: 5px;
-          text-decoration: underline; 
+          text-decoration: underline;
         }
       }
       .signup-description-image-wrapper {
@@ -68,19 +73,19 @@
         display: flex;
       }
       .signup-description-text {
-        text-decoration: underline; 
+        text-decoration: underline;
       }
     }
   }
   .signup-form-wrapper {
     padding: 60px 80px;
-    width: 60%; 
+    width: 60%;
     .signup-form {
-      .signup-form-body {
+      &-body {
         width: 450px;
         .signup-form-text {
           padding-top: 50px;
-          padding-bottom: 10px;  
+          padding-bottom: 10px;
         }
         .signup-form-input {
           border: 1px solid black;
@@ -90,8 +95,8 @@
           margin-bottom: 10px;
         }
         .signup-form-valid-text {
-          color: red; 
-        }  
+          color: red;
+        }
         .signup-form-content-hover {
           display: flex;
           align-items: center;
@@ -117,73 +122,79 @@
             height: 20px;
             font-weight: bold;
           }
-        }  
+        }
         .signup-form-password-wrapper {
-        position: relative;
-      } 
-      .right-password-text{
-        color: red;
-      }
-      .visibility-icon {
-        cursor: pointer;
-        position: absolute; 
-        top: 90px;
-        right: 10px;
-      }
-      .valid-input {
-        border: 1px solid rgb(2, 88, 163);
-        &:focus {
-          border: 2px solid rgb(2, 88, 163);
+          position: relative;
+        }
+        .right-password-text {
+          color: red;
+        }
+        .visibility-icon {
+          cursor: pointer;
+          position: absolute;
+          top: 90px;
+          right: 10px;
+        }
+        .valid-input {
+          border: 1px solid rgb(2, 88, 163);
+          &:focus {
+            border: 2px solid rgb(2, 88, 163);
+          }
+        }
+        .invalid-input {
+          border: 1px solid red;
+          &:focus {
+            border: 2px solid red;
+          }
         }
       }
-      .invalid-input {
-        border: 1px solid red;
-        &:focus {
-          border: 2px solid red;
-        }
-      }
-    }
       .signup-form-checkbox {
         display: flex;
         align-items: center;
         padding-top: 50px;
-      }
-        .signup-form-checkbox-input {
+
+        &-input {
           width: 25px;
           height: 25px;
         }
-        .signup-form-checkbox-text {
+        &-text {
           width: 420px;
           padding-left: 10px;
           font-size: 15px;
         }
+      }
       .signup-form-checkbox-wrapper {
         padding-left: 40px;
         padding-top: 30px;
         .signup-form-checkbox-input-sort {
           display: flex;
-          align-items: center; 
+          align-items: center;
           padding-bottom: 30px;
           .signup-form-checkbox-content {
             text-indent: 10px;
           }
-        }  
+          .signup-form-checkbox-input {
+            width: 25px;
+            height: 25px;
+          }
+        }
       }
       .signup-form-bottom-checkbox {
         display: flex;
-        align-items: center;  
+        align-items: center;
         padding-bottom: 30px;
-        .signup-form-bottom-checkbox-input {
+        width: 600px;
+        &-input {
           width: 25px;
           height: 25px;
         }
-        .signup-form-bottom-checkbox-text {
+        &-text {
           text-indent: 10px;
         }
-        .signup-form-bottom-checkbox-link {
-          text-decoration: underline; 
+        &-link {
+          text-decoration: underline;
         }
-      } 
+      }
       .signup-form-button {
         border: 1px solid black;
         border-radius: 30px;
@@ -191,8 +202,8 @@
         height: 50px;
         background-color: black;
         color: white;
-        font-weight: bold; 
-        margin-top: 40px;
+        font-weight: bold;
+        margin-top: 20px;
       }
     }
   }
