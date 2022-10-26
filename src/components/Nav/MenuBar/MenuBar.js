@@ -7,14 +7,11 @@ import "./MenuBar.scss";
 function MenuBar({ setToggleMenu }) {
   const [unmount, setUnmount] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
-  const closeMenu = e => {
-    const { area } = e.target.dataset;
-    if (area === "close-modal") {
-      setUnmount(true);
-      setTimeout(() => {
-        setToggleMenu(false);
-      }, 300);
-    }
+  const closeMenu = () => {
+    setUnmount(true);
+    setTimeout(() => {
+      setToggleMenu(false);
+    }, 300);
   };
   const categoryHandler = () => {
     showCategory ? setShowCategory(false) : setShowCategory(true);
@@ -23,12 +20,11 @@ function MenuBar({ setToggleMenu }) {
     <div
       className={`menu-bar-bg${unmount ? " menu-bar-bg-unmount" : ""}`}
       onClick={closeMenu}
-      data-area="close-modal"
     >
       <div className={`menu-bar ${unmount ? "menu-bar-unmount" : ""}`}>
         <header>
           <div className="close-btn">
-            <span className="material-symbols-outlined" data-area="close-modal">
+            <span className="material-symbols-outlined" onClick={closeMenu}>
               close
             </span>
           </div>

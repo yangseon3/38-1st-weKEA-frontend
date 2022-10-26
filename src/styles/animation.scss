@@ -14,62 +14,6 @@
     transform: translateX(0);
   }
 }
-@keyframes menuBarMount {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes menuBarUnmount {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-@keyframes menuBarUnmount {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-@-webkit-keyframes menuBarBgAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes menuBarBgAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes loginModalMountAnimation {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-@keyframes loginModalMountAnimation {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
 @-webkit-keyframes modalBgAnimation {
   from {
     opacity: 0;
@@ -118,9 +62,11 @@
     scale: 1;
   }
 }
-
-//Fixme: modalBgAnimation과 menuBarBgAnimation은 역할과 기능이 겹치기 때문에 추후에 menuBarBgAnimation을 삭제하고 Nav에도 modalBgAnimation을 적용할 예정이며, loginModalMountAnimation도 같은 이유로 sideModalAnimation으로 교체하여 사용할 예정
 .modal-bg-unmount {
   opacity: 0;
+  transition: all 0.3s;
+}
+.side-modal-unmount {
+  transform: translateX(100%);
   transition: all 0.3s;
 }
