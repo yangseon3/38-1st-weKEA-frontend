@@ -9,7 +9,6 @@ import Chair from "./pages/Categories/Chair";
 import Drawer from "./pages/Categories/Drawer";
 import Shelf from "./pages/Categories/Shelf";
 import Detail from "./pages/Detail/Detail";
-import Nav from "./components/Nav/Nav";
 import Mypage from "../src/pages/Mypage/Mypage";
 import WishList from "./pages/WishList/WishList";
 import Nav from "./components/Nav/Nav";
