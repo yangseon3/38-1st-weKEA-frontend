@@ -47,14 +47,17 @@ function Login() {
       },
       body: JSON.stringify({ email, password }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error("에러 발생!");
+      }, [])
       .then(data => {
-        localStorage.setItem("token", data.userInfo.accessToken);
-        localStorage.setItem(
-          "userName",
-          JSON.stringify(data.userInfo.userName)
-        );
-      });
+        localStorage.setItem("token", data.accessToken);
+        navigate("/");
+      })
+      .catch(appearAlertModal);
   };
 
   return (
@@ -157,7 +160,7 @@ function Login() {
               <img src="https://img.icons8.com/ios/344/info--v3.png" />
             </div>
           </div>
-          {<button className="login-form-button">로그인</button>}
+          <button className="login-form-button">로그인</button>
           <div className="login-form-signup-page-text">
             weKEA 계정이 없으신가요? 지금 바로 만들어보세요.
           </div>
