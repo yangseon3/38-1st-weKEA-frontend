@@ -37,7 +37,7 @@ function Listpage() {
     {
       id: "1",
       pricerange: "0 - 49,999",
-      minPrice: "1",
+      minPrice: "0",
       maxPrice: "49999",
     },
     {
@@ -92,7 +92,6 @@ function Listpage() {
       .then(data => {
         setProductCardData(data.getProductsByCategoryId);
         console.log(productCardData);
-        console.log("test");
       });
   }, [showMoreOffsetCount, sortBy, minPrice, maxPrice]);
 
