@@ -3,11 +3,11 @@
 
 .login-modal-bg {
   @include modal-background;
-  -webkit-animation: menuBarBgAnimation 0.3s;
-  animation: menuBarBgAnimation 0.3s;
+  -webkit-animation: modalBgAnimation 0.3s;
+  animation: modalBgAnimation 0.3s;
   .login-modal {
-    -webkit-animation: loginModalMountAnimation 0.3s;
-    animation: loginModalMountAnimation 0.3s;
+    -webkit-animation: sideModalAnimation 0.3s;
+    animation: sideModalAnimation 0.3s;
     position: fixed;
     top: 0px;
     right: 0px;
@@ -80,6 +80,22 @@
         }
       }
     }
+    .modal-mypage {
+      @include flex(space-between, center, null);
+      padding-left: 50px;
+      padding-right: 50px;
+      height: 100px;
+      background-color: #084392;
+      border-bottom: 0.5px solid #0c67b4;
+      color: white;
+      font-weight: bolder;
+      cursor: pointer;
+      &:hover {
+        span:first-child {
+          text-decoration: underline;
+        }
+      }
+    }
     .login-modal-menu {
       padding-left: 50px;
       margin-top: 50px;
@@ -91,9 +107,4 @@
       }
     }
   }
-}
-
-.login-modal-unmount {
-  transform: translateX(100%);
-  transition: all 0.3s;
 }

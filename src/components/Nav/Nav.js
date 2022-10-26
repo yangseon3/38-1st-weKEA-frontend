@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import MenuBar from "./MenuBar/MenuBar";
 import LoginModal from "./LoginModal/LoginModal";
+import API from "../../config";
 import "./Nav.scss";
 
 function Nav() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
+  const [userName, setUserName] = useState(null);
   const navigate = useNavigate();
+  console.log(userName);
   const openMenu = () => {
     setToggleMenu(true);
   };
@@ -19,6 +22,21 @@ function Nav() {
     const { path } = e.target.dataset;
     navigate(path);
   };
+  useEffect(() => {
+    fetch(API.mypage, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        authorization: localStorage.getItem("token"),
+      },
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then(result => setUserName(result.data.userName));
+  }, []);
   return (
     <div className="nav">
       <aside className="sidebar">
@@ -40,7 +58,10 @@ function Nav() {
         <div className="nav-members">
           <div className="login-or-signup" onClick={openModal}>
             <span className="material-symbols-outlined">person</span>
-            <span className="text">Hi! 로그인 또는 가입하기</span>
+            <span className="text">
+              Hi!&nbsp;&nbsp;
+              {userName === null ? "로그인 또는 가입하기" : userName.firstName}
+            </span>
           </div>
           <div className="wishlist">
             <span
@@ -63,7 +84,9 @@ function Nav() {
         </div>
       </div>
       {toggleMenu && <MenuBar setToggleMenu={setToggleMenu} />}
-      {toggleModal && <LoginModal setToggleModal={setToggleModal} />}
+      {toggleModal && (
+        <LoginModal setToggleModal={setToggleModal} userName={userName} />
+      )}
     </div>
   );
 }
