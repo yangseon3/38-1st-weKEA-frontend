@@ -4,8 +4,6 @@ import Nav from "../../components/Nav/Nav";
 import "./Main.scss";
 
 function Main() {
-  const [randomMainImg, setRandomMainImg] = useState([]);
-
   const navigate = useNavigate();
 
   const goToChairListPage = () => {
