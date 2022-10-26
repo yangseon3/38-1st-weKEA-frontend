@@ -14,7 +14,7 @@ function WishList() {
   };
 
   const getMockData = () => {
-    fetch("/data/WISHLIST.json", {
+    fetch("/data/wishlist/WISHLIST.json", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

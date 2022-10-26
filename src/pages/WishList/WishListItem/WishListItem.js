@@ -15,8 +15,10 @@ function WishListItem({ product, priceToString }) {
           <div className="product-price">₩{priceToString(product.price)}</div>
         </div>
         <footer className="functions">
-          <span className="delete-button">삭제</span>
-          <span className="add-to-cart-button">장바구니에 추가</span>
+          <span className="material-symbols-outlined add-to-cart-button">
+            add_shopping_cart
+          </span>
+          <span className="delete-button">삭제하기</span>
         </footer>
       </div>
     </li>
