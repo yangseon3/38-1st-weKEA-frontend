@@ -17,8 +17,8 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: white;
-    -webkit-animation: loginModalMountAnimation 0.3s;
-    animation: loginModalMountAnimation 0.3s;
+    -webkit-animation: sideModalAnimation 0.3s;
+    animation: sideModalAnimation 0.3s;
     .side-modal-content {
       .side-modal-header {
         @include flex(flex-end, center, row);

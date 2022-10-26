@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SideModal from "../../components/SideModal/SideModal";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import ItemBar from "./ItemBar/ItemBar";
 import PaymentModal from "./PaymentModal/PaymentModal";
 import "./Cart.scss";
@@ -10,6 +11,7 @@ function Cart() {
   const [sideModal, setSideModal] = useState("");
   const [isUnmountModal, setIsUnmountModal] = useState(false);
   const [isOpenPaymentModal, setIsOpenPaymentModal] = useState(false);
+  const [isAppearAlert, setIsAppearAlert] = useState(false);
 
   const openSideModal = e => {
     const { id } = e.target.dataset;
@@ -28,6 +30,12 @@ function Cart() {
   const closePaymentModal = () => {
     setIsOpenPaymentModal(false);
   };
+  const popAlertModal = () => {
+    setIsAppearAlert(true);
+    setTimeout(() => {
+      setIsAppearAlert(false);
+    }, 3000);
+  };
   const toggleCouponForm = () => {
     setIsCouponFormOpened(!isCouponFormOpened);
   };
@@ -39,7 +47,7 @@ function Cart() {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const getMockData = () => {
+  useEffect(() => {
     fetch("/data/Cart/product.json", {
       method: "GET",
       headers: {
@@ -48,14 +56,13 @@ function Cart() {
     })
       .then(response => response.json())
       .then(data => setProducts(data));
-  };
-
-  useEffect(() => {
-    getMockData();
   }, []);
 
   return (
     <>
+      {isAppearAlert && (
+        <AlertModal alertModalContent={"위시리스트에 저장되었습니다."} />
+      )}
       {sideModal !== "" && (
         <SideModal
           className={SIDE_MODAL_CONTENT[sideModal].className}
@@ -80,7 +87,7 @@ function Cart() {
                   key={product.id}
                   product={product}
                   priceToString={priceToString}
-                  moveTo={"위시리스트"}
+                  popAlertModal={popAlertModal}
                 />
               );
             })}

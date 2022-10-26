@@ -1,7 +1,7 @@
 import React from "react";
 import "./ItemBar.scss";
 
-function ItemBar({ product, priceToString, moveTo, deleteRequest }) {
+function ItemBar({ product, priceToString, deleteRequest, popAlertModal }) {
   const { thumbnail, price, color, name, size, quantity } = product;
   const numbers = () => {
     let array = [];
@@ -47,7 +47,9 @@ function ItemBar({ product, priceToString, moveTo, deleteRequest }) {
           <span className="delete-button" onClick={deleteRequest}>
             삭제
           </span>
-          <span className="wishlist-button">{moveTo}에 저장</span>
+          <span className="wishlist-button" onClick={popAlertModal}>
+            위시리스트에 저장
+          </span>
         </footer>
       </div>
     </li>
