@@ -10,6 +10,62 @@ function Listpage() {
   const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
   const sortBy = searchParams.get("sortBy");
 
+  const SORTBY_LIST = [
+    {
+      id: 1,
+      sortby: "가격 높은순",
+      onclickfunction: sortByPriceDESC,
+    },
+    {
+      id: 2,
+      sortby: "가격 낮은순",
+      onclickfunction: sortByPriceASC,
+    },
+    {
+      id: 3,
+      sortby: "최신순",
+      onclickfunction: sortBynewest,
+    },
+    {
+      id: 4,
+      sortby: "이름순",
+      onclickfunction: sortBynameASC,
+    },
+  ];
+
+  const PRICE_RANGE_FOR_FILTERING = [
+    {
+      id: "1",
+      pricerange: "0 - 49,999",
+      onclickfunction: priceFilterRangeFrom0To49999,
+    },
+    {
+      id: "2",
+      pricerange: "50,000 - 99,999",
+      onclickfunction: priceFilterRangeFrom50000To99999,
+    },
+    {
+      id: "3",
+      pricerange: "100,000 - 199,999",
+      onclickfunction: priceFilterRangeFrom100000To199999,
+    },
+    {
+      id: "4",
+      pricerange: "200,000 - 299,999",
+      onclickfunction: priceFilterRangeFrom200000To299999,
+    },
+    {
+      id: "5",
+      pricerange: "300,000 - 499,999",
+      onclickfunction: priceFilterRangeFrom300000To499999,
+    },
+    {
+      id: "6",
+      pricerange: "500,000 +",
+      onclickfunction: priceFilterRangeFrom500000,
+    },
+  ];
+
   const minPrice = searchParams.get("minPrice")
     ? searchParams.get("minPrice")
     : "0";
@@ -19,7 +75,6 @@ function Listpage() {
 
   const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
 
-  //api호출
   useEffect(() => {
     fetch(apiAddress, {
       method: "GET",
@@ -30,17 +85,14 @@ function Listpage() {
       .then(response => response.json())
       .then(data => {
         setProductCardData(data.getProductsByCategoryId);
-        console.log(apiAddress);
+        console.log(productCardData);
       });
   }, [showMoreOffsetCount, sortBy, minPrice, maxPrice]);
 
-  //더보기버튼 : 클릭시 limit 개수만 4개씩 늘림
   function showMoreButtonApiRequest() {
     setShowMoreOffsetCount(showMoreOffsetCount + 4);
-    console.log(productCardData);
     console.log(showMoreOffsetCount);
   }
-  // sort 체크박스 : 클릭시 쿼리스트링 sortBy를 각각 변경
   function sortByPriceASC() {
     searchParams.set("sortBy", "priceASC");
     setSearchParams(searchParams);
@@ -61,22 +113,18 @@ function Listpage() {
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
-
-  //가격 레인지 체크박스 누를때 : 쿼리스트링 각각 추가
   function priceFilterRangeFrom0To49999() {
     searchParams.set("minPrice", 0);
     searchParams.set("maxPrice", 49999);
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
-
   function priceFilterRangeFrom50000To99999() {
     searchParams.set("minPrice", 50000);
     searchParams.set("maxPrice", 99999);
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
-
   function priceFilterRangeFrom100000To199999() {
     searchParams.set("minPrice", 100000);
     searchParams.set("maxPrice", 199999);
@@ -101,7 +149,6 @@ function Listpage() {
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
-  /////////////////////////////이 밑은 단순 ui 구현 함수
   const [isSortBoxVisible, setIsSortBoxVisible] = useState(false);
   const [isPriceFilterBoxVisible, setIsPriceFilterBoxVisible] = useState(false);
 
@@ -111,7 +158,6 @@ function Listpage() {
   function priceFilterBoxToggle() {
     setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
   }
-
   function isClickOnBox(e) {
     e.stopPropagation();
     if (
@@ -147,37 +193,21 @@ function Listpage() {
           <div>
             {isSortBoxVisible && (
               <div className="total-drop-box drop-box">
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">가격 높은순</span>{" "}
-                  <input
-                    type="radio"
-                    name="total-filter-box-radio"
-                    onClick={sortByPriceDESC}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">가격 낮은순</span>{" "}
-                  <input
-                    type="radio"
-                    name="total-filter-box-radio"
-                    onClick={sortByPriceASC}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">최신순</span>
-                  <input
-                    type="radio"
-                    name="total-filter-box-radio"
-                    onClick={sortBynewest}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">이름순</span>
-                  <input
-                    type="radio"
-                    name="total-filter-box-radio"
-                    onClick={sortBynameASC}
-                  />
+                <div className="total-drop-box drop-box">
+                  {SORTBY_LIST.map(sortby => {
+                    return (
+                      <div className="drop-box-filter-element" key={sortby.id}>
+                        <span className="filter-inneritem">
+                          {sortby.sortby}
+                        </span>{" "}
+                        <input
+                          type="radio"
+                          name="total-filter-box-radio"
+                          onClick={sortby.onclickfunction}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -196,54 +226,23 @@ function Listpage() {
           <div>
             {isPriceFilterBoxVisible && (
               <div className="price-filter-drop-box drop-box">
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">₩0 - 49,999</span>
-                  <input
-                    type="radio"
-                    name="price-filter-box-radio"
-                    onClick={priceFilterRangeFrom0To49999}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">₩50,000 - 99,999</span>
-                  <input
-                    type="radio"
-                    name="price-filter-box-radio"
-                    onClick={priceFilterRangeFrom50000To99999}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">₩100,000 - 199,999</span>
-                  <input
-                    type="radio"
-                    name="price-filter-box-radio"
-                    onClick={priceFilterRangeFrom100000To199999}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">₩200,000 - 299,999</span>
-                  <input
-                    type="radio"
-                    name="price-filter-box-radio"
-                    onClick={priceFilterRangeFrom200000To299999}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">₩300,000 - 499,999</span>
-                  <input
-                    type="radio"
-                    name="price-filter-box-radio"
-                    onClick={priceFilterRangeFrom300000To499999}
-                  />
-                </div>
-                <div className="drop-box-filter-element">
-                  <span className="filter-inneritem">₩500,000 +</span>
-                  <input
-                    type="radio"
-                    name="price-filter-box-radio"
-                    onClick={priceFilterRangeFrom500000}
-                  />
-                </div>
+                {PRICE_RANGE_FOR_FILTERING.map(pricerange => {
+                  return (
+                    <div
+                      className="drop-box-filter-element"
+                      key={pricerange.id}
+                    >
+                      <span className="filter-inneritem">
+                        ₩{pricerange.pricerange}
+                      </span>
+                      <input
+                        type="radio"
+                        name="price-filter-box-radio"
+                        onClick={pricerange.onclickfunction}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
