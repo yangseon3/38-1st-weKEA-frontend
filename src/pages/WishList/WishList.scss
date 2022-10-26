@@ -66,6 +66,9 @@
       &:hover {
         background-color: $wekea-dark-blue;
       }
+      .add-to-cart-wrapper {
+        @include flex(space-between, center, row);
+      }
       .add-to-cart-all-icon {
         @include flex(center, center, null);
         width: 40px;

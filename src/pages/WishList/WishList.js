@@ -59,10 +59,14 @@ function WishList() {
           </div>
           <p className="buy-online">이 제품을 온라인으로 구매하시겠어요?</p>
           <div className="add-to-cart-all">
-            <span className="material-symbols-outlined add-to-cart-all-icon">
-              add_shopping_cart
-            </span>
-            <h4 className="add-to-cart-all-title">장바구니에 모든 제품 추가</h4>
+            <div className="add-to-cart-wrapper">
+              <span className="material-symbols-outlined add-to-cart-all-icon">
+                add_shopping_cart
+              </span>
+              <h4 className="add-to-cart-all-title">
+                장바구니에 모든 제품 추가
+              </h4>
+            </div>
             <span className="material-symbols-outlined add-to-cart-all-arrow">
               arrow_forward
             </span>
