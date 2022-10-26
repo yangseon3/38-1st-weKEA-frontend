@@ -33,12 +33,9 @@ function Nav() {
       .then(response => {
         if (response.ok) {
           return response.json();
-        } else {
-          throw new Error("error");
         }
       })
-      .then(result => setUserName(result.data.userName))
-      .catch(error => console.log(error));
+      .then(result => setUserName(result.data.userName));
   };
   useEffect(() => {
     getUserName();

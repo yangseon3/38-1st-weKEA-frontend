@@ -14,6 +14,9 @@ function LoginModal({ setToggleModal, userName }) {
       setToggleModal(false);
     }, 300);
   };
+  const logOut = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div
       className={`login-modal-bg${unmount ? " modal-bg-unmount" : ""}`}
@@ -33,13 +36,7 @@ function LoginModal({ setToggleModal, userName }) {
         <div className="modal-login">
           <h1>Hello{userName !== null && ` ${userName.firstName}`}!</h1>
           {userName !== null ? (
-            <span
-              onClick={() => {
-                localStorage.removeItem("token");
-              }}
-            >
-              로그아웃
-            </span>
+            <span onClick={logOut}>로그아웃</span>
           ) : (
             <span onClick={() => movePage("/login")}>로그인</span>
           )}
@@ -57,7 +54,7 @@ function LoginModal({ setToggleModal, userName }) {
         )}
         <ul>
           {userName !== null ? (
-            <li className="login-modal-menu" onClick={() => movePage("/login")}>
+            <li className="login-modal-menu" onClick={logOut}>
               로그아웃
             </li>
           ) : (
@@ -84,8 +81,8 @@ function LoginModal({ setToggleModal, userName }) {
 }
 
 const LOGIN_MODAL_MENU = [
-  { id: 2, title: "구매 내역", url: "/purchasehistory" },
-  { id: 3, title: "위시리스트", url: "/wishlist" },
-  { id: 4, title: "배송 조회", url: "/" },
+  { id: 1, title: "구매 내역", url: "/purchasehistory" },
+  { id: 2, title: "위시리스트", url: "/wishlist" },
+  { id: 3, title: "배송 조회", url: "/" },
 ];
 export default LoginModal;
