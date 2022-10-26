@@ -248,7 +248,7 @@ function Listpage() {
           </div>
         </div>
       </div>
-      <div className="ProductCard-component-container">
+      <div className="productCard-component-container">
         {productCardData.map(productInfo => {
           return (
             <ProductCard
