@@ -2,7 +2,7 @@
   width: 100vw;
   display: flex;
   background-color: white;
-  z-index: 99999;
+  z-index: 10;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -10,7 +10,7 @@
     width: 40%;
     .signup-description {
       padding: 30px 80px;
-      .signup-description-header {
+      &-header {
         display: flex;
         align-items: center;
         position: relative;
@@ -81,7 +81,7 @@
     padding: 60px 80px;
     width: 60%;
     .signup-form {
-      .signup-form-body {
+      &-body {
         width: 450px;
         .signup-form-text {
           padding-top: 50px;
@@ -152,15 +152,16 @@
         display: flex;
         align-items: center;
         padding-top: 50px;
-      }
-      .signup-form-checkbox-input {
-        width: 25px;
-        height: 25px;
-      }
-      .signup-form-checkbox-text {
-        width: 420px;
-        padding-left: 10px;
-        font-size: 15px;
+
+        &-input {
+          width: 25px;
+          height: 25px;
+        }
+        &-text {
+          width: 420px;
+          padding-left: 10px;
+          font-size: 15px;
+        }
       }
       .signup-form-checkbox-wrapper {
         padding-left: 40px;
@@ -172,6 +173,10 @@
           .signup-form-checkbox-content {
             text-indent: 10px;
           }
+          .signup-form-checkbox-input {
+            width: 25px;
+            height: 25px;
+          }
         }
       }
       .signup-form-bottom-checkbox {
@@ -179,14 +184,14 @@
         align-items: center;
         padding-bottom: 30px;
         width: 600px;
-        .signup-form-bottom-checkbox-input {
+        &-input {
           width: 25px;
           height: 25px;
         }
-        .signup-form-bottom-checkbox-text {
+        &-text {
           text-indent: 10px;
         }
-        .signup-form-bottom-checkbox-link {
+        &-link {
           text-decoration: underline;
         }
       }

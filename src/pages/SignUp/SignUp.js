@@ -75,7 +75,6 @@ function SignUp() {
       }),
     })
       .then(response => {
-        console.log(response);
         if (response.ok === true) {
           return navigate("/Login");
         } else {
