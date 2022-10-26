@@ -8,10 +8,13 @@ import Desk from "./pages/Categories/Desk";
 import Chair from "./pages/Categories/Chair";
 import Drawer from "./pages/Categories/Drawer";
 import Shelf from "./pages/Categories/Shelf";
+import Mypage from "../src/pages/Mypage/Mypage";
+import Nav from "./components/Nav/Nav";
 
 function Router() {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
@@ -21,6 +24,7 @@ function Router() {
         <Route path="/category/chair" element={<Chair />} />
         <Route path="/category/drawer" element={<Drawer />} />
         <Route path="/category/shelf" element={<Shelf />} />
+        <Route path="/mypage" element={<Mypage />} />
       </Routes>
     </BrowserRouter>
   );
