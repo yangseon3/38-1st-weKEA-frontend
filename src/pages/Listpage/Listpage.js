@@ -6,17 +6,44 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 
 function Listpage() {
   const [productCardData, setProductCardData] = useState([]);
-  const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
   const sortBy = searchParams.get("sortBy");
-  const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}`;
 
+  // const minPrice = searchParams.get("minPrice");
+  const minPrice = "0";
+  // const maxPrice = searchParams.get("maxPrice");
+  const maxPrice = "9999999999";
+
+  const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+
+  //api호출
+  useEffect(() => {
+    fetch(apiAddress, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        setProductCardData(data.getProductsByCategoryId);
+        console.log(apiAddress);
+      });
+  }, [showMoreOffsetCount, sortBy, minPrice, maxPrice]);
+
+  //더보기버튼 : 클릭시 limit 개수만 4개씩 늘림
+  function showMoreButtonApiRequest() {
+    setShowMoreOffsetCount(showMoreOffsetCount + 4);
+    console.log(productCardData);
+    console.log(showMoreOffsetCount);
+  }
+  // sort 체크박스 : 클릭시 쿼리스트링 sortBy를 각각 변경
   function sortByPriceASC() {
     searchParams.set("sortBy", "priceASC");
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
-
   function sortByPriceDESC() {
     searchParams.set("sortBy", "priceDESC");
     setSearchParams(searchParams);
@@ -33,66 +60,51 @@ function Listpage() {
     setShowMoreOffsetCount(4);
   }
 
+  //가격 레인지 체크박스 누를때 : 쿼리스트링 각각 추가
   function priceFilterRangeFrom0To49999() {
-    const rangeTestArray = productCardData.filter(
-      product => product.productPrice < 50000
-    );
-    setProductCardData(rangeTestArray);
+    searchParams.set("minPrice", 0);
+    searchParams.set("maxPrice", 49999);
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
   }
 
   function priceFilterRangeFrom50000To99999() {
-    const rangeTestArray = productCardData.filter(
-      product => product.productPrice < 100000 && product.productPrice >= 50000
-    );
-    setProductCardData(rangeTestArray);
+    searchParams.set("minPrice", 50000);
+    searchParams.set("maxPrice", 99999);
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
   }
 
   function priceFilterRangeFrom100000To199999() {
-    const rangeTestArray = productCardData.filter(
-      product => product.productPrice < 199999 && product.productPrice >= 100000
-    );
-    setProductCardData(rangeTestArray);
+    searchParams.set("minPrice", 100000);
+    searchParams.set("maxPrice", 199999);
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
   }
   function priceFilterRangeFrom200000To299999() {
-    const rangeTestArray = productCardData.filter(
-      product => product.productPrice < 299999 && product.productPrice >= 200000
-    );
-    setProductCardData(rangeTestArray);
+    searchParams.set("minPrice", 200000);
+    searchParams.set("maxPrice", 299999);
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
   }
   function priceFilterRangeFrom300000To499999() {
-    const rangeTestArray = productCardData.filter(
-      product => product.productPrice < 499999 && product.productPrice >= 300000
-    );
-    setProductCardData(rangeTestArray);
+    searchParams.set("minPrice", 300000);
+    searchParams.set("maxPrice", 499999);
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
   }
   function priceFilterRangeFrom500000() {
-    const rangeTestArray = productCardData.filter(
-      product => product.productPrice >= 500000
-    );
-    setProductCardData(rangeTestArray);
+    searchParams.set("minPrice", 500000);
+    searchParams.set("maxPrice", 99999999);
+    setSearchParams(searchParams);
+    setShowMoreOffsetCount(4);
   }
-
-  useEffect(() => {
-    fetch(apiAddress, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(response => response.json())
-      .then(data => setProductCardData(data.getProductsByCategoryId));
-  }, [showMoreOffsetCount, sortBy]);
-
-  function showMoreButtonApiRequest() {
-    setShowMoreOffsetCount(showMoreOffsetCount + 4);
-    console.log(productCardData);
-  }
-
-  const [isTotalFilterBoxVisible, setIsTotalFilterBoxVisible] = useState(false);
+  /////////////////////////////이 밑은 단순 ui 구현 함수
+  const [isSortBoxVisible, setIsSortBoxVisible] = useState(false);
   const [isPriceFilterBoxVisible, setIsPriceFilterBoxVisible] = useState(false);
 
-  function totalFilterBoxToggle() {
-    setIsTotalFilterBoxVisible(!isTotalFilterBoxVisible);
+  function changeSortBoxBoolean() {
+    setIsSortBoxVisible(!isSortBoxVisible);
   }
   function priceFilterBoxToggle() {
     setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
@@ -101,12 +113,12 @@ function Listpage() {
   function isClickOnBox(e) {
     e.stopPropagation();
     if (
-      isTotalFilterBoxVisible === true &&
+      isSortBoxVisible === true &&
       !e.target.className.includes("drop-box") &&
       !e.target.className.includes("filter-inneritem") &&
       e.target.type !== "radio"
     ) {
-      setIsTotalFilterBoxVisible(!isTotalFilterBoxVisible);
+      setIsSortBoxVisible(!isSortBoxVisible);
     }
     if (
       isPriceFilterBoxVisible === true &&
@@ -123,15 +135,15 @@ function Listpage() {
         <div className="total-filter-frame">
           <div
             className="total-filter-container filter-container"
-            onClick={totalFilterBoxToggle}
+            onClick={changeSortBoxBoolean}
           >
             <button className="filter-button">
               정렬
-              {isTotalFilterBoxVisible ? "▲" : "▼"}
+              {isSortBoxVisible ? "▲" : "▼"}
             </button>
           </div>
           <div>
-            {isTotalFilterBoxVisible && (
+            {isSortBoxVisible && (
               <div className="total-drop-box drop-box">
                 <div className="drop-box-filter-element">
                   <span className="filter-inneritem">가격 높은순</span>{" "}
@@ -240,8 +252,9 @@ function Listpage() {
           return (
             <ProductCard
               key={productInfo.optionsId}
+              optionsId={productInfo.optionsId}
               url={productInfo.productThumbnail}
-              id={productInfo.productId}
+              productId={productInfo.productId}
               title={productInfo.productName}
               size={productInfo.productSize}
               price={productInfo.productPrice}

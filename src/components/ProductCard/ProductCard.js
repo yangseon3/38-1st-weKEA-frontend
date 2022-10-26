@@ -1,18 +1,22 @@
 import React from "react";
 import "./ProductCard.scss";
-function ProductCard({ url, id, title, size, price, color }) {
+import { Link } from "react-router-dom";
+
+function ProductCard({ url, optionsId, productId, title, size, price, color }) {
   const priceToString = price => {
     return parseInt(price)
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
-    <div key={id} className="ProductCard-container">
-      <img
-        src={url}
-        alt={id}
-        className="ProductCard-img ProductCard-component-each-item"
-      />
+    <div key={optionsId} className="ProductCard-container">
+      <Link to={`detail/${productId}`}>
+        <img
+          src={url}
+          alt={optionsId}
+          className="ProductCard-img ProductCard-component-each-item"
+        />
+      </Link>
       <div className="ProductCard-item-title ProductCard-component-each-item">
         {title}
       </div>
