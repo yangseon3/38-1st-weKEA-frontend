@@ -4,6 +4,7 @@ import AlertModal from "../../components/AlertModal/AlertModal";
 import ItemBar from "./ItemBar/ItemBar";
 import PaymentModal from "./PaymentModal/PaymentModal";
 import "./Cart.scss";
+import PaymentComplete from "./PaymentComplete/PaymentComplete";
 
 function Cart() {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,7 @@ function Cart() {
   const [isUnmountModal, setIsUnmountModal] = useState(false);
   const [isOpenPaymentModal, setIsOpenPaymentModal] = useState(false);
   const [isAppearAlert, setIsAppearAlert] = useState(false);
+  const [isCompletePayment, setIsCompletePayment] = useState(false);
 
   const openSideModal = e => {
     const { id } = e.target.dataset;
@@ -38,6 +40,9 @@ function Cart() {
   };
   const toggleCouponForm = () => {
     setIsCouponFormOpened(!isCouponFormOpened);
+  };
+  const openPaymentComplete = () => {
+    setIsCompletePayment(true);
   };
   const totalPrice = () => {
     const prices = products.map(product => product.price * product.quantity);
@@ -73,8 +78,12 @@ function Cart() {
         />
       )}
       {isOpenPaymentModal && (
-        <PaymentModal closePaymentModal={closePaymentModal} />
+        <PaymentModal
+          closePaymentModal={closePaymentModal}
+          openPaymentComplete={openPaymentComplete}
+        />
       )}
+      {isCompletePayment && <PaymentComplete />}
       <div className="cart-page">
         <main className="cart-body">
           <header className="cart-title">
