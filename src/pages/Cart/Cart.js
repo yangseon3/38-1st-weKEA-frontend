@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideModal from "../../components/SideModal/SideModal";
 import ItemBar from "./ItemBar/ItemBar";
+import PaymentModal from "./PaymentModal/PaymentModal";
 import "./Cart.scss";
 
 function Cart() {
@@ -8,6 +9,7 @@ function Cart() {
   const [isCouponFormOpened, setIsCouponFormOpened] = useState(false);
   const [sideModal, setSideModal] = useState("");
   const [isUnmountModal, setIsUnmountModal] = useState(false);
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState(false);
 
   const openSideModal = e => {
     const { id } = e.target.dataset;
@@ -19,6 +21,12 @@ function Cart() {
       sideModal !== "" && setSideModal("");
       setIsUnmountModal(false);
     }, 300);
+  };
+  const openPaymentModal = () => {
+    setIsOpenPaymentModal(true);
+  };
+  const closePaymentModal = () => {
+    setIsOpenPaymentModal(false);
   };
   const toggleCouponForm = () => {
     setIsCouponFormOpened(!isCouponFormOpened);
@@ -57,6 +65,9 @@ function Cart() {
           isUnmountModal={isUnmountModal}
         />
       )}
+      {isOpenPaymentModal && (
+        <PaymentModal closePaymentModal={closePaymentModal} />
+      )}
       <div className="cart-page">
         <main className="cart-body">
           <header className="cart-title">
@@ -87,7 +98,7 @@ function Cart() {
               ₩ {priceToString(totalPrice())}
             </span>
           </div>
-          <div className="payment-btn">
+          <div className="payment-btn" onClick={openPaymentModal}>
             <h4 className="payment-btn-title">결제하기</h4>
             <span className="material-symbols-outlined payment-btn-icon">
               arrow_forward
