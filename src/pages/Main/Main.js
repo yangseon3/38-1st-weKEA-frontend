@@ -6,14 +6,6 @@ import "./Main.scss";
 function Main() {
   const [randomMainImg, setRandomMainImg] = useState([]);
 
-  useEffect(() => {
-    fetch("https://10.58.52.238:3000/", {
-      method: "GET",
-    })
-      .then(response => response.json())
-      .then(data => console.log("data"));
-  }, []);
-
   const navigate = useNavigate();
 
   const goToChairListPage = () => {
