@@ -54,17 +54,14 @@
       background-color: rgb(255, 219, 0);
     }
     .mypage-id-card-box-point-box {
-      padding-top: 30px;
-      padding-bottom: 30px;
+      padding: 30px 20px;
       font-size: 20px;
+      height: 100px;
       background-color: rgb(241, 243, 247);
       border-radius: 0px 0px 10px 10px;
-      .mypage-id-card-point {
-        padding-left: 10px;
-      }
-      .mypage-id-card-point-value {
-        padding-left: 220px;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 }
