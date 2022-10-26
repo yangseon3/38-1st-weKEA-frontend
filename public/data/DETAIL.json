@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "name": "example_chair",
+  "thumbnail": "https://cdn.pixabay.com/photo/2016/11/19/15/50/chair-1840011_1280.jpg",
+  "description": "여기에 설명이 들어갑니다",
+  "category": "의자",
+  "images": [
+    {
+      "id": 1,
+      "url": "https://cdn.pixabay.com/photo/2021/08/07/21/00/beach-6529372_1280.jpg"
+    },
+    {
+      "id": 2,
+      "url": "https://cdn.pixabay.com/photo/2020/08/08/19/29/church-5473775_1280.jpg"
+    }
+  ],
+  "options": {
+    "size": "100cm x 200cm",
+    "price": "150000",
+    "color": ["white", "black"]
+  }
+}

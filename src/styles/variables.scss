@@ -4,7 +4,6 @@
   align-items: $align;
   flex-direction: $direction;
 }
-
 @mixin modal-background {
   position: fixed;
   top: 0px;

@@ -1,0 +1,179 @@
+@import "../../styles/variables.scss";
+
+.detail-page {
+  @include flex(flex-start, flex-start, row);
+  padding-top: 90px;
+  padding-left: 120px;
+  width: 100vw;
+  .detail-content {
+    width: 60%;
+    padding-right: 10px;
+    .detail-img {
+      width: 100%;
+      @include flex(flex-start, center, row);
+      flex-wrap: wrap;
+      .detail-img-wrapper {
+        @include flex(center, center, null);
+        width: 48%;
+        height: 300px;
+        background-color: white;
+        margin: 5px 5px 5px 5px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        img {
+          position: absolute;
+          bottom: 0px;
+          width: 100%;
+          height: 100%;
+          -o-object-fit: scale-down;
+          object-fit: scale-down;
+        }
+      }
+    }
+  }
+  .detail-info {
+    width: 30%;
+    margin-left: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+    .detail-info-header {
+      .detail-name,
+      .detail-color,
+      .detail-price {
+        margin-bottom: 10px;
+      }
+      .detail-name {
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+      .detail-color {
+        font-size: 1.3rem;
+        font-weight: lighter;
+        .color-name {
+          &::after {
+            content: ", ";
+          }
+          &:last-child::after {
+            content: none;
+          }
+        }
+      }
+      .detail-price {
+        font-size: 2rem;
+        font-weight: bolder;
+        border-bottom: 0.5px solid #d7d7d7;
+        padding-bottom: 30px;
+      }
+    }
+    .select-color {
+      @include flex(flex-start, center, row);
+      margin-top: 30px;
+      .color {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        border: 1px solid #d7d7d7;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .selected {
+        border: 3px solid red;
+      }
+    }
+    .how-to-buy {
+      margin-top: 30px;
+      .how-to-buy-box {
+        height: 150px;
+        margin-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border: 0.5px solid #d7d7d7;
+        border-radius: 15px;
+        .how-to-buy-list {
+          @include flex(flex-start, center, row);
+          height: 75px;
+          &:first-child {
+            border-bottom: 1px solid #d7d7d7;
+          }
+          .how-to-buy-content-wrapper {
+            @include flex(flex-start, flex-start, column);
+            margin-left: 10px;
+            .how-to-buy-title {
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+            .how-to-buy-content {
+              color: gray;
+              opacity: 0.6;
+              text-decoration: underline;
+              cursor: pointer;
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+    .add-to-cart {
+      @include flex(space-between, center, row);
+      margin-top: 30px;
+      .buy-btn {
+        height: 56px;
+        border-radius: 56px;
+        background-color: #1658af;
+        border: none;
+        color: white;
+        font-size: 1.1rem;
+        flex: 1;
+        cursor: pointer;
+        &:hover {
+          background-color: #084392;
+        }
+      }
+      .heart-icon-wrapper {
+        @include flex(center, center, null);
+        width: 56px;
+        height: 56px;
+        border-radius: 56px;
+        border: 1px solid black;
+        margin-left: 40px;
+        cursor: pointer;
+        &:hover {
+          border: 2px solid black;
+        }
+      }
+    }
+  }
+  .product-number {
+    @include flex(flex-start, null, column);
+    font-size: 15px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    .product-number-content {
+      width: 60px;
+      margin-top: 5px;
+      text-align: center;
+      vertical-align: middle;
+      background-color: black;
+      color: white;
+      font-weight: bolder;
+    }
+  }
+  .detail-description,
+  .detail-size {
+    @include flex(space-between, center, row);
+    height: 115px;
+    font-size: 24px;
+    font-weight: bolder;
+    border-top: 1px solid #d7d7d7;
+    cursor: pointer;
+    &:hover {
+      .detail-title {
+        text-decoration: underline;
+      }
+    }
+  }
+}

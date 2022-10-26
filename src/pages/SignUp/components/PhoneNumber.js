@@ -18,7 +18,7 @@ const PhoneNumber = props => {
         <div>010-1234-5678</div>
       ) : (
         <div className="signup-form-valid-text">
-          생년월일을 YYYY-MM-DD 형식으로 입력해주세요.
+          휴대폰 번호가 올바르지 않습니다.
         </div>
       )}
     </div>
