@@ -41,6 +41,7 @@ export default PurchaseHistory;
 
 const PURCHASE_HISTORY_LIST = [
   {
+    id: "1",
     purchaseDate: "2022-10-20",
     state: "출고 완료",
     price: "150000",
@@ -48,6 +49,7 @@ const PURCHASE_HISTORY_LIST = [
     title: "편한 의자",
   },
   {
+    id: "2",
     purchaseDate: "2022-10-07",
     state: "배송완료",
     title: "편한 의자",
@@ -55,6 +57,7 @@ const PURCHASE_HISTORY_LIST = [
     url: "https://picsum.photos/200",
   },
   {
+    id: "3",
     purchaseDate: "2022-09-21",
     state: "배송완료",
     title: "편한 의자",
@@ -62,6 +65,7 @@ const PURCHASE_HISTORY_LIST = [
     url: "https://picsum.photos/200",
   },
   {
+    id: "4",
     purchaseDate: "2022-08-01",
     state: "배송완료",
     title: "편한 의자",
@@ -69,6 +73,7 @@ const PURCHASE_HISTORY_LIST = [
     url: "https://picsum.photos/200",
   },
   {
+    id: "5",
     purchaseDate: "2022-07-22",
     state: "배송완료",
     price: "80000",
@@ -76,6 +81,7 @@ const PURCHASE_HISTORY_LIST = [
     url: "https://picsum.photos/200",
   },
   {
+    id: "6",
     purchaseDate: "2022-05-14",
     state: "배송완료",
     price: "220000",
@@ -83,6 +89,7 @@ const PURCHASE_HISTORY_LIST = [
     url: "https://picsum.photos/200",
   },
   {
+    id: "7",
     purchaseDate: "2022-03-14",
     state: "배송완료",
     price: "150000",
