@@ -1,0 +1,61 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/animation.scss";
+
+.image-modal-bg {
+  @include flex(center, center, null);
+  @include modal-background;
+  -webkit-animation: modalbgAnimation 0.3s;
+  animation: modalbgAnimation 0.3s;
+  z-index: 99;
+  .image-modal {
+    @include flex(center, center, null);
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    border-radius: 20px;
+    background-color: white;
+    -webkit-animation: imageModalOpenAnimation 0.3s;
+    animation: imageModalOpenAnimation 0.3s;
+    .image-modal-slider-wrapper {
+      width: 80vw;
+      height: 70vh;
+      overflow: hidden;
+      .image-modal-slider {
+        @include flex(flex-start, null, row);
+        transition: all 0.3s;
+        transform: translateX(0vw);
+        .image-modal-img-wrapper {
+          @include flex(center, center, null);
+          width: 80vw;
+          height: 70vh;
+          img {
+            height: 100%;
+          }
+        }
+      }
+    }
+    .back-button {
+      left: 50px;
+    }
+    .forward-button {
+      right: 50px;
+    }
+    .back-button,
+    .forward-button {
+      @include flex(center, center, null);
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      border: none;
+      background-color: black;
+      color: white;
+      z-index: 99999;
+    }
+  }
+}
+
+.image-modal-unmount {
+  scale: 0;
+  transition: all 0.3s;
+}
