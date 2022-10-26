@@ -10,10 +10,16 @@ function Listpage() {
   const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
   const sortBy = searchParams.get("sortBy");
 
-  // const minPrice = searchParams.get("minPrice");
-  const minPrice = "0";
-  // const maxPrice = searchParams.get("maxPrice");
-  const maxPrice = "9999999999";
+  let minPrice = "";
+  let maxPrice = "";
+
+  let initialMinPrice = "0";
+  let initialMaxPrice = "9999999999";
+
+  minPrice = searchParams.get("minPrice") ? searchParams.get("minPrice") : "0";
+  maxPrice = searchParams.get("maxPrice")
+    ? searchParams.get("maxPrice")
+    : "99999999";
 
   const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
 
