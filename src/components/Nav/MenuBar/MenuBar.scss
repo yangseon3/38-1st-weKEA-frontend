@@ -3,8 +3,8 @@
 
 .menu-bar-bg {
   @include modal-background;
-  -webkit-animation: menuBarBgAnimation 0.3s;
-  animation: menuBarBgAnimation 0.3s;
+  -webkit-animation: modalBgAnimation 0.3s;
+  animation: modalBgAnimation 0.3s;
   .menu-bar {
     position: fixed;
     top: 0px;
