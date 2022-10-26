@@ -1,6 +1,11 @@
 .login-page {
   width: 100vw;
   display: flex;
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 99999;
   .login-description-wrapper {
     width: 40%;
     background-color: rgb(2, 88, 162);
