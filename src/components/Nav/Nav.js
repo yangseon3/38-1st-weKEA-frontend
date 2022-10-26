@@ -22,7 +22,7 @@ function Nav() {
     const { path } = e.target.dataset;
     navigate(path);
   };
-  const getUserName = () => {
+  useEffect(() => {
     fetch(API.mypage, {
       method: "GET",
       headers: {
@@ -36,9 +36,6 @@ function Nav() {
         }
       })
       .then(result => setUserName(result.data.userName));
-  };
-  useEffect(() => {
-    getUserName();
   }, []);
   return (
     <div className="nav">
