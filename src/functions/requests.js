@@ -100,6 +100,18 @@ const addToCart = (id, success) => {
     .catch(error => alert(error));
 };
 
+const getCart = setState => {
+  fetch(API.cart, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+      authorization: localStorage.getItem("token"),
+    },
+  })
+    .then(response => response.json())
+    .then(data => console.log(data));
+};
+
 export {
   getUserInfo,
   getDetail,
@@ -107,4 +119,5 @@ export {
   getWishList,
   deleteWishList,
   addToCart,
+  getCart,
 };
