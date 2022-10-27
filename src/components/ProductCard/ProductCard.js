@@ -10,7 +10,7 @@ function ProductCard({ url, optionsId, productId, title, size, price, color }) {
   };
   return (
     <div key={optionsId} className="productCard-container">
-      <Link to={`detail/${productId}`}>
+      <Link to={`/detail/${productId}`}>
         <img
           src={url}
           alt={optionsId}
