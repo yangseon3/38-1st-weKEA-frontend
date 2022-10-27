@@ -14,7 +14,7 @@ function PurchaseHistory() {
   return (
     <div className="purchase-history">
       {isAlertModalAppear && (
-        <AlertModal alertModalContent={"삭제되었습니다."} />
+        <AlertModal alertModalContent={"취소되었습니다."} />
       )}
       <div className="order-history-guide-box">
         <div className="order-history-content-box">
