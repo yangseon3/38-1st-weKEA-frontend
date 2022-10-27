@@ -14,22 +14,22 @@ function Listpage() {
     {
       id: 1,
       sortby: "가격 높은순",
-      onclickfunction: sortByPriceDESC,
+      sortbyParam: "priceDESC",
     },
     {
       id: 2,
       sortby: "가격 낮은순",
-      onclickfunction: sortByPriceASC,
+      sortbyParam: "priceASC",
     },
     {
       id: 3,
       sortby: "최신순",
-      onclickfunction: sortBynewest,
+      sortbyParam: "newest",
     },
     {
       id: 4,
       sortby: "이름순",
-      onclickfunction: sortBynameASC,
+      sortbyParam: "nameASC",
     },
   ];
 
@@ -79,7 +79,7 @@ function Listpage() {
     ? searchParams.get("maxPrice")
     : "99999999";
 
-  const apiAddress = `http://10.58.52.111:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+  const apiAddress = `http://10.58.52.155:3000/categories/1?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
 
   useEffect(() => {
     fetch(apiAddress, {
@@ -99,23 +99,9 @@ function Listpage() {
     setShowMoreOffsetCount(showMoreOffsetCount + 4);
     console.log(showMoreOffsetCount);
   }
-  function sortByPriceASC() {
-    searchParams.set("sortBy", "priceASC");
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function sortByPriceDESC() {
-    searchParams.set("sortBy", "priceDESC");
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function sortBynewest() {
-    searchParams.set("sortBy", "newest");
-    setSearchParams(searchParams);
-    setShowMoreOffsetCount(4);
-  }
-  function sortBynameASC() {
-    searchParams.set("sortBy", "nameASC");
+
+  function sortByFunction(sortby) {
+    searchParams.set("sortBy", sortby);
     setSearchParams(searchParams);
     setShowMoreOffsetCount(4);
   }
@@ -180,7 +166,9 @@ function Listpage() {
                         <input
                           type="radio"
                           name="total-filter-box-radio"
-                          onClick={sortby.onclickfunction}
+                          onClick={() => {
+                            sortByFunction(sortby.sortbyParam);
+                          }}
                         />
                       </div>
                     );
