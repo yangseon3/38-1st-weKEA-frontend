@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
-import API from "../../config";
+import { getUserInfo } from "../../functions/requests";
+
 import "./Mypage.scss";
 
 function Mypage() {
@@ -21,27 +22,11 @@ function Mypage() {
   };
 
   useEffect(() => {
-    fetch(API.mypage, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        authorization: localStorage.getItem("token"),
-      },
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("error");
-        }
-      })
-      .then(result => setUserInfo(result.data))
-      .catch(needLogin);
+    getUserInfo(setUserInfo);
   }, []);
 
   return (
     <>
-      <Nav />
       <div className="mypage">
         <div className="mypage-description">
           <div className="mypage-description-content">Hej, 만나서 반가워요</div>

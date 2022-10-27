@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SideModal from "../../components/SideModal/SideModal";
 import ImageModal from "./components/ImageModal";
+import { getDetail, addToCart, addWishList } from "../../functions/requests";
 import "./Detail.scss";
 
 function Detail() {
@@ -11,6 +12,7 @@ function Detail() {
   const [sideModal, setSideModal] = useState("");
   const [selectedColor, setSelectedColor] = useState(0);
 
+  const params = useParams();
   const modalContent = {
     description: {
       className: "white-modal",
@@ -44,9 +46,8 @@ function Detail() {
   const openModal = i => {
     setImageModalIndex(i + 1);
   };
-  const openSideModal = e => {
-    const { name } = e.target.dataset;
-    setSideModal(name);
+  const openSideModal = text => {
+    setSideModal(text);
   };
   const closeModal = () => {
     setIsUnmountModal(true);
@@ -55,6 +56,14 @@ function Detail() {
       sideModal && setSideModal("");
       setIsUnmountModal(false);
     }, 300);
+  };
+  const addToWishList = () => {
+    addWishList(params.productId, openSideModal("wishlist"));
+    console.log(params.productId);
+  };
+  const addProductToCart = () => {
+    addToCart(productInfo.optionId);
+    openSideModal("cart");
   };
   const priceToString = price => {
     return parseInt(price)
@@ -66,14 +75,7 @@ function Detail() {
     setSelectedColor(parseInt(id));
   };
   useEffect(() => {
-    fetch("/data/detail.json")
-      .then(response => response.json())
-      .then(data => {
-        setProductInfo({
-          ...data,
-          images: [{ id: "thumbnail", url: data.thumbnail }, ...data.images],
-        });
-      });
+    getDetail(params.productId, setProductInfo);
   }, []);
   return (
     <>
@@ -119,13 +121,12 @@ function Detail() {
           </div>
           <div
             className="detail-description"
-            onClick={openSideModal}
-            data-name="description"
+            onClick={() => openSideModal("description")}
           >
             <span className="detail-title">제품 설명</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
-          <div className="detail-size" onClick={openSideModal} data-name="size">
+          <div className="detail-size" onClick={() => openSideModal("size")}>
             <span className="detail-title">치수</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
@@ -190,17 +191,12 @@ function Detail() {
             <button
               type="button"
               className="buy-btn"
-              onClick={openSideModal}
-              data-name="cart"
+              onClick={addProductToCart}
             >
               구매하기
             </button>
-            <div className="heart-icon-wrapper">
-              <span
-                className="material-symbols-outlined"
-                onClick={openSideModal}
-                data-name="wishlist"
-              >
+            <div className="heart-icon-wrapper" onClick={addToWishList}>
+              <span className="material-symbols-outlined" data-name="wishlist">
                 favorite
               </span>
             </div>
