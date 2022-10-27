@@ -1,0 +1,170 @@
+@import "../../styles/variables.scss";
+
+.cart-page {
+  @include flex(space-between, null, row);
+  padding-left: 120px;
+  padding-right: 120px;
+  padding-top: 100px;
+  .cart-body {
+    width: 60%;
+    height: 100vh;
+    .cart-title {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      .cart-title-content {
+        font-size: 36px;
+        font-weight: bold;
+      }
+    }
+  }
+  .payment {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+    width: 35%;
+    height: 100%;
+    margin-top: 20px;
+    .payment-title,
+    .delivery-fee,
+    .coupon,
+    .refund,
+    .security,
+    .total-price,
+    .payment-btn {
+      margin-bottom: 20px;
+    }
+    .payment-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .delivery-fee {
+      @include flex(space-between, center, row);
+      height: 30px;
+      border-bottom: 2px solid black;
+      font-size: 15px;
+    }
+    .total-price {
+      @include flex(space-between, center, row);
+      font-weight: bold;
+      .total-price-title {
+        font-size: 15px;
+      }
+      .total-price-content {
+        font-size: 25px;
+      }
+    }
+    .payment-btn {
+      @include flex(space-between, center, row);
+      width: 100%;
+      height: 120px;
+      padding: 40px 30px;
+      background-color: $wekea-blue;
+      border-radius: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: $wekea-dark-blue;
+      }
+      .payment-btn-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+      }
+      .payment-btn-icon {
+        @include flex(center, center, null);
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        background-color: white;
+      }
+    }
+    .coupon {
+      @include flex(space-between, center, row);
+      height: 90px;
+      border-top: 1px solid $wekea-gray;
+      cursor: pointer;
+      .coupon-title {
+        @include flex(space-between, center, row);
+        .coupon-title-content {
+          margin-left: 10px;
+          font-size: 15px;
+          font-weight: bold;
+        }
+      }
+      &:hover {
+        .coupon-title-content {
+          text-decoration: underline;
+        }
+      }
+      .coupon-drop-icon {
+        transition: all 0.3s;
+      }
+      .coupon-drop-icon-rotate {
+        transform: rotate(180deg);
+      }
+    }
+    .coupon-form-wrapper {
+      @include flex(space-around, null, column);
+      height: 0px;
+      overflow: hidden;
+      transition: height 0.3s;
+      .coupon-description {
+        font-size: 15px;
+        color: $wekea-dark-gray;
+        line-height: 20px;
+      }
+      .coupon-form {
+        @include flex(space-between, center, row);
+        .coupon-input {
+          width: 80%;
+          height: 48px;
+          margin-left: 1px;
+          padding: 0px 8px;
+          border-radius: 5px;
+          border: 1px solid $wekea-dark-gray;
+          &:focus {
+            outline: 1px solid $wekea-blue;
+            outline-offset: 0px;
+          }
+        }
+        .coupon-btn {
+          width: 15%;
+          height: 40px;
+          background-color: white;
+          font-size: 12px;
+          font-weight: bold;
+          border-radius: 40px;
+          border: 1px solid $wekea-gray;
+          &:hover {
+            border-color: $wekea-dark-gray;
+          }
+        }
+      }
+    }
+    .coupon-form-opened {
+      height: 160px;
+      padding-bottom: 60px;
+    }
+    .refund {
+      @include flex(null, center, row);
+      font-size: 15px;
+      font-weight: bold;
+      .refund-content {
+        margin-left: 10px;
+        opacity: 0.5;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+    .security {
+      @include flex(null, center, row);
+      font-size: 15px;
+      font-weight: bold;
+      .security-content {
+        margin-left: 10px;
+        opacity: 0.5;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

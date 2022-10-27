@@ -21,6 +21,7 @@ function Router() {
         <Route path="/detail/:productId" element={<Listpage />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/wishlist" element={<WishList />} />
+        <Route path="/purchasehistory" element={<PurchaseHistory />} />
       </Routes>
     </BrowserRouter>
   );
