@@ -7,7 +7,6 @@ import Cart from "./pages/Cart/Cart";
 import Nav from "./components/Nav/Nav";
 import Mypage from "../src/pages/Mypage/Mypage";
 import WishList from "./pages/WishList/WishList";
-import Listpage from "./pages/Listpage/Listpage";
 
 function Router() {
   return (
@@ -18,7 +17,7 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/category/:categoryId" element={<Listpage />} />
+        <Route path="/detail/:productId" element={<Listpage />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/wishlist" element={<WishList />} />
       </Routes>
