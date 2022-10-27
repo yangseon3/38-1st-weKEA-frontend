@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./Listpage.scss";
 import { useSearchParams, useParams } from "react-router-dom";
-
 import ProductCard from "../../components/ProductCard/ProductCard";
 
 function Listpage() {
   const [productCardData, setProductCardData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
+
   const sortBy = searchParams.get("sortBy");
   const params = useParams();
   const categoryId = params.categoryId;
+
   const SORTBY_LIST = [
     {
       id: 1,
@@ -80,15 +81,16 @@ function Listpage() {
     ? searchParams.get("maxPrice")
     : "99999999";
 
-  const apiAddress = `http://10.58.52.155:3000/categories/${categoryId}?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
-
   useEffect(() => {
-    fetch(apiAddress, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `http://10.58.52.155:3000/categories/${categoryId}?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then(response => response.json())
       .then(data => {
         setProductCardData(data.getProductsByCategoryId);
