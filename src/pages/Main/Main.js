@@ -1,7 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./Main.scss";
-import { MAIN_PAGE_CATEGORY_BOX_CONST_DATA } from "./MainConstData";
+
 function Main() {
   const navigate = useNavigate();
   const goToListPage = categoryId => {

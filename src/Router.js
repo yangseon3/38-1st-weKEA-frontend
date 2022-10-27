@@ -7,6 +7,7 @@ import Detail from "./pages/Detail/Detail";
 import Cart from "./pages/Cart/Cart";
 import Mypage from "../src/pages/Mypage/Mypage";
 import WishList from "./pages/WishList/WishList";
+import Listpage from "./pages/Listpage/Listpage";
 import PurchaseHistory from "./pages/PurchaseHistory/PurchaseHistory";
 import Nav from "./components/Nav/Nav";
 import Footer from "./pages/Footer/Footer";
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/category/:categoryId" element={<Listpage />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/purchasehistory" element={<PurchaseHistory />} />
