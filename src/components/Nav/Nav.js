@@ -50,7 +50,7 @@ function Nav() {
               Hi!&nbsp;&nbsp;
               {userName === null
                 ? "로그인 또는 가입하기"
-                : userName.userName.firstName}
+                : userName?.userName.firstName}
             </span>
           </div>
           <div className="wishlist">
@@ -77,7 +77,9 @@ function Nav() {
       {toggleModal && (
         <LoginModal
           setToggleModal={setToggleModal}
-          userName={userName.userName}
+          userName={userName?.userName}
+          getUserInfo={getUserInfo}
+          setUserName={setUserName}
         />
       )}
     </div>

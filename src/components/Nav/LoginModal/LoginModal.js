@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginModal.scss";
 
-function LoginModal({ setToggleModal, userName }) {
+function LoginModal({ setToggleModal, userName, getUserInfo, setUserName }) {
   const [unmount, setUnmount] = useState(false);
   const navigate = useNavigate();
   const movePage = url => {
@@ -34,14 +34,14 @@ function LoginModal({ setToggleModal, userName }) {
           </div>
         </header>
         <div className="modal-login">
-          <h1>Hello{userName !== null && ` ${userName.firstName}`}!</h1>
-          {userName !== null ? (
+          <h1>Hello{userName !== undefined && ` ${userName?.firstName}`}!</h1>
+          {userName !== undefined ? (
             <span onClick={logOut}>로그아웃</span>
           ) : (
             <span onClick={() => movePage("/login")}>로그인</span>
           )}
         </div>
-        {userName !== null ? (
+        {userName !== undefined ? (
           <div className="modal-mypage" onClick={() => movePage("/mypage")}>
             <span>My weKEA</span>
             <span className="material-symbols-outlined">arrow_forward_ios</span>
@@ -53,7 +53,7 @@ function LoginModal({ setToggleModal, userName }) {
           </div>
         )}
         <ul>
-          {userName !== null ? (
+          {userName !== undefined ? (
             <li className="login-modal-menu" onClick={logOut}>
               로그아웃
             </li>

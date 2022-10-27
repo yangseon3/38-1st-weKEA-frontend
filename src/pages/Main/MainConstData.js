@@ -1,4 +1,4 @@
-export const MAIN_PAGE_CATEGORY_BOX_CONST_DATA = [
+const MAIN_PAGE_CATEGORY_BOX_CONST_DATA = [
   {
     id: "1",
     category: "desk",
@@ -41,3 +41,5 @@ export const MAIN_PAGE_CATEGORY_BOX_CONST_DATA = [
     alt: "shelf",
   },
 ];
+
+export default MAIN_PAGE_CATEGORY_BOX_CONST_DATA;

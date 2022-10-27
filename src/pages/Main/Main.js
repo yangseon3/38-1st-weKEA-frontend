@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import MAIN_PAGE_CATEGORY_BOX_CONST_DATA from "./MainConstData";
 import "./Main.scss";
 
 function Main() {

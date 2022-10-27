@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Listpage.scss";
 import { useSearchParams, useParams } from "react-router-dom";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { SORTBY_LIST, PRICE_RANGE_FOR_FILTERING } from "./ListpageConstData";
 
@@ -8,18 +9,25 @@ function Listpage() {
   const [productCardData, setProductCardData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [showMoreOffsetCount, setShowMoreOffsetCount] = useState(4);
+  const [alertModalMessage, setAlertModalMessage] = useState("");
 
   const sortBy = searchParams.get("sortBy");
   const params = useParams();
-  const categoryId = params.categoryId;
 
+  const popAlertModal = e => {
+    setAlertModalMessage(e.target.dataset.id);
+    setTimeout(() => {
+      setAlertModalMessage("");
+    }, 3000);
+  };
+
+  const categoryId = params.categoryId;
   const minPrice = searchParams.get("minPrice")
     ? searchParams.get("minPrice")
     : "1";
   const maxPrice = searchParams.get("maxPrice")
     ? searchParams.get("maxPrice")
     : "99999999";
-
   useEffect(() => {
     fetch(
       `http://10.58.52.155:3000/categories/${categoryId}?offset=0&limit=${showMoreOffsetCount}&sortBy=${sortBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
@@ -34,7 +42,7 @@ function Listpage() {
       .then(data => {
         setProductCardData(data.getProductsByCategoryId);
       });
-  }, [showMoreOffsetCount, sortBy, minPrice, maxPrice]);
+  }, [showMoreOffsetCount, sortBy, minPrice, maxPrice, params]);
 
   function showMoreButtonApiRequest() {
     setShowMoreOffsetCount(showMoreOffsetCount + 4);
@@ -68,6 +76,12 @@ function Listpage() {
   }
   return (
     <div className="listpage" onClick={listpageOnclickFunction}>
+      {alertModalMessage && (
+        <AlertModal
+          alertModalContent={`${alertModalMessage}에 추가되었습니다.`}
+        />
+      )}
+      <div className="listpage-title">{CATEGORY_TITLES[params.categoryId]}</div>
       <div className="filter-bar">
         <div className="sort-filter-frame" onClick={e => e.stopPropagation()}>
           <div
@@ -159,6 +173,7 @@ function Listpage() {
               size={productInfo.productSize}
               price={productInfo.productPrice}
               color={productInfo.productColor}
+              popAlertModal={popAlertModal}
             />
           );
         })}
@@ -176,5 +191,7 @@ function Listpage() {
     </div>
   );
 }
+
+const CATEGORY_TITLES = { 1: "DESK", 2: "CHAIR", 3: "DRAWER", 4: "SHELF" };
 
 export default Listpage;
