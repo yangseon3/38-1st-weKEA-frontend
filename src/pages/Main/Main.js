@@ -16,7 +16,7 @@ function Main() {
             <div
               className="main-image-wrapper desk-image-wrapper"
               onClick={() => {
-                goToListPage(categoryInfo.categoryId);
+                goToListPage(categoryInfo.id);
               }}
               key={categoryInfo.id}
             >

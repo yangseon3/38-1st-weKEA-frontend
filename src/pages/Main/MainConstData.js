@@ -1,47 +1,43 @@
 export const MAIN_PAGE_CATEGORY_BOX_CONST_DATA = [
   {
     id: "1",
-    categoryId: "1",
     category: "desk",
     wrapperClassName: "desk-image-wrapper",
     textClassName: "desk-category-text",
     imgClassName: "main-desk-img",
     imgSrc:
-      "https://secure.img1-fg.wfcdn.com/im/28077962/compr-r85/1765/176532736/default.jpg",
+      "https://cdn.pixabay.com/photo/2015/06/24/16/36/home-820389_1280.jpg",
     alt: "desk",
   },
   {
     id: "2",
-    categoryId: "2",
     category: "chair",
     wrapperClassName: "chair-image-wrapper",
     textClassName: "chair-category-text",
     imgClassName: "main-chair-img",
     imgSrc:
-      "https://www.target.com.au/medias/static_content/product/images/full/85/83/A1788583.jpg?impolicy=product_portrait_hero",
+      "https://cdn.pixabay.com/photo/2017/08/03/15/38/architecture-2576906_1280.jpg",
     alt: "chair",
   },
 
   {
     id: "3",
-    categoryId: "3",
     category: "drawer",
     wrapperClassName: "drawer-image-wrapper",
     textClassName: "drawer-category-text",
     imgClassName: "main-drawer-img",
     imgSrc:
-      "https://www.target.com.au/medias/static_content/product/images/full/85/83/A1788583.jpg?impolicy=product_portrait_hero",
+      "https://cdn.pixabay.com/photo/2017/09/04/16/59/drawers-2714678_1280.jpg",
     alt: "drawer",
   },
   {
     id: "4",
-    categoryId: "4",
     category: "shelf",
     wrapperClassName: "shelf-image-wrapper",
     textClassName: "shelf-category-text",
     imgClassName: "main-shelf-img",
     imgSrc:
-      "https://www.ikea.com/kr/en/images/products/burhult-sibbhult-wall-shelf-combination-white-white__1092767_pe863011_s5.jpg?f=s",
+      "https://cdn.pixabay.com/photo/2017/08/22/06/02/wall-shelf-2667890_1280.jpg",
     alt: "shelf",
   },
 ];
