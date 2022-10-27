@@ -13,6 +13,7 @@ import Mypage from "../src/pages/Mypage/Mypage";
 import WishList from "./pages/WishList/WishList";
 import PurchaseHistory from "./pages/PurchaseHistory/PurchaseHistory";
 import Nav from "./components/Nav/Nav";
+import Footer from "./pages/Footer/Footer";
 
 function Router() {
   return (
@@ -32,6 +33,7 @@ function Router() {
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/purchasehistory" element={<PurchaseHistory />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

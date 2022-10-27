@@ -3,11 +3,11 @@
   padding-left: 120px;
   padding-right: 30px;
   width: 100vw;
-  height: 280px;
+  height: 80vh;
   padding-top: 100px;
   .mypage-description {
     width: 70%;
-    height: 220px;
+
     &-content {
       font-size: 36px;
       font-weight: bold;
@@ -33,6 +33,7 @@
   }
   .mypage-id-card-box {
     width: 30%;
+    height: 205px;
     border-radius: 10px;
     font-weight: bold;
     box-shadow: 10px 10px 10px 10px rgb(232, 233, 237);

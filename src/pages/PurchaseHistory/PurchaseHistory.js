@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PurchaseHistory.scss";
 import PurchaseList from "./PurchaseList";
+import { getPurchase } from "../../functions/requests";
 
 function PurchaseHistory() {
+  const [purchaseHistories, setPurchaseHistories] = useState([]);
+  useEffect(() => {
+    getPurchase(setPurchaseHistories);
+  });
   return (
     <div className="purchase-history">
       <div className="order-history-guide-box">
         <div className="order-history-content-box">
           <div className="purchase-history-text">구매 내역</div>
           <div className="question-about-order-omission">
-            주문이 목록에서 누락 되었나요?{" "}
+            주문이 목록에서 누락 되었나요?
             <span className="link-to-order-list">주문 조회</span> 기능으로
             주문을 조회해 보세요.
           </div>
         </div>
       </div>
       <div className="purchase-list-box">
-        {PURCHASE_HISTORY_LIST.map(orderingInfo => {
+        {purchaseHistories.map(orderingInfo => {
           return (
             <div key={orderingInfo.purchaseDate}>
               <PurchaseList

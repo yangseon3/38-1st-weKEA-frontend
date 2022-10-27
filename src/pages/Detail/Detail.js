@@ -62,8 +62,12 @@ function Detail() {
     addWishList(params.productId, openSideModal("wishlist"));
   };
   const addProductToCart = () => {
-    addToCart(selectedColor);
-    openSideModal("cart");
+    if (selectedColor !== 0) {
+      addToCart(selectedColor);
+      openSideModal("cart");
+    } else {
+      alert("색상을 선택해주세요");
+    }
   };
   const priceToString = price => {
     return parseInt(price)

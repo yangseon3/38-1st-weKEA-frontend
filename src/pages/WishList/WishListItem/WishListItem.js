@@ -12,7 +12,9 @@ function WishListItem({ product, priceToString, popAlertModal, setWishLists }) {
   };
   const deleteProduct = () => {
     deleteWishList(product.id);
-    getWishList(setWishLists);
+    setTimeout(() => {
+      getWishList(setWishLists);
+    }, 50);
   };
   return (
     <li className="wish-list-item">

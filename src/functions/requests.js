@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import API from "../config";
 
 const getUserInfo = setState => {
@@ -109,7 +110,87 @@ const getCart = setState => {
     },
   })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+      setState(data.getCart);
+    });
+};
+
+const deleteCart = productOptionId => {
+  fetch(`${API.deleteCart}?productOptionId=${productOptionId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+      authorization: localStorage.getItem("token"),
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("로그인이 필요합니다.");
+      }
+    })
+    .catch(error => alert(error));
+};
+
+const changeProductQuantity = (productOptionId, quantity) => {
+  fetch(
+    `${API.cartChangeQuantity}?productOptionId=${productOptionId}&quantity=${quantity}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        authorization: localStorage.getItem("token"),
+      },
+    }
+  ).then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("로그인이 필요합니다.");
+    }
+  });
+};
+
+const getPurchase = setState => {
+  fetch(API.getPurchaseHistory, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+      authorization: localStorage.getItem("token"),
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("로그인이 필요합니다.");
+      }
+    })
+    .then(result => console.log(result.data))
+    .catch(error => {
+      alert(error);
+    });
+};
+
+const orderPayment = (totalPrice, success) => {
+  fetch(API.payment, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+      authorization: localStorage.getItem("token"),
+    },
+    body: JSON.stringify({
+      totalPrice: totalPrice,
+    }),
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(success)
+    .catch(error => alert(error));
 };
 
 export {
@@ -120,4 +201,8 @@ export {
   deleteWishList,
   addToCart,
   getCart,
+  deleteCart,
+  changeProductQuantity,
+  getPurchase,
+  orderPayment,
 };

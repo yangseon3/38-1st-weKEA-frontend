@@ -24,8 +24,10 @@ function WishList() {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   const addAllProductToCart = () => {
-    wishLists.map(product => {
-      addToCart(product.id, popAlertModal);
+    wishLists.map((product, index) => {
+      if (index % 2 === 1) {
+        addToCart(product.id, popAlertModal);
+      }
     });
   };
 
@@ -44,16 +46,18 @@ function WishList() {
             <h1 className="wish-list-title-content">위시리스트</h1>
           </header>
           <ul className="wish-list-items">
-            {wishLists?.map(product => {
-              return (
-                <WishListItem
-                  key={product.id}
-                  product={product}
-                  priceToString={priceToString}
-                  popAlertModal={popAlertModal}
-                  setWishLists={setWishLists}
-                />
-              );
+            {wishLists?.map((product, index) => {
+              if (index % 2 === 1) {
+                return (
+                  <WishListItem
+                    key={product.id}
+                    product={product}
+                    priceToString={priceToString}
+                    popAlertModal={popAlertModal}
+                    setWishLists={setWishLists}
+                  />
+                );
+              }
             })}
           </ul>
         </main>
@@ -63,7 +67,7 @@ function WishList() {
           <div className="total-price">
             <h4 className="total-price-title">정가</h4>
             <span className="total-price-content">
-              ₩ {priceToString(totalPrice())}
+              ₩ {priceToString(totalPrice() / 2)}
             </span>
           </div>
           <p className="buy-online">이 제품을 온라인으로 구매하시겠어요?</p>
