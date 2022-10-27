@@ -1,0 +1,26 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/animation.scss";
+
+.payment-complete {
+  @include flex(center, center, null);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  -webkit-animation: imageModalOpenAnimation 0.3s;
+  animation: imageModalOpenAnimation 0.3s;
+  z-index: 99999;
+  &-wrapper {
+    @include flex(space-between, center, column);
+    height: 50vh;
+  }
+  .payment-complete-content {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .purchase-history {
+    color: black;
+  }
+}

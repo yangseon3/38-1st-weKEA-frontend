@@ -1,0 +1,48 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/animation.scss";
+
+.cart-modal-bg {
+  @include flex(center, center, null);
+  @include modal-background;
+  -webkit-animation: modalBgAnimation 0.3s;
+  animation: modalBgAnimation 0.3s;
+  .cart-modal {
+    @include flex(center, center, column);
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    -webkit-animation: imageModalOpenAnimation 0.3s;
+    animation: imageModalOpenAnimation 0.3s;
+    .cart-modal-content {
+      @include flex(center, center, null);
+      height: 130px;
+      font-size: 25px;
+    }
+    .cart-modal-button-wrapper {
+      @include flex(space-around, center, row);
+      width: 200px;
+      .confirm-button,
+      .cancel-button {
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+      }
+      .confirm-button {
+        color: white;
+        background-color: $wekea-blue;
+        &:hover {
+          background-color: $wekea-dark-blue;
+        }
+      }
+      .cancel-button {
+        background-color: $wekea-gray;
+        &:hover {
+          color: white;
+          background-color: $wekea-dark-gray;
+        }
+      }
+    }
+  }
+}
