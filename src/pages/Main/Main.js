@@ -12,7 +12,6 @@ function Main() {
   const MAIN_PAGE_CATERORY_BOX_CONST_DATA = [
     {
       id: "1",
-      onclickfunction: goToListPage,
       wrapperClassName: "desk-image-wrapper",
       textClassName: "desk-categoty-text",
       imgClassName: "main-desk-img",
@@ -22,7 +21,6 @@ function Main() {
     },
     {
       id: "2",
-      onclickfunction: goToListPage,
       wrapperClassName: "chair-image-wrapper",
       textClassName: "chair-categoty-text",
       imgClassName: "main-chair-img",
@@ -33,7 +31,6 @@ function Main() {
 
     {
       id: "3",
-      onclickfunction: goToListPage,
       wrapperClassName: "drawer-image-wrapper",
       textClassName: "drawer-categoty-text",
       imgClassName: "main-drawer-img",
@@ -43,7 +40,6 @@ function Main() {
     },
     {
       id: "4",
-      onclickfunction: goToListPage,
       wrapperClassName: "shelf-image-wrapper",
       textClassName: "shelf-categoty-text",
       imgClassName: "main-shelf-img",
