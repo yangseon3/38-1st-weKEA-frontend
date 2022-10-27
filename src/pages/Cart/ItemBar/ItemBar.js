@@ -1,7 +1,13 @@
 import React from "react";
+import {
+  deleteCart,
+  getCart,
+  changeProductQuantity,
+  addWishList,
+} from "../../../functions/requests";
 import "./ItemBar.scss";
 
-function ItemBar({ product, priceToString, deleteRequest, popAlertModal }) {
+function ItemBar({ product, priceToString, popAlertModal, setProducts }) {
   const { thumbnail, price, color, name, size, quantity } = product;
   const numbers = () => {
     let array = [];
@@ -10,7 +16,21 @@ function ItemBar({ product, priceToString, deleteRequest, popAlertModal }) {
     }
     return array;
   };
-
+  const deleteProduct = () => {
+    deleteCart(product.optionId);
+    setTimeout(() => {
+      getCart(setProducts);
+    }, 100);
+  };
+  const changeQuantity = e => {
+    changeProductQuantity(product.optionId, e.target.value);
+    setTimeout(() => {
+      getCart(setProducts);
+    }, 200);
+  };
+  const addToWishList = () => {
+    addWishList(product.productId, popAlertModal);
+  };
   return (
     <li className="item-bar">
       <div className="thumbnail-wrapper">
@@ -29,7 +49,12 @@ function ItemBar({ product, priceToString, deleteRequest, popAlertModal }) {
         </div>
         <footer className="functions">
           <div className="quantity-wrapper">
-            <select defaultValue={quantity} name={name} className="quantity">
+            <select
+              defaultValue={quantity}
+              name={name}
+              className="quantity"
+              onChange={changeQuantity}
+            >
               <optgroup>
                 {numbers().map(num => {
                   return (
@@ -44,10 +69,10 @@ function ItemBar({ product, priceToString, deleteRequest, popAlertModal }) {
               keyboard_arrow_down
             </span>
           </div>
-          <span className="delete-button" onClick={deleteRequest}>
+          <span className="delete-button" onClick={deleteProduct}>
             삭제
           </span>
-          <span className="wishlist-button" onClick={popAlertModal}>
+          <span className="wishlist-button" onClick={addToWishList}>
             위시리스트에 저장
           </span>
         </footer>

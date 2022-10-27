@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SideModal from "../../components/SideModal/SideModal";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import ImageModal from "./components/ImageModal";
+import { getDetail, addToCart, addWishList } from "../../functions/requests";
 import "./Detail.scss";
 
 function Detail() {
@@ -11,6 +13,7 @@ function Detail() {
   const [sideModal, setSideModal] = useState("");
   const [selectedColor, setSelectedColor] = useState(0);
 
+  const params = useParams();
   const modalContent = {
     description: {
       className: "white-modal",
@@ -20,7 +23,7 @@ function Detail() {
     size: {
       className: "white-modal",
       title: "치수",
-      content: productInfo?.options.size,
+      content: productInfo?.size,
     },
     cart: {
       className: "blue-modal",
@@ -44,9 +47,8 @@ function Detail() {
   const openModal = i => {
     setImageModalIndex(i + 1);
   };
-  const openSideModal = e => {
-    const { name } = e.target.dataset;
-    setSideModal(name);
+  const openSideModal = text => {
+    setSideModal(text);
   };
   const closeModal = () => {
     setIsUnmountModal(true);
@@ -55,6 +57,17 @@ function Detail() {
       sideModal && setSideModal("");
       setIsUnmountModal(false);
     }, 300);
+  };
+  const addToWishList = () => {
+    addWishList(params.id, openSideModal("wishlist"));
+  };
+  const addProductToCart = () => {
+    if (selectedColor !== 0) {
+      addToCart(selectedColor);
+      openSideModal("cart");
+    } else {
+      alert("색상을 선택해주세요");
+    }
   };
   const priceToString = price => {
     return parseInt(price)
@@ -65,15 +78,9 @@ function Detail() {
     const { id } = e.target.dataset;
     setSelectedColor(parseInt(id));
   };
+
   useEffect(() => {
-    fetch("/data/detail.json")
-      .then(response => response.json())
-      .then(data => {
-        setProductInfo({
-          ...data,
-          images: [{ id: "thumbnail", url: data.thumbnail }, ...data.images],
-        });
-      });
+    getDetail(params.id, setProductInfo);
   }, []);
   return (
     <>
@@ -119,13 +126,12 @@ function Detail() {
           </div>
           <div
             className="detail-description"
-            onClick={openSideModal}
-            data-name="description"
+            onClick={() => openSideModal("description")}
           >
             <span className="detail-title">제품 설명</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
-          <div className="detail-size" onClick={openSideModal} data-name="size">
+          <div className="detail-size" onClick={() => openSideModal("size")}>
             <span className="detail-title">치수</span>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
@@ -134,29 +140,29 @@ function Detail() {
           <header className="detail-info-header">
             <div className="detail-name">{productInfo?.name}</div>
             <div className="detail-color">
-              {productInfo?.options.color.map(colorName => {
+              {productInfo?.idAndColor.map(option => {
                 return (
-                  <span key={colorName} className="color-name">
-                    {colorName}
+                  <span key={option.productOptionId} className="color-name">
+                    {option.color}
                   </span>
                 );
               })}
             </div>
             <div className="detail-price">
-              ₩ {priceToString(productInfo?.options.price)}원
+              ₩ {priceToString(productInfo?.price)}원
             </div>
           </header>
           <div className="select-color">
-            {productInfo?.options.color.map((color, index) => {
+            {productInfo?.idAndColor.map(option => {
               return (
                 <div
-                  key={color}
+                  key={option.productOptionId}
                   className={`color ${
-                    selectedColor === index ? "selected" : ""
+                    selectedColor === option.productOptionId ? "selected" : ""
                   }`}
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: option.color }}
                   onClick={selectColor}
-                  data-id={index}
+                  data-id={option.productOptionId}
                 />
               );
             })}
@@ -190,17 +196,12 @@ function Detail() {
             <button
               type="button"
               className="buy-btn"
-              onClick={openSideModal}
-              data-name="cart"
+              onClick={addProductToCart}
             >
               구매하기
             </button>
-            <div className="heart-icon-wrapper">
-              <span
-                className="material-symbols-outlined"
-                onClick={openSideModal}
-                data-name="wishlist"
-              >
+            <div className="heart-icon-wrapper" onClick={addToWishList}>
+              <span className="material-symbols-outlined" data-name="wishlist">
                 favorite
               </span>
             </div>

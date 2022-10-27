@@ -43,6 +43,7 @@ function Footer() {
                 <div className="each-menu-column-container">
                   <FooterMainMenuBoxRenderingComponent
                     key={title.id}
+                    id={title.id}
                     title={title.title}
                   />
                 </div>

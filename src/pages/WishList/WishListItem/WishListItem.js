@@ -1,7 +1,21 @@
 import React from "react";
+import {
+  addToCart,
+  deleteWishList,
+  getWishList,
+} from "../../../functions/requests";
 import "./WishListItem.scss";
 
-function WishListItem({ product, priceToString, popAlertModal }) {
+function WishListItem({ product, priceToString, popAlertModal, setWishLists }) {
+  const addProductToCart = () => {
+    addToCart(product.id, popAlertModal);
+  };
+  const deleteProduct = () => {
+    deleteWishList(product.id);
+    setTimeout(() => {
+      getWishList(setWishLists);
+    }, 50);
+  };
   return (
     <li className="wish-list-item">
       <div className="thumbnail-wrapper">
@@ -19,11 +33,13 @@ function WishListItem({ product, priceToString, popAlertModal }) {
         <footer className="functions">
           <span
             className="material-symbols-outlined add-to-cart-button"
-            onClick={popAlertModal}
+            onClick={addProductToCart}
           >
             add_shopping_cart
           </span>
-          <span className="delete-button">삭제하기</span>
+          <span className="delete-button" onClick={deleteProduct}>
+            삭제하기
+          </span>
         </footer>
       </div>
     </li>

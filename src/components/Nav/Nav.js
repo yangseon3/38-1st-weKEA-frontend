@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import MenuBar from "./MenuBar/MenuBar";
 import LoginModal from "./LoginModal/LoginModal";
-import API from "../../config";
+import { getUserInfo } from "../../functions/requests";
 import "./Nav.scss";
 
 function Nav() {
@@ -11,7 +11,7 @@ function Nav() {
   const [toggleModal, setToggleModal] = useState(false);
   const [userName, setUserName] = useState(null);
   const navigate = useNavigate();
-  console.log(userName);
+
   const openMenu = () => {
     setToggleMenu(true);
   };
@@ -23,19 +23,7 @@ function Nav() {
     navigate(path);
   };
   useEffect(() => {
-    fetch(API.mypage, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        authorization: localStorage.getItem("token"),
-      },
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then(result => setUserName(result.data.userName));
+    getUserInfo(setUserName);
   }, []);
   return (
     <div className="nav">
@@ -60,7 +48,9 @@ function Nav() {
             <span className="material-symbols-outlined">person</span>
             <span className="text">
               Hi!&nbsp;&nbsp;
-              {userName === null ? "로그인 또는 가입하기" : userName.firstName}
+              {userName === null
+                ? "로그인 또는 가입하기"
+                : userName?.userName.firstName}
             </span>
           </div>
           <div className="wishlist">
@@ -85,7 +75,12 @@ function Nav() {
       </div>
       {toggleMenu && <MenuBar setToggleMenu={setToggleMenu} />}
       {toggleModal && (
-        <LoginModal setToggleModal={setToggleModal} userName={userName} />
+        <LoginModal
+          setToggleModal={setToggleModal}
+          userName={userName?.userName}
+          getUserInfo={getUserInfo}
+          setUserName={setUserName}
+        />
       )}
     </div>
   );

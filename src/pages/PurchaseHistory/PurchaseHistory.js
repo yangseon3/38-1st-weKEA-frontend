@@ -1,22 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PurchaseHistory.scss";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import PurchaseList from "./PurchaseList";
+import { getPurchase } from "../../functions/requests";
 
 function PurchaseHistory() {
+  const [purchaseHistories, setPurchaseHistories] = useState([]);
+  const [isAlertModalAppear, setIsAlertModalAppear] = useState(false);
+
+  useEffect(() => {
+    getPurchase(setPurchaseHistories);
+  }, []);
   return (
     <div className="purchase-history">
+      {isAlertModalAppear && (
+        <AlertModal alertModalContent={"취소되었습니다."} />
+      )}
       <div className="order-history-guide-box">
         <div className="order-history-content-box">
           <div className="purchase-history-text">구매 내역</div>
           <div className="question-about-order-omission">
-            주문이 목록에서 누락 되었나요?{" "}
+            주문이 목록에서 누락 되었나요?
             <span className="link-to-order-list">주문 조회</span> 기능으로
             주문을 조회해 보세요.
           </div>
         </div>
       </div>
       <div className="purchase-list-box">
-        {PURCHASE_HISTORY_LIST.map(orderingInfo => {
+        {purchaseHistories.map(orderingInfo => {
           return (
             <div key={orderingInfo.purchaseDate}>
               <PurchaseList
@@ -25,6 +36,10 @@ function PurchaseHistory() {
                 price={orderingInfo.price}
                 url={orderingInfo.url}
                 title={orderingInfo.title}
+                orderId={orderingInfo.orderId}
+                setIsAlertModalAppear={setIsAlertModalAppear}
+                setPurchaseHistories={setPurchaseHistories}
+                orderStatus={orderingInfo.orderStatus}
               />
             </div>
           );
@@ -38,62 +53,3 @@ function PurchaseHistory() {
   );
 }
 export default PurchaseHistory;
-
-const PURCHASE_HISTORY_LIST = [
-  {
-    id: "1",
-    purchaseDate: "2022-10-20",
-    state: "출고 완료",
-    price: "150000",
-    url: "https://picsum.photos/200",
-    title: "편한 의자",
-  },
-  {
-    id: "2",
-    purchaseDate: "2022-10-07",
-    state: "배송완료",
-    title: "편한 의자",
-    price: "433000",
-    url: "https://picsum.photos/200",
-  },
-  {
-    id: "3",
-    purchaseDate: "2022-09-21",
-    state: "배송완료",
-    title: "편한 의자",
-    price: "40000",
-    url: "https://picsum.photos/200",
-  },
-  {
-    id: "4",
-    purchaseDate: "2022-08-01",
-    state: "배송완료",
-    title: "편한 의자",
-    price: "100000",
-    url: "https://picsum.photos/200",
-  },
-  {
-    id: "5",
-    purchaseDate: "2022-07-22",
-    state: "배송완료",
-    price: "80000",
-    title: "편한 의자",
-    url: "https://picsum.photos/200",
-  },
-  {
-    id: "6",
-    purchaseDate: "2022-05-14",
-    state: "배송완료",
-    price: "220000",
-    title: "편한 의자",
-    url: "https://picsum.photos/200",
-  },
-  {
-    id: "7",
-    purchaseDate: "2022-03-14",
-    state: "배송완료",
-    price: "150000",
-    title: "편한 의자",
-    url: "https://picsum.photos/200",
-  },
-];

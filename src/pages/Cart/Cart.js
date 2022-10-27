@@ -3,8 +3,9 @@ import SideModal from "../../components/SideModal/SideModal";
 import AlertModal from "../../components/AlertModal/AlertModal";
 import ItemBar from "./ItemBar/ItemBar";
 import PaymentModal from "./PaymentModal/PaymentModal";
-import "./Cart.scss";
 import PaymentComplete from "./PaymentComplete/PaymentComplete";
+import { getCart } from "../../functions/requests";
+import "./Cart.scss";
 
 function Cart() {
   const [products, setProducts] = useState([]);
@@ -53,14 +54,7 @@ function Cart() {
   };
 
   useEffect(() => {
-    fetch("/data/Cart/product.json", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(response => response.json())
-      .then(data => setProducts(data));
+    getCart(setProducts);
   }, []);
 
   return (
@@ -81,6 +75,7 @@ function Cart() {
         <PaymentModal
           closePaymentModal={closePaymentModal}
           openPaymentComplete={openPaymentComplete}
+          totalPrice={totalPrice()}
         />
       )}
       {isCompletePayment && <PaymentComplete />}
@@ -97,6 +92,7 @@ function Cart() {
                   product={product}
                   priceToString={priceToString}
                   popAlertModal={popAlertModal}
+                  setProducts={setProducts}
                 />
               );
             })}
