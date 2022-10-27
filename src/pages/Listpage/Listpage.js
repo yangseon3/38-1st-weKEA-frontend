@@ -121,31 +121,17 @@ function Listpage() {
   function changePriceFilterBoxToggle() {
     setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
   }
-  function isClickOnBox(e) {
-    e.stopPropagation();
-    if (
-      isSortBoxVisible === true &&
-      !e.target.className.includes("drop-box") &&
-      !e.target.className.includes("filter-inneritem") &&
-      e.target.type !== "radio"
-    ) {
-      setIsSortBoxVisible(!isSortBoxVisible);
-    }
-    if (
-      isPriceFilterBoxVisible === true &&
-      !e.target.className.includes("drop-box") &&
-      !e.target.className.includes("filter-inneritem") &&
-      e.target.type !== "radio"
-    ) {
-      setIsPriceFilterBoxVisible(!isPriceFilterBoxVisible);
-    }
+
+  function listpageOnclickFunction() {
+    setIsSortBoxVisible(false);
+    setIsPriceFilterBoxVisible(false);
   }
   return (
-    <div className="listpage" onClick={isClickOnBox}>
+    <div className="listpage" onClick={listpageOnclickFunction}>
       <div className="filter-bar">
-        <div className="total-filter-frame">
+        <div className="sort-filter-frame" onClick={e => e.stopPropagation()}>
           <div
-            className="total-filter-container filter-container"
+            className="sort-filter-container filter-container"
             onClick={changeSortBoxBoolean}
           >
             <button className="filter-button">
@@ -155,8 +141,8 @@ function Listpage() {
           </div>
           <div>
             {isSortBoxVisible && (
-              <div className="total-drop-box drop-box">
-                <div className="total-drop-box drop-box">
+              <div className="sort-drop-box drop-box">
+                <div className="sort-drop-box drop-box">
                   {SORTBY_LIST.map(sortby => {
                     return (
                       <div className="drop-box-filter-element" key={sortby.id}>
@@ -165,7 +151,7 @@ function Listpage() {
                         </span>{" "}
                         <input
                           type="radio"
-                          name="total-filter-box-radio"
+                          name="sort-filter-box-radio"
                           onClick={() => {
                             sortByFunction(sortby.sortbyParam);
                           }}
@@ -178,7 +164,10 @@ function Listpage() {
             )}
           </div>
         </div>
-        <div className="price-filter-total-frame">
+        <div
+          className="price-filter-total-frame"
+          onClick={e => e.stopPropagation()}
+        >
           <div
             className="price-filter-container filter-container"
             onClick={changePriceFilterBoxToggle}
