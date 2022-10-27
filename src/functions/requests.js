@@ -77,7 +77,7 @@ const deleteWishList = productId => {
   });
 };
 
-const addToCart = id => {
+const addToCart = (id, success) => {
   fetch(API.cart, {
     method: "POST",
     headers: {
@@ -96,6 +96,7 @@ const addToCart = id => {
         throw new Error("로그인이 필요합니다.");
       }
     })
+    .then(success)
     .catch(error => alert(error));
 };
 

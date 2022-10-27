@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import SideModal from "../../components/SideModal/SideModal";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import ImageModal from "./components/ImageModal";
 import { getDetail, addToCart, addWishList } from "../../functions/requests";
 import "./Detail.scss";
@@ -22,7 +23,7 @@ function Detail() {
     size: {
       className: "white-modal",
       title: "치수",
-      content: productInfo?.options.size,
+      content: productInfo?.size,
     },
     cart: {
       className: "blue-modal",
@@ -59,10 +60,9 @@ function Detail() {
   };
   const addToWishList = () => {
     addWishList(params.productId, openSideModal("wishlist"));
-    console.log(params.productId);
   };
   const addProductToCart = () => {
-    addToCart(productInfo.optionId);
+    addToCart(selectedColor);
     openSideModal("cart");
   };
   const priceToString = price => {
@@ -135,29 +135,29 @@ function Detail() {
           <header className="detail-info-header">
             <div className="detail-name">{productInfo?.name}</div>
             <div className="detail-color">
-              {productInfo?.options.color.map(colorName => {
+              {productInfo?.idAndColor.map(option => {
                 return (
-                  <span key={colorName} className="color-name">
-                    {colorName}
+                  <span key={option.productOptionId} className="color-name">
+                    {option.color}
                   </span>
                 );
               })}
             </div>
             <div className="detail-price">
-              ₩ {priceToString(productInfo?.options.price)}원
+              ₩ {priceToString(productInfo?.price)}원
             </div>
           </header>
           <div className="select-color">
-            {productInfo?.options.color.map((color, index) => {
+            {productInfo?.idAndColor.map(option => {
               return (
                 <div
-                  key={color}
+                  key={option.productOptionId}
                   className={`color ${
-                    selectedColor === index ? "selected" : ""
+                    selectedColor === option.productOptionId ? "selected" : ""
                   }`}
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: option.color }}
                   onClick={selectColor}
-                  data-id={index}
+                  data-id={option.productOptionId}
                 />
               );
             })}
