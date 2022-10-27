@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./PurchaseHistory.scss";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import PurchaseList from "./PurchaseList";
 import { getPurchase } from "../../functions/requests";
 
 function PurchaseHistory() {
   const [purchaseHistories, setPurchaseHistories] = useState([]);
+  const [isAlertModalAppear, setIsAlertModalAppear] = useState(false);
+
   useEffect(() => {
     getPurchase(setPurchaseHistories);
-  });
+  }, []);
   return (
     <div className="purchase-history">
+      {isAlertModalAppear && (
+        <AlertModal alertModalContent={"삭제되었습니다."} />
+      )}
       <div className="order-history-guide-box">
         <div className="order-history-content-box">
           <div className="purchase-history-text">구매 내역</div>
@@ -30,6 +36,10 @@ function PurchaseHistory() {
                 price={orderingInfo.price}
                 url={orderingInfo.url}
                 title={orderingInfo.title}
+                orderId={orderingInfo.orderId}
+                setIsAlertModalAppear={setIsAlertModalAppear}
+                setPurchaseHistories={setPurchaseHistories}
+                orderStatus={orderingInfo.orderStatus}
               />
             </div>
           );

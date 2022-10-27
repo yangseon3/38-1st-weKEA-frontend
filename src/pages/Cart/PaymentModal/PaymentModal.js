@@ -4,7 +4,6 @@ import "./PaymentModal.scss";
 
 function PaymentModal({ closePaymentModal, openPaymentComplete, totalPrice }) {
   const payment = () => {
-    console.log(typeof totalPrice);
     orderPayment(totalPrice, openPaymentComplete);
   };
   return (

@@ -59,7 +59,7 @@ function Detail() {
     }, 300);
   };
   const addToWishList = () => {
-    addWishList(params.productId, openSideModal("wishlist"));
+    addWishList(params.id, openSideModal("wishlist"));
   };
   const addProductToCart = () => {
     if (selectedColor !== 0) {
@@ -78,8 +78,9 @@ function Detail() {
     const { id } = e.target.dataset;
     setSelectedColor(parseInt(id));
   };
+
   useEffect(() => {
-    getDetail(params.productId, setProductInfo);
+    getDetail(params.id, setProductInfo);
   }, []);
   return (
     <>

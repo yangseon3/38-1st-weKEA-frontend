@@ -167,7 +167,7 @@ const getPurchase = setState => {
         throw new Error("로그인이 필요합니다.");
       }
     })
-    .then(result => console.log(result.data))
+    .then(result => setState(result.getOrders))
     .catch(error => {
       alert(error);
     });
@@ -181,6 +181,27 @@ const orderPayment = (totalPrice, success) => {
       authorization: localStorage.getItem("token"),
     },
     body: JSON.stringify({
+      totalPrice,
+    }),
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(success)
+    .catch(error => alert(error));
+};
+
+const refundOrder = (orderId, totalPrice, success) => {
+  fetch(API.refund, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+      authorization: localStorage.getItem("token"),
+    },
+    body: JSON.stringify({
+      orderId: orderId,
       totalPrice: totalPrice,
     }),
   })
@@ -205,4 +226,5 @@ export {
   changeProductQuantity,
   getPurchase,
   orderPayment,
+  refundOrder,
 };

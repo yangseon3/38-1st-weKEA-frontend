@@ -23,13 +23,10 @@ function ItemBar({ product, priceToString, popAlertModal, setProducts }) {
     }, 100);
   };
   const changeQuantity = e => {
-    if (e.target.value === 0) {
-      deleteProduct();
-    }
     changeProductQuantity(product.optionId, e.target.value);
     setTimeout(() => {
       getCart(setProducts);
-    }, 100);
+    }, 200);
   };
   const addToWishList = () => {
     addWishList(product.productId, popAlertModal);
