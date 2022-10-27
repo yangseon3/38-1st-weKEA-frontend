@@ -32,8 +32,6 @@ function Main() {
           );
         })}
       </div>
-
-      <div>위코드 38기 3팀 weKEA입니다.</div>
     </div>
   );
 }
