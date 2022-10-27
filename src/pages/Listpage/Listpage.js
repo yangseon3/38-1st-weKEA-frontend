@@ -11,7 +11,6 @@ function Listpage() {
   const sortBy = searchParams.get("sortBy");
   const params = useParams();
   const categoryId = params.categoryId;
-  console.log(params.categoryId);
   const SORTBY_LIST = [
     {
       id: 1,
@@ -93,13 +92,11 @@ function Listpage() {
       .then(response => response.json())
       .then(data => {
         setProductCardData(data.getProductsByCategoryId);
-        console.log(productCardData);
       });
   }, [showMoreOffsetCount, sortBy, minPrice, maxPrice]);
 
   function showMoreButtonApiRequest() {
     setShowMoreOffsetCount(showMoreOffsetCount + 4);
-    console.log(showMoreOffsetCount);
   }
 
   function sortByFunction(sortby) {
