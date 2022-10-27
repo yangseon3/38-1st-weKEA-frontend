@@ -7,6 +7,7 @@ import Cart from "./pages/Cart/Cart";
 import Nav from "./components/Nav/Nav";
 import Mypage from "../src/pages/Mypage/Mypage";
 import WishList from "./pages/WishList/WishList";
+import Listpage from "./pages/Listpage/Listpage";
 
 function Router() {
   return (
