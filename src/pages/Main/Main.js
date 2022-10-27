@@ -9,7 +9,7 @@ function Main() {
     navigate(`/category/${categoryId}`);
   };
   //책상 의자 서랍 선반 순서로 category
-  const MAIN_PAGE_CATERORY_BOX_CONST_DATA = [
+  const MAIN_PAGE_CATEGORY_BOX_CONST_DATA = [
     {
       id: "1",
       categoryId: "1",
@@ -62,7 +62,7 @@ function Main() {
       <Nav />
       <div className="main-page">
         <div className="main-all-image-frame">
-          {MAIN_PAGE_CATERORY_BOX_CONST_DATA.map(categoryInfo => {
+          {MAIN_PAGE_CATEGORY_BOX_CONST_DATA.map(categoryInfo => {
             return (
               <div
                 className="main-image-wrapper desk-image-wrapper"
