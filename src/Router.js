@@ -9,9 +9,9 @@ import Chair from "./pages/Categories/Chair";
 import Drawer from "./pages/Categories/Drawer";
 import Shelf from "./pages/Categories/Shelf";
 import Detail from "./pages/Detail/Detail";
-import Nav from "./components/Nav/Nav";
 import Mypage from "../src/pages/Mypage/Mypage";
 import WishList from "./pages/WishList/WishList";
+import PurchaseHistory from "./pages/PurchaseHistory/PurchaseHistory";
 import Nav from "./components/Nav/Nav";
 
 function Router() {
@@ -30,6 +30,7 @@ function Router() {
         <Route path="/detail/:productId" element={<Detail />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/wishlist" element={<WishList />} />
+        <Route path="/purchasehistory" element={<PurchaseHistory />} />
       </Routes>
     </BrowserRouter>
   );
