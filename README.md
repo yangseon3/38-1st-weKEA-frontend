@@ -8,9 +8,10 @@
 
 - 개발기간 : 2022/10/17 ~ 2022/10/27
 - 개발 인원 : Front-End 3명, Back-End 3명
-- Front-End : 김도영, 김솔(PM), 양동선
-- Back-End : 김희연, 이찬우, 정해만
+- Front-End : [김도영](https://github.com/doyoungkim1994), [김솔(PM)](https://github.com/Solrasido55), [양동선](https://github.com/yangseon3)
+- Back-End : [김희연](https://github.com/Cein1), [이찬우](https://github.com/c0zyb1ue), [정해만](https://github.com/haemong)
 
+# 티켓 
 # 적용 기술
 
 - Front-End : <img src="https://img.shields.io/badge/Javscript-F7DF1E?style=flat&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/sass-CC6699?style=flat&logo=sass&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat&logo=ReactRouter&logoColor=white"/> <img src="https://img.shields.io/badge/Create React App-09D3AC?style=flat&logo=CreateReactApp&logoColor=white"/>
@@ -23,6 +24,7 @@
 - [백엔드 깃헙주소](https://github.com/wecode-bootcamp-korea/38-1st-weKEA-backend)
 - [프론트엔드 깃헙주소](https://github.com/wecode-bootcamp-korea/38-1st-weKEA-frontend)
 - [Notion 프로젝트 소개](https://www.notion.so/a765855cac2d43ecb083e59a5a5957fd)
+
 
 # 구현 기능
 
