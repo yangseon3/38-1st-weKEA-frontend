@@ -86,7 +86,7 @@
 - 상품 수량 변경, 삭제 기능
   ![cart2](https://user-images.githubusercontent.com/106805946/198542869-bb19effc-de9e-4a81-850c-f04da041fb6d.gif)
   ![detail4](https://user-images.githubusercontent.com/106805946/198544181-4091f994-6989-4911-81e6-8bf1bdce1c14.gif)
-- 위시리스트애 추가 기능
+- 위시리스트에 추가 기능
   ![cart1](https://user-images.githubusercontent.com/106805946/198542862-0fe191ed-0be2-4774-9ba4-47006c76a98c.gif)
 - 가격과 수량을 곱해 품목별 총 가격을 표시
 - 품목별 총 가격을 모두 더한 총 가격 표시
