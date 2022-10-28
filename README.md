@@ -40,6 +40,7 @@
 ## Nav
 
 - 로그인 여부에 따른 레이아웃 변화
+<br>
   <img width="228" alt="스크린샷 2022-10-28 오후 5 50 27" src="https://user-images.githubusercontent.com/106805946/198546371-fe33a401-13aa-47d0-aee3-159a4f92bd0c.png">
   <img width="196" alt="스크린샷 2022-10-28 오후 5 48 56" src="https://user-images.githubusercontent.com/106805946/198546063-61f68e4b-5b97-4357-80de-d8e36695d226.png">
   <img width="480" alt="스크린샷 2022-10-28 오후 5 49 19" src="https://user-images.githubusercontent.com/106805946/198546091-1a8b5af8-6581-4f0a-b80a-2fe7a245150b.png">
