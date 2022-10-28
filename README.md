@@ -46,7 +46,9 @@
     <img width="478" alt="스크린샷 2022-10-28 오후 5 50 47" src="https://user-images.githubusercontent.com/106805946/198546388-c99d6908-22fe-4866-b3fe-7087b4082aa1.png">
   <img width="480" alt="스크린샷 2022-10-28 오후 5 49 19" src="https://user-images.githubusercontent.com/106805946/198546091-1a8b5af8-6581-4f0a-b80a-2fe7a245150b.png">
 - 메뉴바, 로그인바 마운트/언마운트시 애니메이션
+
   ![NAV1](https://user-images.githubusercontent.com/106805946/198544228-592d2ecf-fb6d-4057-9b53-b556e2cfe22b.gif)
+
   ![NAV2](https://user-images.githubusercontent.com/106805946/198544243-cc44cffb-4d58-4e24-83ba-f7477d182beb.gif)
 
 ## Footer
