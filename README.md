@@ -115,6 +115,9 @@
 
 - 장바구니에 추가 기능
 - 모든 상품 장바구니에 추가 기능
+
+![wishlist1](https://user-images.githubusercontent.com/106805946/198816079-c1f7e549-9d34-4fc6-a3e4-08012129ff7d.gif)
+
 - 상품 삭제 기능
 
 ## My Page
