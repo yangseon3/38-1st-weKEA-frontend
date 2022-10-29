@@ -15,7 +15,20 @@
 - Front-End : [김도영](https://github.com/doyoungkim1994), [김솔(PM)](https://github.com/Solrasido55), [양동선](https://github.com/yangseon3)
 - Back-End : [김희연](https://github.com/Cein1), [이찬우](https://github.com/c0zyb1ue), [정해만](https://github.com/haemong)
 
-# 티켓
+# 담당 티켓
+
+## 김솔(PM)
+
+-> `Detail Page`,`Cart`, `Wishlist`, `Nav Bar`
+
+## 김도영
+
+-> `Main Page`, `List Page`, `Footer`, `Purchase History`
+
+## 양동선
+
+-> `Login`, `Sign up`, `My page`, `Alert Modal`
+
 
 # 적용 기술
 
