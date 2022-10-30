@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Nav from "../../components/Nav/Nav";
 import { getUserInfo } from "../../functions/requests";
 
 import "./Mypage.scss";
@@ -14,11 +13,6 @@ function Mypage() {
     return parseInt(price)
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
-  const needLogin = () => {
-    alert("로그인이 필요합니다.");
-    navigate("/login");
   };
 
   useEffect(() => {

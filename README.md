@@ -29,7 +29,6 @@
 
 -> `Login`, `Sign up`, `My page`, `Alert Modal`
 
-
 # 적용 기술
 
 - Front-End : <img src="https://img.shields.io/badge/Javscript-F7DF1E?style=flat&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/sass-CC6699?style=flat&logo=sass&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat&logo=ReactRouter&logoColor=white"/> <img src="https://img.shields.io/badge/Create React App-09D3AC?style=flat&logo=CreateReactApp&logoColor=white"/>
@@ -53,10 +52,10 @@
 ## Nav
 
 - 로그인 여부에 따른 레이아웃 변화
-<br>
+  <br>
   <img width="228" alt="스크린샷 2022-10-28 오후 5 50 27" src="https://user-images.githubusercontent.com/106805946/198546371-fe33a401-13aa-47d0-aee3-159a4f92bd0c.png">
   <img width="196" alt="스크린샷 2022-10-28 오후 5 48 56" src="https://user-images.githubusercontent.com/106805946/198546063-61f68e4b-5b97-4357-80de-d8e36695d226.png">
-    <img width="478" alt="스크린샷 2022-10-28 오후 5 50 47" src="https://user-images.githubusercontent.com/106805946/198546388-c99d6908-22fe-4866-b3fe-7087b4082aa1.png">
+  <img width="478" alt="스크린샷 2022-10-28 오후 5 50 47" src="https://user-images.githubusercontent.com/106805946/198546388-c99d6908-22fe-4866-b3fe-7087b4082aa1.png">
   <img width="480" alt="스크린샷 2022-10-28 오후 5 49 19" src="https://user-images.githubusercontent.com/106805946/198546091-1a8b5af8-6581-4f0a-b80a-2fe7a245150b.png">
 - 메뉴바, 로그인바 마운트/언마운트시 애니메이션
 
@@ -70,14 +69,16 @@
 
 ## Login
 
-- 유효성 검사
+- 유효성 검사 (이메일과 비밀번호 정규식 표현을 변수에 담아 조건식에 활용)
 - 유효성 여부에 의한 레이아웃 변화
-  ![LOGIN1](https://user-images.githubusercontent.com/106805946/198544213-6982b8bd-2701-4a4d-9c8e-cb24a759acf9.gif)
+- 회원가입이 안된 이메일과 비밀번호 일 경우 "가입하지 않은 아이디이거나, 잘못된 비밀번호입니다"가 포함된 모달이 mount됨.
+  ![Login](https://user-images.githubusercontent.com/109202638/198861948-6005eb7f-51eb-4ec6-9069-f501633d8a33.gif)
 
 ## SignUp
 
-- 유효성 검사
+- 유효성 검사 (이메일, 비밀번호, 휴대폰, 생일 정규식 표현을 변수에 담아 조건식에 활용)
 - 유효성 여부에 의한 레이아웃 변화
+  ![Signup](https://user-images.githubusercontent.com/109202638/198862438-7fec98a8-a60b-441a-aaeb-24483ff377e3.gif)
 
 ## List page
 
@@ -123,6 +124,7 @@
 ## My Page
 
 - 유저 정보를 받아와 이름과 포인트를 표시
+  ![Mypage](https://user-images.githubusercontent.com/109202638/198862653-59e4c1f9-febb-41a8-9974-f8e5828f6709.gif)
 
 ## Purchase History
 
